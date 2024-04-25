@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "Bongo-Cat-Fidget-Toy")(type "KiCad")(uri "${KIPRJMOD}/libs/Bongo-Cat-Fidget-Toy.pretty")(options "")(descr ""))
+  (lib (name "v3s-devboard-module")(type "KiCad")(uri "C:/Users/afons/Documents/GitHub/V3S-devboard/Hardware/V3S-devboard-module/libs/v3s-devboard-module.pretty")(options "")(descr ""))
+)
