@@ -17,13 +17,14 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include "bitmap_extended.h"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
 #include "ssd1306_tests.h"
+#include "bitmap_extended.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -44,6 +45,8 @@
 /* Private variables ---------------------------------------------------------*/
 I2C_HandleTypeDef hi2c1;
 
+TIM_HandleTypeDef htim14;
+
 /* USER CODE BEGIN PV */
 
 /* USER CODE END PV */
@@ -52,27 +55,15 @@ I2C_HandleTypeDef hi2c1;
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
+static void MX_TIM14_Init(void);
 static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
 
 // timer value = desired_sec * 64e6/prescaler
+int sw_state_left;
+int sw_state_right;
 
-
-
-// Callback: timer has rolled over
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-  // Check which version of the timer triggered this callback and toggle LED
-	if (htim == &htim14 )
-	{
-		HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_GPIO_Pin);
-	}
-}
-
-typedef enum states {
-    IDLE,
-    SWITCH,
-} state_e;
+uint8_t idle_cnt;
 
 
 void draw_animation(char* frame){
@@ -80,6 +71,26 @@ void draw_animation(char* frame){
 	ssd1306_DrawBitmap(0,0,frame,128,64,White);
 	ssd1306_UpdateScreen();
 }
+
+// Callback: timer has rolled over
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+//  // Check which version of the timer triggered this callback and toggle LED
+	if (htim == &htim14 )
+	{
+		sw_state_left = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
+		sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
+	}
+}
+
+
+
+typedef enum states {
+    IDLE,
+    SWITCH,
+} state_e;
+
+
 
 
 /* USER CODE END PFP */
@@ -119,6 +130,7 @@ int main(void)
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
   MX_I2C1_Init();
+  MX_TIM14_Init();
 
   /* Initialize interrupts */
   MX_NVIC_Init();
@@ -127,13 +139,44 @@ int main(void)
 //    ssd1306_TestAll();
 
   state_e state = IDLE;
-  uint8_t idle_cnt = 0;
+  int32_t idle_cntr = 0;
 
+  HAL_TIM_Base_Start_IT(&htim14);
   while(1) {
 	switch(state){
 	case IDLE:
+		if(sw_state_left == 0 || sw_state_right == 0){
+			draw_animation(&img_both_up);
+			HAL_Delay(50);
+			state = SWITCH;
+		}else {
+			  draw_animation(ani_idle[idle_cnt]);
+			  idle_cnt = (idle_cnt + 1 ) % ani_idle_LEN;
+			  HAL_Delay(100);
+		}
 		break;
 	case SWITCH:
+		if(sw_state_left == 1 && sw_state_right == 1){
+			draw_animation(&img_both_up);
+			if(idle_cntr == 0){
+				idle_cntr = HAL_GetTick();
+			}
+			if(HAL_GetTick() - idle_cntr >= 2000){
+				idle_cntr = 0;
+				state = IDLE;
+			}
+		}
+		else {
+			idle_cntr = 0;
+			if(sw_state_left == 0 && sw_state_right == 0)
+				draw_animation(&img_both_down);
+			if(sw_state_left == 1 && sw_state_right == 0)
+				draw_animation(&img_right_down);
+			if(sw_state_left == 0 && sw_state_right == 1)
+				draw_animation(&img_left_down);
+		}
+
+//		HAL_Delay(100);
 		break;
 
 	}
@@ -149,9 +192,6 @@ int main(void)
     /* USER CODE BEGIN 3 */
 
 
-	  draw_animation(ani_idle[idle_cnt]);
-	  idle_cnt = (idle_cnt + 1 ) % ani_idle_LEN;
-	  HAL_Delay(100);
 
   }
   /* USER CODE END 3 */
@@ -177,7 +217,12 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
+  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
+  RCC_OscInitStruct.PLL.PLLN = 8;
+  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -187,11 +232,11 @@ void SystemClock_Config(void)
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
   RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
   RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0) != HAL_OK)
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
   {
     Error_Handler();
   }
@@ -206,6 +251,9 @@ static void MX_NVIC_Init(void)
   /* RCC_IRQn interrupt configuration */
   HAL_NVIC_SetPriority(RCC_IRQn, 0, 0);
   HAL_NVIC_EnableIRQ(RCC_IRQn);
+  /* TIM14_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(TIM14_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(TIM14_IRQn);
 }
 
 /**
@@ -224,14 +272,14 @@ static void MX_I2C1_Init(void)
 
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x0010061A;
+  hi2c1.Init.Timing = 0x00300B29;
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
   hi2c1.Init.OwnAddress2 = 0;
   hi2c1.Init.OwnAddress2Masks = I2C_OA2_NOMASK;
   hi2c1.Init.GeneralCallMode = I2C_GENERALCALL_DISABLE;
-  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_DISABLE;
+  hi2c1.Init.NoStretchMode = I2C_NOSTRETCH_ENABLE;
   if (HAL_I2C_Init(&hi2c1) != HAL_OK)
   {
     Error_Handler();
@@ -250,9 +298,44 @@ static void MX_I2C1_Init(void)
   {
     Error_Handler();
   }
+
+  /** I2C Fast mode Plus enable
+  */
+  HAL_I2CEx_EnableFastModePlus(I2C_FASTMODEPLUS_I2C1);
   /* USER CODE BEGIN I2C1_Init 2 */
 
   /* USER CODE END I2C1_Init 2 */
+
+}
+
+/**
+  * @brief TIM14 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM14_Init(void)
+{
+
+  /* USER CODE BEGIN TIM14_Init 0 */
+
+  /* USER CODE END TIM14_Init 0 */
+
+  /* USER CODE BEGIN TIM14_Init 1 */
+
+  /* USER CODE END TIM14_Init 1 */
+  htim14.Instance = TIM14;
+  htim14.Init.Prescaler = 100-1;
+  htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim14.Init.Period = 64000-1;
+  htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim14) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM14_Init 2 */
+
+  /* USER CODE END TIM14_Init 2 */
 
 }
 
@@ -263,12 +346,50 @@ static void MX_I2C1_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 /* USER CODE BEGIN MX_GPIO_Init_1 */
 /* USER CODE END MX_GPIO_Init_1 */
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pins : PC14 PC15 PC6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_14|GPIO_PIN_15|GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PA0 PA1 PA2 PA3
+                           PA4 PA5 PA7 PA8
+                           PA10 PA11 PA12 PA15 */
+  GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_7|GPIO_PIN_8
+                          |GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_15;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SW_LEFT_Pin */
+  GPIO_InitStruct.Pin = SW_LEFT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(SW_LEFT_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : SW_RIGHT_Pin */
+  GPIO_InitStruct.Pin = SW_RIGHT_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(SW_RIGHT_GPIO_Port, &GPIO_InitStruct);
+
+  /*Configure GPIO pins : PB1 PB2 PB3 PB4
+                           PB5 PB6 PB7 PB8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3|GPIO_PIN_4
+                          |GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8;
+  GPIO_InitStruct.Mode = GPIO_MODE_ANALOG;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 /* USER CODE BEGIN MX_GPIO_Init_2 */
 /* USER CODE END MX_GPIO_Init_2 */
