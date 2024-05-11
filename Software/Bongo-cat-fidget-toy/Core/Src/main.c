@@ -17,13 +17,13 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include "bitmap_extended.h"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
 #include "ssd1306_tests.h"
-#include "bitmaps.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -54,6 +54,33 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_NVIC_Init(void);
 /* USER CODE BEGIN PFP */
+
+// timer value = desired_sec * 64e6/prescaler
+
+
+
+// Callback: timer has rolled over
+void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+{
+  // Check which version of the timer triggered this callback and toggle LED
+	if (htim == &htim14 )
+	{
+		HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_GPIO_Pin);
+	}
+}
+
+typedef enum states {
+    IDLE,
+    SWITCH,
+} state_e;
+
+
+void draw_animation(char* frame){
+	ssd1306_Fill(Black);
+	ssd1306_DrawBitmap(0,0,frame,128,64,White);
+	ssd1306_UpdateScreen();
+}
+
 
 /* USER CODE END PFP */
 
@@ -96,14 +123,21 @@ int main(void)
   /* Initialize interrupts */
   MX_NVIC_Init();
   /* USER CODE BEGIN 2 */
-  int x = 0;
-    ssd1306_Init();
-//		  ssd1306_Fill(Black);
-//		  ssd1306_DrawBitmap(32,0,frames[0],64,64,White);
-//		  ssd1306_UpdateScreen();
-//		  HAL_Delay(100);
-//		  ssd1306_Fill(Black);
+  ssd1306_Init();
 //    ssd1306_TestAll();
+
+  state_e state = IDLE;
+  uint8_t idle_cnt = 0;
+
+  while(1) {
+	switch(state){
+	case IDLE:
+		break;
+	case SWITCH:
+		break;
+
+	}
+  }
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -113,15 +147,12 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-//	  HAL_Delay(100);
-//	  x++;
-	  for (int i = 0; i < 10; ++i) {
-	 	  	  		  ssd1306_Fill(Black);
-	 	  	  		  ssd1306_DrawBitmap(32,0,frames[i],64,64,White);
-	 	  	  		  ssd1306_UpdateScreen();
-	 	  	  		  HAL_Delay(100);
 
-	 	  	  }
+
+	  draw_animation(ani_idle[idle_cnt]);
+	  idle_cnt = (idle_cnt + 1 ) % ani_idle_LEN;
+	  HAL_Delay(100);
+
   }
   /* USER CODE END 3 */
 }

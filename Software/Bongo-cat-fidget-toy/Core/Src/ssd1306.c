@@ -97,7 +97,7 @@ void ssd1306_Init(void) {
 
     ssd1306_WriteCommand(0x40); //--set start line address - CHECK
 
-    ssd1306_SetContrast(0xFF);
+    ssd1306_SetContrast(0xFF);//FF
 
 #ifdef SSD1306_MIRROR_HORIZ
     ssd1306_WriteCommand(0xA0); // Mirror horizontally
