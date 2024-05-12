@@ -34,7 +34,8 @@
 
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-
+#define IDLE_TIME 2000
+#define TAP_DECAY_TIME 200
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -68,6 +69,16 @@ uint8_t idle_cnt;
 
 void draw_animation(char* frame){
 	ssd1306_Fill(Black);
+	ssd1306_DrawBitmap(0,0,frame,128,64,White);
+	ssd1306_UpdateScreen();
+}
+
+void draw_animation_erase(char* frame){
+	ssd1306_DrawBitmap(0,0,frame,128,64,Black);
+	ssd1306_UpdateScreen();
+}
+
+void draw_animation_transparent(char* frame){
 	ssd1306_DrawBitmap(0,0,frame,128,64,White);
 	ssd1306_UpdateScreen();
 }
@@ -140,6 +151,10 @@ int main(void)
 
   state_e state = IDLE;
   int32_t idle_cntr = 0;
+  int32_t tap_left_cntr = 0;
+  int32_t tap_right_cntr = 0;
+  uint8_t left_state = 0;
+  uint8_t right_state = 0;
 
   HAL_TIM_Base_Start_IT(&htim14);
   while(1) {
@@ -161,20 +176,59 @@ int main(void)
 			if(idle_cntr == 0){
 				idle_cntr = HAL_GetTick();
 			}
-			if(HAL_GetTick() - idle_cntr >= 2000){
+			if(HAL_GetTick() - idle_cntr >= IDLE_TIME){
 				idle_cntr = 0;
 				state = IDLE;
 			}
+			if(left_state)
+				left_state = 0;
+			if(right_state)
+				right_state = 0;
+
 		}
 		else {
 			idle_cntr = 0;
-			if(sw_state_left == 0 && sw_state_right == 0)
-				draw_animation(&img_both_down);
-			if(sw_state_left == 1 && sw_state_right == 0)
-				draw_animation(&img_right_down);
-			if(sw_state_left == 0 && sw_state_right == 1)
-				draw_animation(&img_left_down);
+			if((sw_state_left == 0 && sw_state_right == 0) && (right_state == 0 && left_state == 0)){
+				draw_animation(&img_both_down_alt);
+				draw_animation_transparent(&img_tap_left);
+				draw_animation_transparent(&img_tap_right);
+				tap_left_cntr = HAL_GetTick(); tap_right_cntr = HAL_GetTick();
+				right_state = 1; left_state == 1;
+			}
+			if(sw_state_left == 1 && sw_state_right == 0){
+				if(right_state == 0){
+					draw_animation(&img_right_down_alt);
+					draw_animation_transparent(&img_tap_right);
+					tap_right_cntr = HAL_GetTick();
+					right_state = 1;
+				}
+				if(left_state)
+					left_state = 0;
+			}
+			if(sw_state_left == 0 && sw_state_right == 1 && left_state == 0){
+				if(right_state == 0){
+					draw_animation(&img_left_down_alt);
+					draw_animation_transparent(&img_tap_left);
+					tap_left_cntr = HAL_GetTick();
+					left_state = 1;
+				}
+				if(right_state)
+					right_state = 0;
+			}
 		}
+
+		if(tap_left_cntr > 0){
+			if(HAL_GetTick() - tap_left_cntr > TAP_DECAY_TIME) {
+				draw_animation_erase(&img_tap_left);
+				tap_left_cntr = 0;
+				}
+			}
+		if(tap_right_cntr > 0){
+			if(HAL_GetTick() - tap_right_cntr > TAP_DECAY_TIME) {
+				draw_animation_erase(&img_tap_right);
+				tap_right_cntr = 0;
+				}
+			}
 
 //		HAL_Delay(100);
 		break;
