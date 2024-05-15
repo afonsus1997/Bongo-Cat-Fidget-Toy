@@ -80,6 +80,7 @@
 		)
 		(pad_to_mask_clearance 0)
 		(allow_soldermask_bridges_in_footprints no)
+		(grid_origin 86.68 42.12)
 		(pcbplotparams
 			(layerselection 0x00010fc_ffffffff)
 			(plot_on_all_layers_selection 0x0000000_00000000)
@@ -930,7 +931,7 @@
 		(path "/43272edc-d684-4c98-94af-6177bc6aec79")
 		(sheetname "Root")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr through_hole)
+		(attr through_hole allow_missing_courtyard)
 		(fp_line
 			(start -1.270001 0)
 			(end -1.27 -1.27)
@@ -1683,7 +1684,7 @@
 		(uuid "35f81407-c126-4d6a-9f36-5438e8f77079")
 		(at 93.79 47.2675)
 		(property "Reference" "SW5"
-			(at 0 -4 360)
+			(at 0 -4 0)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "4debc2fe-18c3-434f-9e09-54c85faabe0f")
@@ -1695,7 +1696,7 @@
 			)
 		)
 		(property "Value" "SW_SPDT_321"
-			(at 0 4 360)
+			(at 0 4 0)
 			(layer "F.Fab")
 			(uuid "21b675f3-146d-4745-b1d0-0be6ce3ebe5c")
 			(effects
@@ -1840,7 +1841,7 @@
 			(uuid "78697292-30e4-462f-838c-fa65937fded5")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 360)
+			(at 0 0 0)
 			(layer "F.Fab")
 			(uuid "da4edd27-2833-4df1-9819-0bc734f60d6e")
 			(effects
@@ -1877,15 +1878,15 @@
 			(pintype "passive")
 			(uuid "38fe7820-d7bd-4030-abf3-8bb4191c8ee8")
 		)
-		(model "C:/Users/afons/Downloads/slide2.3dshapes/SW-SMD_SK-3245S-L1-A-1.wrl"
+		(model "C:/Users/afons/Downloads/slide2.3dshapes/SW-SMD_SK-3245S-L1-A-1.step"
 			(offset
-				(xyz 0 0 0)
+				(xyz 0 3.1 0.9)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -3390,7 +3391,7 @@
 		(descr "SMD Solder Jumper, 1x1.5mm, rounded Pads, 0.3mm gap, bridged with 1 copper strip")
 		(tags "net tie solder jumper bridged")
 		(property "Reference" "JP3"
-			(at 0 -1.8 270)
+			(at 0 -1.8 -90)
 			(layer "F.SilkS")
 			(hide yes)
 			(uuid "e357af5f-fb94-48c6-9269-ff47acb2364f")
@@ -3402,7 +3403,7 @@
 			)
 		)
 		(property "Value" "SolderJumper_2_Bridged"
-			(at 0 1.9 270)
+			(at 0 1.9 -90)
 			(layer "F.Fab")
 			(uuid "7c2609e5-1f4b-43be-9861-e20c636a3683")
 			(effects
@@ -4743,7 +4744,7 @@
 			(pintype "passive")
 			(uuid "01eb793a-7b35-4c40-89f3-79529b44d5fd")
 		)
-		(model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
+		(model "C:/Users/afons/Downloads/white.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -4751,7 +4752,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -5285,7 +5286,7 @@
 		(path "/5ed1480b-50cb-49f5-a715-2a19cc9caaaa")
 		(sheetname "Root")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr through_hole)
+		(attr through_hole allow_missing_courtyard)
 		(fp_line
 			(start -1.27 -1.27)
 			(end 0 -1.27)
@@ -7926,7 +7927,7 @@
 			(pintype "passive")
 			(uuid "587c309a-ce4e-45ab-9ec9-f25b71c37862")
 		)
-		(model "${KICAD6_3RD_PARTY}/3dmodels/com_github_perigoso_keyswitch-kicad-library/3d-library.3dshapes/SW_Kailh_Choc_V1.wrl"
+		(model "C:/Users/afons/Downloads/white.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7934,7 +7935,7 @@
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz 0 0 0)
+				(xyz 0 0 180)
 			)
 		)
 	)
@@ -11471,8 +11472,20 @@
 			(uuid "fead845f-a3d5-4048-aebc-7ec21426c0d7")
 		)
 		(model "${KIPRJMOD}/libs/BAT-SMD_L28.5-W16.0-H5.5-LS31.3_CR2032-BS-6-1.wrl"
+			(hide yes)
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+		(model "C:/Users/afons/Downloads/BAT-SMD_L28.5-W16.0-H5.5-LS31.3_CR2032-BS-6-1.step"
+			(offset
+				(xyz 0 0 0.05)
 			)
 			(scale
 				(xyz 1 1 1)
