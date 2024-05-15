@@ -2338,187 +2338,6 @@
 				)
 			)
 		)
-		(symbol "Jumper:SolderJumper_2_Open"
-			(pin_numbers hide)
-			(pin_names
-				(offset 0) hide)
-			(exclude_from_sim yes)
-			(in_bom no)
-			(on_board yes)
-			(property "Reference" "JP"
-				(at 0 2.032 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "SolderJumper_2_Open"
-				(at 0 -2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Solder Jumper, 2-pole, open"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "solder jumper SPST"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "SolderJumper*Open*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "SolderJumper_2_Open_0_1"
-				(arc
-					(start -0.254 1.016)
-					(mid -1.2656 0)
-					(end -0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -0.254 1.016)
-					(mid -1.2656 0)
-					(end -0.254 -1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -0.254 1.016) (xy -0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.254 1.016) (xy 0.254 -1.016)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0.254 -1.016)
-					(mid 1.2656 0)
-					(end 0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0.254 -1.016)
-					(mid 1.2656 0)
-					(end 0.254 1.016)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "SolderJumper_2_Open_1_1"
-				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "A"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 3.81 0 180)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-		)
 		(symbol "MCU_ST_STM32G0:STM32G030K8Tx"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4283,12 +4102,6 @@
 		(uuid "0e0ef6ee-9710-4db3-8320-fcb4be2699f7")
 	)
 	(junction
-		(at 157.48 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "0e81888c-127a-4e13-b24c-d9f784bbfbde")
-	)
-	(junction
 		(at 99.06 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4301,16 +4114,10 @@
 		(uuid "25b08a0d-09aa-44bc-97dc-e7fef0d12e11")
 	)
 	(junction
-		(at 69.85 45.72)
+		(at 149.86 45.72)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "3269638a-7476-42b9-8d8d-d964b0e2fc19")
-	)
-	(junction
-		(at 168.91 107.95)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "3b49f563-59a6-47b2-9cc9-4e3e9150f78f")
+		(uuid "38661183-35fb-416a-a4f4-513520cf63b6")
 	)
 	(junction
 		(at 82.55 45.72)
@@ -4373,12 +4180,6 @@
 		(uuid "a08da083-83dd-41d1-8870-f02b0beaa3f6")
 	)
 	(junction
-		(at 149.86 45.72)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a2055e26-c010-4b1f-b717-fe64c587b931")
-	)
-	(junction
 		(at 139.7 54.61)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4397,6 +4198,12 @@
 		(uuid "b8beab50-ecfd-4b4e-890a-71f1b22464f2")
 	)
 	(junction
+		(at 144.78 109.22)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "be1f6ca8-97fb-4e97-94d1-2a182fcfae42")
+	)
+	(junction
 		(at 78.74 93.98)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4413,12 +4220,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d775ef62-b6b0-4f64-98a5-1f9b462066bf")
-	)
-	(junction
-		(at 156.21 110.49)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "d860db38-b8a2-4761-aaba-daec29ddd92f")
 	)
 	(junction
 		(at 120.65 45.72)
@@ -4450,6 +4251,10 @@
 		(color 0 0 0 0)
 		(uuid "fc64c087-62fa-464d-86f9-624910ec2575")
 	)
+	(no_connect
+		(at 148.59 113.03)
+		(uuid "4a972f90-22ad-43ee-9bbe-a81949d7cd97")
+	)
 	(wire
 		(pts
 			(xy 209.55 39.37) (xy 209.55 38.1)
@@ -4479,6 +4284,16 @@
 			(type default)
 		)
 		(uuid "02aa9bcf-35ee-4731-8b6c-1ba059cbdf5a")
+	)
+	(wire
+		(pts
+			(xy 138.43 110.49) (xy 138.43 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "07e7913a-dfe2-44d7-bba9-1b1c58b6a9d5")
 	)
 	(wire
 		(pts
@@ -4572,26 +4387,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 110.49) (xy 156.21 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1f61e7d8-89d7-4da5-8d00-f52d99493ad0")
-	)
-	(wire
-		(pts
-			(xy 140.97 113.03) (xy 151.13 113.03)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "21658935-91b8-4a5f-a401-41a772229031")
-	)
-	(wire
-		(pts
 			(xy 144.78 163.83) (xy 151.13 163.83)
 		)
 		(stroke
@@ -4642,16 +4437,6 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 45.72) (xy 160.02 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2c55dddc-b00b-44a7-be37-c8929e0a8632")
-	)
-	(wire
-		(pts
 			(xy 215.9 58.42) (xy 217.17 58.42)
 		)
 		(stroke
@@ -4689,6 +4474,16 @@
 			(type default)
 		)
 		(uuid "34e3863d-4efc-4f1a-99fe-83fc20175eb1")
+	)
+	(wire
+		(pts
+			(xy 153.67 113.03) (xy 163.83 113.03)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3acd55bc-e39f-480f-b2f0-b3da77698eb1")
 	)
 	(wire
 		(pts
@@ -4792,16 +4587,6 @@
 	)
 	(wire
 		(pts
-			(xy 68.58 116.84) (xy 81.28 116.84)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4f5b4ef1-69d5-40ac-b4f5-f78927d06ed3")
-	)
-	(wire
-		(pts
 			(xy 50.8 100.33) (xy 50.8 102.87)
 		)
 		(stroke
@@ -4829,6 +4614,16 @@
 			(type default)
 		)
 		(uuid "51d3638e-335b-4871-a126-f895ae850056")
+	)
+	(wire
+		(pts
+			(xy 138.43 115.57) (xy 138.43 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52fbc5f0-f084-4921-a2ab-84452132c55e")
 	)
 	(wire
 		(pts
@@ -4932,16 +4727,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 105.41) (xy 163.83 105.41)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "65a83cc7-140b-4820-80c2-e0593ee0b6cb")
-	)
-	(wire
-		(pts
 			(xy 222.25 48.26) (xy 227.33 48.26)
 		)
 		(stroke
@@ -4992,26 +4777,6 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 105.41) (xy 168.91 107.95)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "73e50250-90c1-4cf0-88d4-c879fdc55b4b")
-	)
-	(wire
-		(pts
-			(xy 156.21 110.49) (xy 163.83 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "740f7d31-31d1-4de3-87ef-57ec971d2913")
-	)
-	(wire
-		(pts
 			(xy 120.65 34.29) (xy 114.3 34.29)
 		)
 		(stroke
@@ -5019,6 +4784,16 @@
 			(type default)
 		)
 		(uuid "7426a8c2-15a0-4f18-85a9-6f913bc34cd2")
+	)
+	(wire
+		(pts
+			(xy 154.94 45.72) (xy 160.02 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7ba62a96-90e5-4f56-bdae-789da802b88b")
 	)
 	(wire
 		(pts
@@ -5072,16 +4847,6 @@
 	)
 	(wire
 		(pts
-			(xy 168.91 107.95) (xy 168.91 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "86385383-469e-40cc-b29d-28cf992dd52f")
-	)
-	(wire
-		(pts
 			(xy 149.86 45.72) (xy 149.86 52.07)
 		)
 		(stroke
@@ -5092,13 +4857,13 @@
 	)
 	(wire
 		(pts
-			(xy 157.48 22.86) (xy 157.48 45.72)
+			(xy 144.78 109.22) (xy 151.13 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9027ca5e-bfdb-4904-b08f-246f55706cb9")
+		(uuid "8ada1fb9-bfb3-4029-947f-89f0a6728465")
 	)
 	(wire
 		(pts
@@ -5182,7 +4947,7 @@
 	)
 	(wire
 		(pts
-			(xy 146.05 107.95) (xy 144.78 107.95)
+			(xy 151.13 109.22) (xy 151.13 110.49)
 		)
 		(stroke
 			(width 0)
@@ -5252,16 +5017,6 @@
 	)
 	(wire
 		(pts
-			(xy 69.85 22.86) (xy 69.85 45.72)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a0c5d3b6-a64d-4745-a71e-5fbf31487f22")
-	)
-	(wire
-		(pts
 			(xy 149.86 57.15) (xy 149.86 63.5)
 		)
 		(stroke
@@ -5322,7 +5077,7 @@
 	)
 	(wire
 		(pts
-			(xy 139.7 107.95) (xy 138.43 107.95)
+			(xy 151.13 115.57) (xy 151.13 116.84)
 		)
 		(stroke
 			(width 0)
@@ -5582,16 +5337,6 @@
 	)
 	(wire
 		(pts
-			(xy 142.24 110.49) (xy 156.21 110.49)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "cfe4b1cf-a31c-4731-a33a-b612b523401e")
-	)
-	(wire
-		(pts
 			(xy 72.39 93.98) (xy 78.74 93.98)
 		)
 		(stroke
@@ -5752,13 +5497,13 @@
 	)
 	(wire
 		(pts
-			(xy 116.84 22.86) (xy 157.48 22.86)
+			(xy 138.43 109.22) (xy 144.78 109.22)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ee418c04-bcad-4963-9759-313d1e5181a4")
+		(uuid "ef94a5fa-6bb7-461a-9928-883e5b5a29aa")
 	)
 	(wire
 		(pts
@@ -5809,16 +5554,6 @@
 			(type default)
 		)
 		(uuid "f4eaed13-c918-4f85-b8f4-48213b838af7")
-	)
-	(wire
-		(pts
-			(xy 69.85 22.86) (xy 109.22 22.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f858e93e-3b85-4d1c-b145-f6c853097583")
 	)
 	(wire
 		(pts
@@ -8090,17 +7825,6 @@
 		)
 		(uuid "28f1bf64-d88d-411d-932c-738af34d5c72")
 	)
-	(label "XTAL_OUT"
-		(at 140.97 113.03 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "2ac3af0b-3d48-4b32-9830-2384d0132da8")
-	)
 	(label "SWCLK"
 		(at 110.49 142.24 0)
 		(fields_autoplaced yes)
@@ -8178,17 +7902,6 @@
 		)
 		(uuid "54eb222f-63d6-49f8-b31f-551ab8c8976a")
 	)
-	(label "XTAL_OUT"
-		(at 68.58 116.84 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "61ae2b4f-c9ff-4844-b5ff-459b8dc186de")
-	)
 	(label "SW2"
 		(at 72.39 121.92 0)
 		(fields_autoplaced yes)
@@ -8243,17 +7956,6 @@
 			(justify left bottom)
 		)
 		(uuid "835f5543-628c-483f-8885-092a5f4d7c74")
-	)
-	(label "XTAL_IN"
-		(at 147.32 105.41 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "94150eb3-b98c-4ccd-8cf6-3fed0631c033")
 	)
 	(label "BS2"
 		(at 185.42 35.56 90)
@@ -8320,6 +8022,17 @@
 			(justify left bottom)
 		)
 		(uuid "cf468b73-d942-4d1c-af6c-93a7229605e8")
+	)
+	(label "XTAL_IN"
+		(at 156.21 113.03 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d2dd47f9-018c-4595-a7ae-c58476a69020")
 	)
 	(label "SW1"
 		(at 110.49 121.92 0)
@@ -8393,7 +8106,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 242.57 113.03 0)
 			(effects
 				(font
@@ -8420,7 +8133,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60491"
+		(property "LCSC" "C25803"
 			(at 242.57 113.03 0)
 			(effects
 				(font
@@ -8525,7 +8238,7 @@
 	)
 	(symbol
 		(lib_id "Device:C_Small")
-		(at 166.37 105.41 270)
+		(at 138.43 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8534,23 +8247,25 @@
 		(fields_autoplaced yes)
 		(uuid "0e2913b1-d4d9-4a00-8ac6-fe59367ace21")
 		(property "Reference" "C6"
-			(at 166.3636 99.06 90)
+			(at 140.97 111.7662 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "18p"
-			(at 166.3636 101.6 90)
+		(property "Value" "100n"
+			(at 140.97 114.3062 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 166.37 105.41 0)
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
+			(at 138.43 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8559,7 +8274,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 166.37 105.41 0)
+			(at 138.43 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8568,7 +8283,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 166.37 105.41 0)
+			(at 138.43 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8576,8 +8291,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C541431"
-			(at 166.37 105.41 90)
+		(property "LCSC" "C30926"
+			(at 138.43 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8883,7 +8598,7 @@
 	)
 	(symbol
 		(lib_id "Device:Crystal_GND24_Small")
-		(at 142.24 107.95 270)
+		(at 151.13 113.03 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -8891,7 +8606,7 @@
 		(dnp no)
 		(uuid "1f4c26ef-9cc7-43c9-b2b7-a49557c6aca9")
 		(property "Reference" "Y1"
-			(at 139.446 111.252 90)
+			(at 154.432 115.824 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8899,7 +8614,7 @@
 			)
 		)
 		(property "Value" "Crystal_GND24_Small"
-			(at 137.668 107.696 0)
+			(at 150.876 117.602 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8908,7 +8623,7 @@
 			)
 		)
 		(property "Footprint" "Crystal:Crystal_SMD_2520-4Pin_2.5x2.0mm"
-			(at 142.24 107.95 0)
+			(at 151.13 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8917,7 +8632,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 142.24 107.95 0)
+			(at 151.13 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8926,7 +8641,7 @@
 			)
 		)
 		(property "Description" "Four pin crystal, GND on pins 2 and 4, small symbol"
-			(at 142.24 107.95 0)
+			(at 151.13 113.03 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -8934,8 +8649,8 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C15643"
-			(at 142.24 107.95 90)
+		(property "LCSC" "C7429729"
+			(at 151.13 113.03 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9123,7 +8838,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 222.25 86.36 0)
 			(effects
 				(font
@@ -9150,7 +8865,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C25782"
+		(property "LCSC" "C23150"
 			(at 222.25 86.36 90)
 			(effects
 				(font
@@ -9202,7 +8917,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 218.44 113.03 0)
 			(effects
 				(font
@@ -9229,7 +8944,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60491"
+		(property "LCSC" "C25803"
 			(at 218.44 113.03 0)
 			(effects
 				(font
@@ -9379,8 +9094,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "C139797"
 			(at 43.18 105.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C139797"
+			(at 43.18 105.41 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -9437,7 +9161,7 @@
 				(hide yes)
 			)
 		)
-		(property "Footprint" "Bongo-Cat-Fidget-Toy:SW-SMD_SK-3296S-01-L3"
+		(property "Footprint" "Bongo-Cat-Fidget-Toy:SW-SMD_SK-3245S-L1-A-1"
 			(at 64.77 38.1 0)
 			(effects
 				(font
@@ -9464,7 +9188,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C319019"
+		(property "LCSC" "C405951"
 			(at 64.77 48.26 0)
 			(effects
 				(font
@@ -9698,82 +9422,6 @@
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
 					(reference "C11")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:C_Small")
-		(at 166.37 110.49 270)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "3f5d2994-3642-4928-8750-fb6f913885b9")
-		(property "Reference" "C7"
-			(at 166.37 114.3 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "18p"
-			(at 166.37 116.84 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
-			(at 166.37 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 166.37 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Unpolarized capacitor, small symbol"
-			(at 166.37 110.49 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C541431"
-			(at 166.37 110.49 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6976d139-3483-42ba-bc71-36106f4a9a2e")
-		)
-		(pin "2"
-			(uuid "9f9db2c0-320d-4de3-978f-e72e42c149e3")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "C7")
 					(unit 1)
 				)
 			)
@@ -10229,82 +9877,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 153.67 113.03 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "4ea12fa3-48d1-4242-a95d-9788fcdf6522")
-		(property "Reference" "R9"
-			(at 153.67 115.57 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "0"
-			(at 153.67 118.11 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
-			(at 153.67 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 153.67 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, small US symbol"
-			(at 153.67 113.03 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C106231"
-			(at 153.67 113.03 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "72236f76-e7c2-4da1-95f7-78a0a5fc3e6c")
-		)
-		(pin "1"
-			(uuid "673a5d1e-a2e2-4880-a6b6-f48bbdb75722")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "R9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 213.36 48.26 0)
 		(unit 1)
@@ -10364,74 +9936,6 @@
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
 					(reference "#PWR018")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 113.03 22.86 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp no)
-		(uuid "53c94e8d-f38f-4a19-beed-c157c61ea599")
-		(property "Reference" "JP1"
-			(at 113.03 20.32 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 113.03 19.05 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
-			(at 113.03 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 113.03 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 113.03 22.86 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "a0d82a1f-1e76-46b0-a740-2ec625c01424")
-		)
-		(pin "1"
-			(uuid "b087928d-45ce-401c-91d8-da84956df2d0")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "JP1")
 					(unit 1)
 				)
 			)
@@ -10583,6 +10087,72 @@
 	)
 	(symbol
 		(lib_id "power:+3.3V")
+		(at 144.78 109.22 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "576aed0d-c941-45b7-b178-4139a94e8c9d")
+		(property "Reference" "#PWR015"
+			(at 144.78 113.03 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3"
+			(at 144.78 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"+3.3V\""
+			(at 144.78 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "51b91c9c-8446-4f01-8d75-dba13343f4f4")
+		)
+		(instances
+			(project "Bongo-Cat-Fidget-Toy"
+				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
+					(reference "#PWR015")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3.3V")
 		(at 78.74 88.9 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -10665,7 +10235,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4.7k"
 			(at 192.532 66.04 0)
 			(effects
 				(font
@@ -10674,7 +10244,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 190.5 64.77 0)
 			(effects
 				(font
@@ -10701,7 +10271,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60490"
+		(property "LCSC" "C23162"
 			(at 190.5 64.77 0)
 			(effects
 				(font
@@ -10743,7 +10313,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "4.7k"
 			(at 184.912 66.04 0)
 			(effects
 				(font
@@ -10752,7 +10322,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 182.88 64.77 0)
 			(effects
 				(font
@@ -10779,7 +10349,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60490"
+		(property "LCSC" "C23162"
 			(at 182.88 64.77 0)
 			(effects
 				(font
@@ -10954,6 +10524,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 138.43 116.84 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "6fc21f5e-0496-4bdd-847a-6dde790dda6d")
+		(property "Reference" "#PWR014"
+			(at 138.43 123.19 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 138.684 120.142 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 138.43 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 138.43 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 138.43 116.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "72e6eaf0-2b10-4db0-9c5e-c4ad2299c862")
+		)
+		(instances
+			(project "Bongo-Cat-Fidget-Toy"
+				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
+					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:C_Small")
 		(at 220.98 25.4 90)
 		(unit 1)
@@ -11025,72 +10661,6 @@
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
 					(reference "C9")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 146.05 107.95 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "77716be4-4925-4084-9205-82ead4ad1f2e")
-		(property "Reference" "#PWR014"
-			(at 152.4 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 149.352 107.696 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 146.05 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 146.05 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 146.05 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "44d58155-21fd-4895-8f46-7811d148783d")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "#PWR014")
 					(unit 1)
 				)
 			)
@@ -11230,7 +10800,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C14663"
+		(property "LCSC" "C30926"
 			(at 50.8 105.41 0)
 			(effects
 				(font
@@ -11425,7 +10995,7 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 182.88 40.64 0)
 			(effects
 				(font
@@ -11452,7 +11022,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60491"
+		(property "LCSC" "C25803"
 			(at 182.88 40.64 0)
 			(effects
 				(font
@@ -11965,7 +11535,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 138.43 107.95 270)
+		(at 151.13 116.84 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -11973,7 +11543,7 @@
 		(dnp no)
 		(uuid "a1088479-6197-4cc7-8150-752a37383b35")
 		(property "Reference" "#PWR013"
-			(at 132.08 107.95 0)
+			(at 151.13 123.19 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11982,7 +11552,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 135.128 108.204 90)
+			(at 151.384 120.142 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -11991,7 +11561,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 138.43 107.95 0)
+			(at 151.13 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12000,7 +11570,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 138.43 107.95 0)
+			(at 151.13 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12009,7 +11579,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 138.43 107.95 0)
+			(at 151.13 116.84 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -12134,7 +11704,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 139.7 59.69 0)
 			(effects
 				(font
@@ -12161,7 +11731,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C517695"
+		(property "LCSC" "C25965"
 			(at 139.7 59.69 0)
 			(effects
 				(font
@@ -12305,7 +11875,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C14663"
+		(property "LCSC" "C30926"
 			(at 72.39 91.44 0)
 			(effects
 				(font
@@ -12357,7 +11927,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 139.7 49.53 0)
 			(effects
 				(font
@@ -12384,7 +11954,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C852494"
+		(property "LCSC" "C137802"
 			(at 139.7 49.53 0)
 			(effects
 				(font
@@ -12855,7 +12425,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 43.18 95.25 0)
 			(effects
 				(font
@@ -12882,7 +12452,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C60491"
+		(property "LCSC" "C25803"
 			(at 43.18 95.25 0)
 			(effects
 				(font
@@ -12962,7 +12532,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C724044"
+		(property "LCSC" "C431631"
 			(at 93.98 127 0)
 			(effects
 				(font
@@ -13208,72 +12778,6 @@
 		)
 	)
 	(symbol
-		(lib_id "power:GND")
-		(at 168.91 107.95 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(uuid "e2bdffc8-c6c0-46b4-b7d5-5fc7de57c58f")
-		(property "Reference" "#PWR015"
-			(at 175.26 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 172.212 107.696 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify right)
-			)
-		)
-		(property "Footprint" ""
-			(at 168.91 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 168.91 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 168.91 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ccfc1d73-a91b-4f27-8e57-617b6dbeff1f")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "#PWR015")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:+3.3V")
 		(at 43.18 92.71 0)
 		(unit 1)
@@ -13340,33 +12844,33 @@
 		)
 	)
 	(symbol
-		(lib_id "Jumper:SolderJumper_2_Open")
-		(at 153.67 45.72 0)
+		(lib_id "Device:R_Small_US")
+		(at 152.4 45.72 90)
 		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
+		(exclude_from_sim no)
+		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(uuid "e5b4eb12-a121-410a-be78-1dd6d9e3ffc7")
-		(property "Reference" "JP2"
-			(at 153.67 43.18 0)
+		(fields_autoplaced yes)
+		(uuid "e84fc59a-5f74-47b3-ab7c-eb091448c7b6")
+		(property "Reference" "R5"
+			(at 152.4 39.37 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "SolderJumper_2_Open"
-			(at 153.67 41.91 0)
+		(property "Value" "JMP"
+			(at 152.4 41.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(hide yes)
 			)
 		)
-		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_RoundedPad1.0x1.5mm"
-			(at 153.67 45.72 0)
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
+			(at 152.4 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13375,7 +12879,7 @@
 			)
 		)
 		(property "Datasheet" "~"
-			(at 153.67 45.72 0)
+			(at 152.4 45.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13383,8 +12887,17 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
-			(at 153.67 45.72 0)
+		(property "Description" "Resistor, small US symbol"
+			(at 152.4 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "LCSC" "C21189"
+			(at 152.4 45.72 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13393,15 +12906,15 @@
 			)
 		)
 		(pin "2"
-			(uuid "51ebd91b-0fd2-46e3-a851-7d2e67167802")
+			(uuid "ff4382e0-c59e-4fb9-b700-d50dc67e7ec7")
 		)
 		(pin "1"
-			(uuid "e1fc9212-a76d-4f85-a89c-56cb40b7fad9")
+			(uuid "922add0b-0a77-409a-bf5e-66054fa9dc3a")
 		)
 		(instances
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "JP2")
+					(reference "R5")
 					(unit 1)
 				)
 			)
@@ -13762,7 +13275,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 220.98 38.1 0)
 			(effects
 				(font
@@ -13789,7 +13302,7 @@
 				(hide yes)
 			)
 		)
-		(property "LCSC" "C106231"
+		(property "LCSC" "C21189"
 			(at 220.98 38.1 90)
 			(effects
 				(font
