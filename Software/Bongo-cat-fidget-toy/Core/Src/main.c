@@ -36,6 +36,11 @@
 /* USER CODE BEGIN PD */
 #define IDLE_TIME 2000
 #define TAP_DECAY_TIME 200
+
+#define LEFT_PRESSED (sw_state_left == 0 && sw_state_right == 1)
+#define RIGHT_PRESSED (sw_state_left == 1 && sw_state_right == 0)
+#define BOTH_PRESSED (sw_state_left == 0 && sw_state_right == 0)
+#define NONE_PRESSED (sw_state_left == 1 && sw_state_right == 1)
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -174,7 +179,7 @@ int main(void)
 		break;
 	case SWITCH:
 		// Idle reset routines
-		if(sw_state_left == 1 && sw_state_right == 1){
+		if(NONE_PRESSED){
 			draw_animation(&img_both_up);
 			if(idle_cntr == 0){
 				idle_cntr = HAL_GetTick();
@@ -192,34 +197,41 @@ int main(void)
 		// Paw draw routines
 		else {
 			idle_cntr = 0;
-			if((sw_state_left == 0 && sw_state_right == 0) && ((left_state | right_state == 0) || (left_state ^= right_state))){
+			if((BOTH_PRESSED) && ((left_state | right_state == 0) || (left_state ^ right_state == 1))){
 				draw_animation(&img_both_down_alt);
-//				draw_animation_transparent(&img_tap_left);
-//				draw_animation_transparent(&img_tap_right);
-//				tap_left_cntr = HAL_GetTick(); tap_right_cntr = HAL_GetTick();
+				if(!right_state){
+					draw_animation_transparent(&img_tap_right);
+					tap_right_cntr = HAL_GetTick();
+				}
+				if(!left_state){
+					draw_animation_transparent(&img_tap_left);
+					tap_left_cntr = HAL_GetTick();
+				}
 				right_state = 1; left_state = 1;
 			}
-			if(sw_state_left == 1 && sw_state_right == 0){
-
+			if(RIGHT_PRESSED){
+				if(right_state == 0 || left_state == 1){
 					draw_animation(&img_right_down_alt);
-//					if(right_state == 0){
-//					draw_animation_transparent(&img_tap_right);
-//					}
-//					tap_right_cntr = HAL_GetTick();
+					if(!right_state){
+						draw_animation_transparent(&img_tap_right);
+						tap_right_cntr = HAL_GetTick();
+					}
 					right_state = 1;
-//				}
+
+				}
 				if(left_state)
 					left_state = 0;
 			}
-			if(sw_state_left == 0 && sw_state_right == 1){
-
+			if(LEFT_PRESSED){
+				if(left_state == 0 || right_state == 1){
 					draw_animation(&img_left_down_alt);
-//					if(left_state == 0){
-//					draw_animation_transparent(&img_tap_left);
-//					tap_left_cntr = HAL_GetTick();
-//					}
+					if(!left_state){
+						draw_animation_transparent(&img_tap_left);
+						tap_left_cntr = HAL_GetTick();
+					}
 					left_state = 1;
 
+				}
 				if(right_state)
 					right_state = 0;
 			}
@@ -227,14 +239,14 @@ int main(void)
 
 		}
 		// Tap animation routines
-		if(sw_state_left == 0 && left_state == 1 && tap_left_cntr == 0){
-			draw_animation_transparent(&img_tap_left);
-			tap_left_cntr = HAL_GetTick();
-		}
-		if(sw_state_right == 0 && right_state == 1 && tap_right_cntr == 0){
-			draw_animation_transparent(&img_tap_right);
-			tap_right_cntr = HAL_GetTick();
-		}
+//		if(sw_state_left == 0 && left_state == 0 && tap_left_cntr == 0){
+//			draw_animation_transparent(&img_tap_left);
+//			tap_left_cntr = HAL_GetTick();
+//		}
+//		if(sw_state_right == 0 && right_state == 0 && tap_right_cntr == 0){
+//			draw_animation_transparent(&img_tap_right);
+//			tap_right_cntr = HAL_GetTick();
+//		}
 
 		// Tap decay routines
 		if(tap_left_cntr > 0){
