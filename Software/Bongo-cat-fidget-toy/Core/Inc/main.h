@@ -60,6 +60,8 @@ void Error_Handler(void);
 #define SW_LEFT_GPIO_Port GPIOA
 #define SW_RIGHT_Pin GPIO_PIN_0
 #define SW_RIGHT_GPIO_Port GPIOB
+#define OLED_RST_Pin GPIO_PIN_15
+#define OLED_RST_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 
