@@ -1,0 +1,4 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "Bongo-Cat-Fidget-Toy")(type "KiCad")(uri "${KIPRJMOD}/libs/Bongo-Cat-Fidget-Toy.kicad_sym")(options "")(descr ""))
+)
