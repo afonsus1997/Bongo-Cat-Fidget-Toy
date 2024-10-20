@@ -2667,7 +2667,7 @@
 		(path "/1f4c26ef-9cc7-43c9-b2b7-a49557c6aca9")
 		(sheetname "Root")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom dnp)
 		(fp_line
 			(start -1.65 1.4)
 			(end 1.65 1.4)
@@ -2895,7 +2895,7 @@
 				)
 			)
 		)
-		(property "Value" "560k"
+		(property "Value" "390k"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "8f0139e0-3d03-4ada-a761-e05cd9c3387c")
@@ -3643,7 +3643,7 @@
 		(path "/0e2913b1-d4d9-4a00-8ac6-fe59367ace21")
 		(sheetname "Root")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr smd)
+		(attr smd exclude_from_bom dnp)
 		(fp_line
 			(start -0.14058 0.51)
 			(end 0.14058 0.51)
