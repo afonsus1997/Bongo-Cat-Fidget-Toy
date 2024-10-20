@@ -9454,9 +9454,9 @@
 		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
-		(in_bom yes)
+		(in_bom no)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "879c0f86-d99e-42a5-bb17-3f7e48178c93")
 		(property "Reference" "L101"
 			(at 93.98 26.67 90)
