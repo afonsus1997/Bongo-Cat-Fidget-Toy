@@ -1,7 +1,7 @@
 (footprint "SW-SMD_SK-3245S-L1-A-1"
-	(version 20240108)
+	(version 20241229)
 	(generator "pcbnew")
-	(generator_version "8.0")
+	(generator_version "9.0")
 	(layer "F.Cu")
 	(property "Reference" "REF**"
 		(at 0 -4 0)
@@ -25,18 +25,6 @@
 			)
 		)
 	)
-	(property "Footprint" ""
-		(at 0 0 0)
-		(unlocked yes)
-		(layer "F.Fab")
-		(hide yes)
-		(uuid "67d4dc0e-21e6-4b4c-8383-7567659531de")
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-	)
 	(property "Datasheet" ""
 		(at 0 0 0)
 		(unlocked yes)
@@ -46,6 +34,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -58,6 +47,7 @@
 		(effects
 			(font
 				(size 1.27 1.27)
+				(thickness 0.15)
 			)
 		)
 	)
@@ -139,7 +129,7 @@
 			(width 0.06)
 			(type solid)
 		)
-		(fill none)
+		(fill no)
 		(layer "F.Fab")
 		(uuid "251d2293-673e-4258-a29b-afde1ab5a3ac")
 	)
@@ -157,30 +147,31 @@
 	(pad "1" smd rect
 		(at -2.5 0)
 		(size 1 2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "6c4255c5-34ef-4a31-821c-510381e4c1ce")
 	)
 	(pad "2" smd rect
 		(at 0 0)
 		(size 1 2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "bbdf898b-d63d-44ec-813e-f6dfa5c1dd63")
 	)
 	(pad "3" smd rect
 		(at 2.5 0)
 		(size 1 2)
-		(layers "F.Cu" "F.Paste" "F.Mask")
+		(layers "F.Cu" "F.Mask" "F.Paste")
 		(uuid "51b62ab0-7ebc-449c-8c4d-30a70b3a00ee")
 	)
+	(embedded_fonts no)
 	(model "C:/Users/afons/Downloads/slide2.3dshapes/SW-SMD_SK-3245S-L1-A-1.wrl"
 		(offset
-			(xyz 0 0 0)
+			(xyz 0 0 0.25)
 		)
 		(scale
 			(xyz 1 1 1)
 		)
 		(rotate
-			(xyz 0 0 0)
+			(xyz -0 -0 -0)
 		)
 	)
 )

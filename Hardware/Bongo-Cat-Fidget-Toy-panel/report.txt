@@ -1,0 +1,15 @@
+Warning: Width correction constrained.  The width correction value must be in the range of [0.000001 mm; 0.009999 mm] for the current design rules.
+Info: Output directory 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs' created.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-F_Cu.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-B_Cu.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-F_Paste.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-B_Paste.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-F_Silkscreen.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-B_Silkscreen.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-F_Mask.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-B_Mask.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-User_Comments.gbr'.
+Plotted to 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-Edge_Cuts.gbr'.
+Created Gerber job file 'C:\Users\afons\Documents\GitHub\Bongo-Cat-Fidget-Toy\Hardware\Bongo-Cat-Fidget-Toy-panel\production\GERBERs\Bongo-Cat-Fidget-Toy-panel-job.gbrjob'.
+Info: Done.
+Info: Done.

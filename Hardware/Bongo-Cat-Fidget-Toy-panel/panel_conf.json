@@ -1,0 +1,49 @@
+{
+    "layout": {
+        "hspace": "2mm",
+        "vspace": "2mm",
+        "rows": "2",
+        "cols": "4"
+    },
+    "tabs": {
+        "type": "annotation"
+    },
+    "cuts": {
+        "type": "vcuts",
+        "endprolongation": "10mm"
+    },
+    "framing": {
+        "type": "railstb",
+        "vspace": "3mm"
+    },
+    "text": {
+        "type": "simple",
+        "hoffset": "2.3mm",
+        "voffset": "-2.4mm",
+        "width": "1.75mm",
+        "height": "1.75mm",
+        "thickness": "0.4mm",
+        "hjustify": "left",
+        "text": "BONGO CAT FIDGET TOY 2k25",
+        "anchor": "bl"
+    },
+    "text2": {
+        "type": "simple",
+        "hoffset": "-2.3mm",
+        "voffset": "-2.4mm",
+        "width": "1.75mm",
+        "height": "1.75mm",
+        "thickness": "0.4mm",
+        "hjustify": "right",
+        "text": "AFONSOMURALHA.COM",
+        "anchor": "br"
+    },
+    "copperfill": {
+        "type": "hatched",
+        "clearance": "1mm",
+        "width": "0.25mm"
+    },
+    "post": {
+        "millradius": "1mm"
+    }
+}
