@@ -4024,24 +4024,6 @@
 		(uuid "274764f4-55c3-4472-9f59-18682f2fdbee")
 	)
 	(junction
-		(at 73.66 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "2bddfc58-f251-4be0-b6ad-6af4a0937179")
-	)
-	(junction
-		(at 73.66 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "348c67f4-d5e1-4639-90ca-750d8568cf8d")
-	)
-	(junction
-		(at 132.08 48.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "38661183-35fb-416a-a4f4-513520cf63b6")
-	)
-	(junction
 		(at 78.74 48.26)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4154,6 +4136,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d7fbf75b-1c02-47be-91d5-de31da430beb")
+	)
+	(junction
+		(at 132.08 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dec726dd-6d58-4cfc-8a91-de25c342fd79")
 	)
 	(junction
 		(at 247.65 97.79)
@@ -4355,6 +4343,16 @@
 	)
 	(wire
 		(pts
+			(xy 132.08 48.26) (xy 142.24 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22a93192-9535-4e3c-bac5-60a28a907003")
+	)
+	(wire
+		(pts
 			(xy 68.58 116.84) (xy 68.58 118.11)
 		)
 		(stroke
@@ -4415,7 +4413,7 @@
 	)
 	(wire
 		(pts
-			(xy 73.66 48.26) (xy 78.74 48.26)
+			(xy 64.77 48.26) (xy 78.74 48.26)
 		)
 		(stroke
 			(width 0)
@@ -4482,26 +4480,6 @@
 			(type default)
 		)
 		(uuid "418ea1e9-175f-4f4a-bfb5-29c3e69295c6")
-	)
-	(wire
-		(pts
-			(xy 64.77 48.26) (xy 73.66 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "47b1a435-1c31-42e4-9844-3108cd563cb0")
-	)
-	(wire
-		(pts
-			(xy 73.66 48.26) (xy 73.66 53.34)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "4977104e-818c-42cd-a11a-c04bd0b78dab")
 	)
 	(wire
 		(pts
@@ -4602,6 +4580,16 @@
 			(type default)
 		)
 		(uuid "53ee47b5-8a63-41f3-88f0-da280bf5ccee")
+	)
+	(wire
+		(pts
+			(xy 73.66 58.42) (xy 73.66 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "542542d9-0b7b-4ed1-a1c6-fb47a9bfebbc")
 	)
 	(wire
 		(pts
@@ -4782,16 +4770,6 @@
 			(type default)
 		)
 		(uuid "7b69e8b6-c366-4e49-8b02-f919c2114ce4")
-	)
-	(wire
-		(pts
-			(xy 137.16 48.26) (xy 142.24 48.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "7ba62a96-90e5-4f56-bdae-789da802b88b")
 	)
 	(wire
 		(pts
@@ -5012,16 +4990,6 @@
 			(type default)
 		)
 		(uuid "a5735552-6059-4667-8522-d8c65928d79d")
-	)
-	(wire
-		(pts
-			(xy 73.66 63.5) (xy 73.66 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a5ac145b-a00e-4101-accc-aca75441614f")
 	)
 	(wire
 		(pts
@@ -6624,85 +6592,6 @@
 	)
 	(symbol
 		(lib_id "Device:R_Small_US")
-		(at 73.66 60.96 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "297779a8-0f3a-4cfc-b124-e37c403d7ec3")
-		(property "Reference" "R103"
-			(at 76.2 59.6899 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "JMP"
-			(at 76.2 62.2299 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 73.66 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, small US symbol"
-			(at 73.66 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C21189"
-			(at 73.66 60.96 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "20f907ca-ff97-4861-8ff2-9f7155046c71")
-		)
-		(pin "1"
-			(uuid "a09e2c3f-0981-40f1-ba23-eedf76d94aa7")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "R103")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
 		(at 242.57 87.63 90)
 		(unit 1)
 		(exclude_from_sim no)
@@ -7603,85 +7492,6 @@
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
 					(reference "J3")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 73.66 55.88 0)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "459bae26-3bbc-4883-9b92-dafecc886898")
-		(property "Reference" "R102"
-			(at 76.2 54.6099 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "JMP"
-			(at 76.2 57.1499 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 73.66 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 73.66 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, small US symbol"
-			(at 73.66 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C21189"
-			(at 73.66 55.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "3b23f4f9-4d5b-4e35-897a-c1cca739e743")
-		)
-		(pin "1"
-			(uuid "03353b01-fc11-43b6-9d6b-4893a2570674")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "R102")
 					(unit 1)
 				)
 			)
@@ -10929,83 +10739,6 @@
 			(project "Bongo-Cat-Fidget-Toy"
 				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
 					(reference "#PWR011")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Device:R_Small_US")
-		(at 134.62 48.26 90)
-		(unit 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(dnp no)
-		(fields_autoplaced yes)
-		(uuid "e84fc59a-5f74-47b3-ab7c-eb091448c7b6")
-		(property "Reference" "R5"
-			(at 134.62 41.91 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Value" "JMP"
-			(at 134.62 44.45 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
-			(at 134.62 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 134.62 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Resistor, small US symbol"
-			(at 134.62 48.26 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "LCSC" "C21189"
-			(at 134.62 48.26 90)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "2"
-			(uuid "ff4382e0-c59e-4fb9-b700-d50dc67e7ec7")
-		)
-		(pin "1"
-			(uuid "922add0b-0a77-409a-bf5e-66054fa9dc3a")
-		)
-		(instances
-			(project "Bongo-Cat-Fidget-Toy"
-				(path "/f6a41894-f8e5-41f9-81de-b4f82ca5d49b"
-					(reference "R5")
 					(unit 1)
 				)
 			)
