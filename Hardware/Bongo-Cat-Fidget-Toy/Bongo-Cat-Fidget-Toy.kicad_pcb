@@ -201,7 +201,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -416,7 +416,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -843,7 +843,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1058,7 +1058,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1101,7 +1101,7 @@
 		(path "/43272edc-d684-4c98-94af-6177bc6aec79")
 		(sheetname "/")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr through_hole allow_missing_courtyard)
+		(attr through_hole exclude_from_bom allow_missing_courtyard dnp)
 		(fp_line
 			(start -1.77 -1.77)
 			(end -1.77 9.39)
@@ -1633,7 +1633,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1796,15 +1796,15 @@
 			(uuid "38fe7820-d7bd-4030-abf3-8bb4191c8ee8")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/afons/Downloads/slide2.3dshapes/SW-SMD_SK-3245S-L1-A-1.wrl"
+		(model "${KIPRJMOD}/libs/SW-SMD_SK-3245S-L1-A-1.step"
 			(offset
-				(xyz 0 0 0.25)
+				(xyz 0 3 0.95)
 			)
 			(scale
 				(xyz 1 1 1)
 			)
 			(rotate
-				(xyz -0 -0 -0)
+				(xyz -0 -0 -180)
 			)
 		)
 	)
@@ -1837,7 +1837,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2051,7 +2051,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2231,7 +2231,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2446,7 +2446,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2661,7 +2661,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2876,7 +2876,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3091,7 +3091,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3306,7 +3306,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3591,7 +3591,7 @@
 			(uuid "01eb793a-7b35-4c40-89f3-79529b44d5fd")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/afons/Downloads/white.step"
+		(model "${KIPRJMOD}/libs/white.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -3632,7 +3632,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3849,7 +3849,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4165,7 +4165,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4208,7 +4208,7 @@
 		(path "/5ed1480b-50cb-49f5-a715-2a19cc9caaaa")
 		(sheetname "/")
 		(sheetfile "Bongo-Cat-Fidget-Toy.kicad_sch")
-		(attr through_hole allow_missing_courtyard)
+		(attr through_hole exclude_from_bom allow_missing_courtyard dnp)
 		(fp_line
 			(start -1.77 -1.77)
 			(end -1.77 9.39)
@@ -4636,7 +4636,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4851,7 +4851,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5066,7 +5066,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5281,7 +5281,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5496,7 +5496,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5711,7 +5711,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5996,7 +5996,7 @@
 			(uuid "587c309a-ce4e-45ab-9ec9-f25b71c37862")
 		)
 		(embedded_fonts no)
-		(model "C:/Users/afons/Downloads/white.step"
+		(model "${KIPRJMOD}/libs/white.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -6037,7 +6037,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6252,7 +6252,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6467,7 +6467,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6682,7 +6682,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7712,6 +7712,17 @@
 			(uuid "97d88c37-2d4c-40be-9236-8502099341f2")
 		)
 		(embedded_fonts no)
+		(model "${KIPRJMOD}/libs/TPS63802DLAR.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz -90 -0 -0)
+			)
+		)
 	)
 	(footprint "Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
@@ -7742,7 +7753,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 270)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7957,7 +7968,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8933,7 +8944,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -9901,7 +9912,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "B.Fab")
@@ -10253,7 +10264,7 @@
 			(uuid "fead845f-a3d5-4048-aebc-7ec21426c0d7")
 		)
 		(embedded_fonts no)
-		(model "${KIPRJMOD}/libs/BAT-SMD_L28.5-W16.0-H5.5-LS31.3_CR2032-BS-6-1.wrl"
+		(model "${KIPRJMOD}/libs/BAT-SMD_L28.5-W16.0-H5.5-LS31.3_CR2032-BS-6-1.step"
 			(offset
 				(xyz 0 0 0)
 			)
