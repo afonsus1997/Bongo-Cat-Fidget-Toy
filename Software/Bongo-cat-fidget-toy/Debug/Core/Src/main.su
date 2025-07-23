@@ -16,5 +16,5 @@
 ../Core/Src/main.c:617:13:MX_NVIC_Init	8	static
 ../Core/Src/main.c:632:13:MX_I2C1_Init	8	static
 ../Core/Src/main.c:680:13:MX_TIM14_Init	8	static
-../Core/Src/main.c:711:13:MX_GPIO_Init	48	static
-../Core/Src/main.c:780:6:Error_Handler	8	static,ignoring_inline_asm
+../Core/Src/main.c:700:13:MX_GPIO_Init	48	static
+../Core/Src/main.c:769:6:Error_Handler	8	static,ignoring_inline_asm
