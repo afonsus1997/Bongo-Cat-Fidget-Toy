@@ -71,21 +71,33 @@ int sw_state_right;
 
 uint8_t idle_cnt;
 
+uint8_t display_inverted = 0;  // Add this flag
+
+void toggle_display_invert(void) {
+    display_inverted = !display_inverted;
+    if (display_inverted) {
+        ssd1306_InvertDisplay(1);  // Hardware invert ON
+    } else {
+        ssd1306_InvertDisplay(0);  // Hardware invert OFF
+    }
+}
 
 void draw_animation(char* frame){
 	ssd1306_Fill(Black);
 	ssd1306_DrawBitmap(0,0,frame,128,64,White);
-//	ssd1306_UpdateScreen();
 }
 
 void draw_animation_erase(char* frame){
 	ssd1306_DrawBitmap(0,0,frame,128,64,Black);
-//	ssd1306_UpdateScreen();
 }
 
 void draw_animation_transparent(char* frame){
 	ssd1306_DrawBitmap(0,0,frame,128,64,White);
-//	ssd1306_UpdateScreen();
+}
+
+void readPins(){
+	sw_state_left = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
+	sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
 }
 
 // Callback: timer has rolled over
@@ -94,8 +106,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 //  // Check which version of the timer triggered this callback and toggle LED
 	if (htim == &htim14 )
 	{
-		sw_state_left = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
-		sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
+		readPins();
 	}
 }
 
@@ -155,8 +166,12 @@ int main(void)
   HAL_Delay(10);
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
-//  HAL_Delay(50);
-//    ssd1306_TestAll();
+
+// If left is pressed  at boot, inver screen
+  readPins();
+  if(LEFT_PRESSED)
+	  toggle_display_invert();
+
 
   state_e state = IDLE;
   int32_t idle_cntr = 0;

@@ -24,3 +24,4 @@
 ../Core/Src/ssd1306.c:571:6:ssd1306_SetContrast	24	static
 ../Core/Src/ssd1306.c:577:6:ssd1306_SetDisplayOn	24	static
 ../Core/Src/ssd1306.c:589:9:ssd1306_GetDisplayOn	8	static
+../Core/Src/ssd1306.c:593:6:ssd1306_InvertDisplay	16	static

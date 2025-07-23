@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (12.3.rel1)
+# Toolchain: GNU Tools for STM32 (13.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -60,8 +60,8 @@ all: main-build
 main-build: Bongo-cat-fidget-toy.elf secondary-outputs
 
 # Tool invocations
-Bongo-cat-fidget-toy.elf Bongo-cat-fidget-toy.map: $(OBJS) $(USER_OBJS) C:\Github\Bongo-Cat-Fidget-Toy\Software\Bongo-cat-fidget-toy\STM32G030K8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Bongo-cat-fidget-toy.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"C:\Github\Bongo-Cat-Fidget-Toy\Software\Bongo-cat-fidget-toy\STM32G030K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bongo-cat-fidget-toy.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Bongo-cat-fidget-toy.elf Bongo-cat-fidget-toy.map: $(OBJS) $(USER_OBJS) /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy/STM32G030K8TX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Bongo-cat-fidget-toy.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m0plus -T"/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy/STM32G030K8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Bongo-cat-fidget-toy.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

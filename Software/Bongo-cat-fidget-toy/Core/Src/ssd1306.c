@@ -589,3 +589,12 @@ void ssd1306_SetDisplayOn(const uint8_t on) {
 uint8_t ssd1306_GetDisplayOn() {
     return SSD1306.DisplayOn;
 }
+
+void ssd1306_InvertDisplay(uint8_t invert) {
+    if (invert) {
+        ssd1306_WriteCommand(0xA7); // Inverted display mode
+    } else {
+        ssd1306_WriteCommand(0xA6); // Normal display mode
+    }
+}
+
