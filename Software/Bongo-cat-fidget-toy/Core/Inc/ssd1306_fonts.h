@@ -26,4 +26,8 @@ extern const SSD1306_Font_t Font_16x24;
 extern const SSD1306_Font_t Font_16x15;
 #endif
 
+#ifdef SSD1306_INCLUDE_FONT_COMIC_SANS_11x12
+extern const SSD1306_Font_t ComicSans_11x12;
+#endif
+
 #endif // __SSD1306_FONTS_H__
