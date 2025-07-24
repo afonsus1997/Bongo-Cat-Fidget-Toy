@@ -118,6 +118,8 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_TIM14_Init(void);
 static void MX_NVIC_Init(void);
+
+
 /* USER CODE BEGIN PFP */
 
 // timer value = desired_sec * 64e6/prescaler
@@ -162,10 +164,6 @@ void readPins(){
 void display_tap_count_overlay(void) {
     char buffer[32];
 
-    // Semi-transparent background box for readability
-//    ssd1306_FillRectangle(0, 0, 127, 30, White);
-//    ssd1306_FillRectangle(2, 2, 125, 28, Black);
-
     // Display title
     ssd1306_SetCursor(25, 3);
     ssd1306_WriteString("TAP COUNT", ComicSans_11x12, White);
@@ -183,19 +181,219 @@ void display_saved_indicator(void) {
     ssd1306_WriteString("saved!", ComicSans_11x12, White);
 }
 
+// Update display with overlays
+void update_display_with_overlays(void) {
+    // Draw overlay on top if enabled
+    if (display_mode) {
+        display_tap_count_overlay();
+    }
+
+    // Show saved indicator if active
+    if (show_saved_indicator) {
+        display_saved_indicator();
+    }
+
+    ssd1306_UpdateScreen();
+}
+
+// Handle display mode switching (both buttons held)
+uint8_t handle_display_mode_switch(void) {
+    if (BOTH_PRESSED) {
+        if (both_pressed_timer == 0) {
+            both_pressed_timer = HAL_GetTick();
+        } else if (HAL_GetTick() - both_pressed_timer >= MODE_SWITCH_TIME) {
+            display_mode = !display_mode;
+            both_pressed_timer = 0;
+
+            // Force save when switching modes
+            force_save();
+
+            // Wait for button release
+            while(BOTH_PRESSED) {
+                HAL_Delay(10);
+                readPins();
+            }
+            return 1; // Mode switched
+        }
+    } else {
+        both_pressed_timer = 0;
+    }
+    return 0; // No mode switch
+}
+
+// Handle invert toggle (left button held)
+uint8_t handle_invert_toggle(void) {
+    if (LEFT_PRESSED && !RIGHT_PRESSED && both_pressed_timer == 0) {
+        if (invert_timer == 0) {
+            invert_timer = HAL_GetTick();
+        } else if (HAL_GetTick() - invert_timer >= INVERT_HOLD_TIME) {
+            toggle_display_invert();
+            invert_timer = 0;
+
+            // Wait for button release
+            while(LEFT_PRESSED) {
+                HAL_Delay(10);
+                readPins();
+            }
+            return 1; // Inverted
+        }
+    } else {
+        invert_timer = 0;
+    }
+    return 0; // No invert
+}
+
+// Register a tap and increment counters
+void register_tap(uint8_t is_left) {
+    if (is_left) {
+        left_taps++;
+    } else {
+        right_taps++;
+    }
+    total_taps++;
+    data_changed = 1;
+}
+
+// Handle tap animations and decay
+void handle_tap_decay(int32_t *tap_left_cntr, int32_t *tap_right_cntr) {
+    if(*tap_left_cntr > 0){
+        if(HAL_GetTick() - *tap_left_cntr > TAP_DECAY_TIME) {
+            draw_animation_erase(&img_tap_left);
+            *tap_left_cntr = 0;
+        }
+        else{
+            draw_animation_transparent(&img_tap_left);
+        }
+    }
+    if(*tap_right_cntr > 0){
+        if(HAL_GetTick() - *tap_right_cntr > TAP_DECAY_TIME) {
+            draw_animation_erase(&img_tap_right);
+            *tap_right_cntr = 0;
+        }
+        else{
+            draw_animation_transparent(&img_tap_right);
+        }
+    }
+}
+
+// Handle paw animations based on button states
+void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
+                          int32_t *tap_left_cntr, int32_t *tap_right_cntr,
+                          int32_t *idle_cntr) {
+    *idle_cntr = 0;
+
+    if((BOTH_PRESSED) && ((*left_state | *right_state) == 0 || (*left_state ^ *right_state) == 1)){
+        draw_animation(&img_both_down_alt);
+        if(!*right_state){
+            draw_animation_transparent(&img_tap_right);
+            *tap_right_cntr = HAL_GetTick();
+            register_tap(0); // Right tap
+        }
+        if(!*left_state){
+            draw_animation_transparent(&img_tap_left);
+            *tap_left_cntr = HAL_GetTick();
+            register_tap(1); // Left tap
+        }
+        *right_state = 1;
+        *left_state = 1;
+    }
+    else if(RIGHT_PRESSED){
+        if(*right_state == 0 || *left_state == 1){
+            draw_animation(&img_right_down_alt);
+            if(!*right_state){
+                draw_animation_transparent(&img_tap_right);
+                *tap_right_cntr = HAL_GetTick();
+                register_tap(0); // Right tap
+            }
+            *right_state = 1;
+        }
+        if(*left_state)
+            *left_state = 0;
+    }
+    else if(LEFT_PRESSED){
+        if(*left_state == 0 || *right_state == 1){
+            draw_animation(&img_left_down_alt);
+            if(!*left_state){
+                draw_animation_transparent(&img_tap_left);
+                *tap_left_cntr = HAL_GetTick();
+                register_tap(1); // Left tap
+            }
+            *left_state = 1;
+        }
+        if(*right_state)
+            *right_state = 0;
+    }
+}
+
+// Check if should return to idle state
+uint8_t check_idle_transition(int32_t *idle_cntr, uint8_t *left_state, uint8_t *right_state) {
+    if(NONE_PRESSED){
+        draw_animation(&img_both_up);
+        if(*idle_cntr == 0){
+            *idle_cntr = HAL_GetTick();
+        }
+        if(HAL_GetTick() - *idle_cntr >= IDLE_TIME){
+            *idle_cntr = 0;
+            // Force save before going to idle
+            force_save();
+            return 1; // Should transition to idle
+        }
+        if(*left_state)
+            *left_state = 0;
+        if(*right_state)
+            *right_state = 0;
+    }
+    return 0; // Stay in current state
+}
+
+// Handle boot-time button overrides
+void handle_boot_overrides(void) {
+    readPins();
+
+    // If left is pressed at boot, toggle invert from saved state
+    if(LEFT_PRESSED) {
+        toggle_display_invert();
+        force_save();  // Save immediately for boot-time changes
+        // Wait for button release
+        while(LEFT_PRESSED) {
+            HAL_Delay(10);
+            readPins();
+        }
+    }
+
+    // If right is pressed at boot, reset everything
+    if(RIGHT_PRESSED) {
+        reset_all_settings();
+        ssd1306_InvertDisplay(0);  // Apply default display mode
+
+        // Show feedback
+        ssd1306_Fill(White);
+        ssd1306_UpdateScreen();
+        HAL_Delay(200);
+        ssd1306_Fill(Black);
+        ssd1306_UpdateScreen();
+        HAL_Delay(200);
+
+        // Wait for button release
+        while(RIGHT_PRESSED) {
+            HAL_Delay(10);
+            readPins();
+        }
+    }
+}
+
 // Save all settings to flash
 void save_settings(void) {
+    HAL_FLASH_Unlock();
 
-	HAL_FLASH_Unlock();
+    FLASH_EraseInitTypeDef EraseInitStruct;
+    uint32_t PageError;
 
-	FLASH_EraseInitTypeDef EraseInitStruct;
-	uint32_t PageError;
+    EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
+    EraseInitStruct.Page = 31;  // Last page for 64KB device
+    EraseInitStruct.NbPages = 1;
 
-	EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
-	EraseInitStruct.Page = 31;  // Last page for 64KB device (not 15!)
-	EraseInitStruct.NbPages = 1;
-
-	HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
+    HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
 
     // Write counters and settings
     HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
@@ -276,11 +474,17 @@ void reset_all_settings(void) {
     save_settings();
 }
 
+// Update saved indicator visibility
+void update_saved_indicator(void) {
+    if (show_saved_indicator && (HAL_GetTick() - saved_indicator_timer >= SAVED_DISPLAY_TIME)) {
+        show_saved_indicator = 0;
+    }
+}
+
 // Callback: timer has rolled over
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
-//  // Check which version of the timer triggered this callback and toggle LED
-    if (htim == &htim14 )
+    if (htim == &htim14)
     {
         readPins();
     }
@@ -340,7 +544,6 @@ int main(void)
 
 //  display_tap_count_overlay();
 
-  // Load all settings from flash (including display invert)
   load_settings();
 
   // Apply the loaded display invert setting
@@ -350,38 +553,7 @@ int main(void)
   last_save_time = HAL_GetTick();
 
   // Check button states at boot for override options
-  readPins();
-
-  // If left is pressed at boot, toggle invert from saved state
-  if(LEFT_PRESSED) {
-      toggle_display_invert();
-      force_save();  // Save immediately for boot-time changes
-      // Wait for button release
-      while(LEFT_PRESSED) {
-          HAL_Delay(10);
-          readPins();
-      }
-  }
-
-  // If right is pressed at boot, reset everything
-  if(RIGHT_PRESSED) {
-      reset_all_settings();
-      ssd1306_InvertDisplay(0);  // Apply default display mode
-
-      // Show feedback
-      ssd1306_Fill(White);
-      ssd1306_UpdateScreen();
-      HAL_Delay(200);
-      ssd1306_Fill(Black);
-      ssd1306_UpdateScreen();
-      HAL_Delay(200);
-
-      // Wait for button release
-      while(RIGHT_PRESSED) {
-          HAL_Delay(10);
-          readPins();
-      }
-  }
+  handle_boot_overrides();
 
   state_e state = IDLE;
   int32_t idle_cntr = 0;
@@ -391,14 +563,11 @@ int main(void)
   uint8_t right_state = 0;
 
   HAL_TIM_Base_Start_IT(&htim14);
-  while(1) {
-    // Check if it's time to save to flash
-    check_and_save();
 
-    // Check if we should hide the saved indicator
-    if (show_saved_indicator && (HAL_GetTick() - saved_indicator_timer >= SAVED_DISPLAY_TIME)) {
-        show_saved_indicator = 0;
-    }
+  while(1) {
+    // Periodic tasks
+    check_and_save();
+    update_saved_indicator();
 
     switch(state){
     case IDLE:
@@ -407,161 +576,35 @@ int main(void)
             ssd1306_UpdateScreen();
             HAL_Delay(50);
             state = SWITCH;
-        }else {
+        } else {
+            // Idle animation
             draw_animation(ani_idle[idle_cnt]);
-
-            // Draw overlay on top if enabled
-            if (display_mode) {
-                display_tap_count_overlay();
-            }
-
-            // Show saved indicator if active
-            if (show_saved_indicator) {
-                display_saved_indicator();
-            }
-
-            ssd1306_UpdateScreen();
-            idle_cnt = (idle_cnt + 1 ) % ani_idle_LEN;
+            update_display_with_overlays();
+            idle_cnt = (idle_cnt + 1) % ani_idle_LEN;
             HAL_Delay(100);
         }
         break;
+
     case SWITCH:
-        // Check for display mode switch (both buttons held for 3 seconds)
-        if (BOTH_PRESSED) {
-            if (both_pressed_timer == 0) {
-                both_pressed_timer = HAL_GetTick();
-            } else if (HAL_GetTick() - both_pressed_timer >= MODE_SWITCH_TIME) {
-                display_mode = !display_mode;
-                both_pressed_timer = 0;
+        // Handle special button combos
+        handle_display_mode_switch();
+        handle_invert_toggle();
 
-                // Force save when switching modes
-                force_save();
-
-                // Wait for button release
-                while(BOTH_PRESSED) {
-                    HAL_Delay(10);
-                    readPins();
-                }
-            }
-        } else {
-            both_pressed_timer = 0;
+        // Check for idle transition
+        if(check_idle_transition(&idle_cntr, &left_state, &right_state)) {
+            state = IDLE;
+        }
+        // Handle normal paw animations
+        else if(!NONE_PRESSED) {
+            handle_paw_animations(&left_state, &right_state,
+                                &tap_left_cntr, &tap_right_cntr, &idle_cntr);
         }
 
-        // Check for invert toggle (hold left for 2 seconds) - works with or without overlay
-        if (LEFT_PRESSED && !RIGHT_PRESSED && both_pressed_timer == 0) {
-            if (invert_timer == 0) {
-                invert_timer = HAL_GetTick();
-            } else if (HAL_GetTick() - invert_timer >= INVERT_HOLD_TIME) {
-                toggle_display_invert();
-                invert_timer = 0;
+        // Handle tap decay animations
+        handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
 
-                // Wait for button release
-                while(LEFT_PRESSED) {
-                    HAL_Delay(10);
-                    readPins();
-                }
-            }
-        } else {
-            invert_timer = 0;
-        }
-
-        // Normal animation routines continue regardless of overlay
-        // Idle reset routines
-        if(NONE_PRESSED){
-            draw_animation(&img_both_up);
-            if(idle_cntr == 0){
-                idle_cntr = HAL_GetTick();
-            }
-            if(HAL_GetTick() - idle_cntr >= IDLE_TIME){
-                idle_cntr = 0;
-                // Force save before going to idle
-                force_save();
-                state = IDLE;
-            }
-            if(left_state)
-                left_state = 0;
-            if(right_state)
-                right_state = 0;
-        }
-        // Paw draw routines
-        else {
-            idle_cntr = 0;
-            if((BOTH_PRESSED) && ((left_state | right_state == 0) || (left_state ^ right_state == 1))){
-                draw_animation(&img_both_down_alt);
-                if(!right_state){
-                    draw_animation_transparent(&img_tap_right);
-                    tap_right_cntr = HAL_GetTick();
-                    right_taps++;  // Increment right tap counter
-                    total_taps++;   // Increment total tap counter
-                    data_changed = 1;  // Mark data as changed
-                }
-                if(!left_state){
-                    draw_animation_transparent(&img_tap_left);
-                    tap_left_cntr = HAL_GetTick();
-                    left_taps++;    // Increment left tap counter
-                    total_taps++;   // Increment total tap counter
-                    data_changed = 1;  // Mark data as changed
-                }
-                right_state = 1; left_state = 1;
-            }
-            if(RIGHT_PRESSED){
-                if(right_state == 0 || left_state == 1){
-                    draw_animation(&img_right_down_alt);
-                    if(!right_state){
-                        draw_animation_transparent(&img_tap_right);
-                        tap_right_cntr = HAL_GetTick();
-                        right_taps++;  // Increment right tap counter
-                        total_taps++;   // Increment total tap counter
-                        data_changed = 1;  // Mark data as changed
-                    }
-                    right_state = 1;
-                }
-                if(left_state)
-                    left_state = 0;
-            }
-            if(LEFT_PRESSED){
-                if(left_state == 0 || right_state == 1){
-                    draw_animation(&img_left_down_alt);
-                    if(!left_state){
-                        draw_animation_transparent(&img_tap_left);
-                        tap_left_cntr = HAL_GetTick();
-                        left_taps++;    // Increment left tap counter
-                        total_taps++;   // Increment total tap counter
-                        data_changed = 1;  // Mark data as changed
-                    }
-                    left_state = 1;
-                }
-                if(right_state)
-                    right_state = 0;
-            }
-        }
-
-        // Tap decay routines
-        if(tap_left_cntr > 0){
-            if(HAL_GetTick() - tap_left_cntr > TAP_DECAY_TIME) {
-                draw_animation_erase(&img_tap_left);
-                tap_left_cntr = 0;
-            }
-            else{
-                draw_animation_transparent(&img_tap_left);
-            }
-        }
-        if(tap_right_cntr > 0){
-            if(HAL_GetTick() - tap_right_cntr > TAP_DECAY_TIME) {
-                draw_animation_erase(&img_tap_right);
-                tap_right_cntr = 0;
-            }
-            else{
-                draw_animation_transparent(&img_tap_right);
-            }
-        }
-
-        // Draw overlay on top if enabled
-        if (display_mode) {
-            display_tap_count_overlay();
-        }
-
-        ssd1306_UpdateScreen();
+        // Update display with all overlays
+        update_display_with_overlays();
         break;
     }
   }
