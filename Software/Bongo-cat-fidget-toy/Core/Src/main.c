@@ -163,14 +163,9 @@ void readPins(){
 // Display tap count as overlay
 void display_tap_count_overlay(void) {
     char buffer[32];
-
-    // Display title
-    ssd1306_SetCursor(25, 3);
-    ssd1306_WriteString("TAP COUNT", ComicSans_11x12, White);
-
     // Display counts in a single line to save space
-    sprintf(buffer, "T:%lu L:%lu R:%lu", total_taps, left_taps, right_taps);
-    ssd1306_SetCursor(10, 15);
+    sprintf(buffer, "%lu", total_taps);
+    ssd1306_SetCursor(2, 1);
     ssd1306_WriteString(buffer, ComicSans_11x12, White);
 }
 
