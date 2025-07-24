@@ -23,7 +23,6 @@
 /* USER CODE BEGIN Includes */
 #include "ssd1306.h"
 #include "ssd1306_fonts.h"
-#include "ssd1306_tests.h"
 #include "bitmap_extended.h"
 #include <stdio.h>  // For sprintf
 
@@ -47,6 +46,15 @@
 // Flash memory addresses for storing tap counts and settings
 #define FLASH_USER_START_ADDR   0x08007800   // Last 2KB of 32KB flash
 #define FLASH_USER_END_ADDR     0x08007FFF
+// Correct addresses for 64KB STM32G030K8
+#define FLASH_SIZE              0x10000      // 64KB
+#define FLASH_PAGE_SIZE         0x800        // 2KB per page
+#define FLASH_PAGE_NB           32           // 64KB / 2KB = 32 pages (0-31)
+
+// Use the last page (page 31) for storage
+#define FLASH_USER_START_ADDR   0x0800F800   // Start of last page (page 31)
+#define FLASH_USER_END_ADDR     0x0800FFFF   // End of flash
+
 
 // Flash data offsets
 #define FLASH_OFFSET_TOTAL_TAPS    0
@@ -160,34 +168,34 @@ void display_tap_count_overlay(void) {
 
     // Display title
     ssd1306_SetCursor(25, 3);
-    ssd1306_WriteString("TAP COUNT", Font_7x10, White);
+    ssd1306_WriteString("TAP COUNT", ComicSans_11x12, White);
 
     // Display counts in a single line to save space
     sprintf(buffer, "T:%lu L:%lu R:%lu", total_taps, left_taps, right_taps);
     ssd1306_SetCursor(10, 15);
-    ssd1306_WriteString(buffer, Font_7x10, White);
+    ssd1306_WriteString(buffer, ComicSans_11x12, White);
 }
 
 // Display saved indicator
 void display_saved_indicator(void) {
     // Display "saved!" in bottom right corner
     ssd1306_SetCursor(85, 54);
-    ssd1306_WriteString("saved!", Font_6x8, White);
+    ssd1306_WriteString("saved!", ComicSans_11x12, White);
 }
 
 // Save all settings to flash
 void save_settings(void) {
-    HAL_FLASH_Unlock();
 
-    // Erase page
-    FLASH_EraseInitTypeDef EraseInitStruct;
-    uint32_t PageError;
+	HAL_FLASH_Unlock();
 
-    EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
-    EraseInitStruct.Page = 15;  // Last page for 32KB device
-    EraseInitStruct.NbPages = 1;
+	FLASH_EraseInitTypeDef EraseInitStruct;
+	uint32_t PageError;
 
-    HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
+	EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
+	EraseInitStruct.Page = 31;  // Last page for 64KB device (not 15!)
+	EraseInitStruct.NbPages = 1;
+
+	HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
 
     // Write counters and settings
     HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
@@ -253,11 +261,19 @@ void load_settings(void) {
 
 // Reset all counters and settings
 void reset_all_settings(void) {
+    // Don't do flash operations too early
+    if (HAL_GetTick() < 100) {
+        HAL_Delay(100);  // Ensure system is stable
+    }
+
+    // Set values to defaults
     total_taps = 0;
     left_taps = 0;
     right_taps = 0;
     display_inverted = 0;
-    save_settings();  // Immediate save for reset
+
+    // Add error checking
+    save_settings();
 }
 
 // Callback: timer has rolled over
