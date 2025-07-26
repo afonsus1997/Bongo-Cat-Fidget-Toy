@@ -212,6 +212,7 @@ SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len);
 
 void ssd1306_InvertDisplay(uint8_t invert);
 
+
 _END_STD_C
 
 #endif // __SSD1306_H__

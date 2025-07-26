@@ -37,6 +37,7 @@
 /* USER CODE BEGIN PD */
 #define IDLE_TIME 2000
 #define TAP_DECAY_TIME 200
+#define RESET_CONFIRM_TIMEOUT 10000
 
 #define LEFT_PRESSED (sw_state_left == 0 && sw_state_right == 1)
 #define RIGHT_PRESSED (sw_state_left == 1 && sw_state_right == 0)
@@ -341,40 +342,126 @@ uint8_t check_idle_transition(int32_t *idle_cntr, uint8_t *left_state, uint8_t *
     return 0; // Stay in current state
 }
 
+void handle_reset(){
+	// Show confirmation prompt
+
+	ssd1306_SetCursor(27, 10);  // x = 9
+	ssd1306_WriteString("RESET ALL?", ComicSans_11x12, White);
+	ssd1306_SetCursor(27, 26);  // x = 3
+	ssd1306_WriteString("Press again", ComicSans_11x12, White);
+	ssd1306_SetCursor(27, 42);  // x = 9
+	ssd1306_WriteString("to confirm", ComicSans_11x12, White);
+	ssd1306_UpdateScreen();
+	// Wait for button release
+	while(RIGHT_PRESSED) {
+		HAL_Delay(10);
+		readPins();
+	}
+
+	// Wait for confirmation press
+	uint32_t confirm_start = HAL_GetTick();
+	uint8_t confirmed = 0;
+
+	while(HAL_GetTick() - confirm_start < RESET_CONFIRM_TIMEOUT) {
+		readPins();
+
+		if(RIGHT_PRESSED) {
+			confirmed = 1;
+			break;
+		}
+
+		HAL_Delay(100);
+	}
+
+	if(confirmed) {
+		// Perform reset
+		reset_all_settings();
+		ssd1306_InvertDisplay(0);  // Apply default display mode
+
+		// Show success feedback
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(35, 20);
+		ssd1306_WriteString("RESET OK!", ComicSans_11x12, White);
+		ssd1306_UpdateScreen();
+		HAL_Delay(1000);
+
+		// Wait for button release
+		while(RIGHT_PRESSED) {
+			HAL_Delay(10);
+			readPins();
+		}
+	} else {
+		// Cancelled
+		ssd1306_Fill(Black);
+		ssd1306_SetCursor(40, 25);
+		ssd1306_WriteString("Cancelled", ComicSans_11x12, White);
+		ssd1306_UpdateScreen();
+		HAL_Delay(1000);
+	}
+
+	// Clear screen
+	ssd1306_Fill(Black);
+	ssd1306_UpdateScreen();
+}
+
+void handle_credits(){
+	// Show confirmation prompt
+
+	ssd1306_SetCursor(5, 10);  // x = 9
+	ssd1306_WriteString("Bongo Cat Fidget Toy", ComicSans_11x12, White);
+	ssd1306_SetCursor(13, 21);  // x = 3
+	ssd1306_WriteString("by Afonso Muralha", ComicSans_11x12, White);
+	ssd1306_SetCursor(13, 40);  // x = 9
+	ssd1306_WriteString("afonsomuralha.com", ComicSans_11x12, White);
+
+	ssd1306_UpdateScreen();
+	// Wait for button release
+	while(BOTH_PRESSED || LEFT_PRESSED || RIGHT_PRESSED) {
+		HAL_Delay(10);
+		readPins();
+	}
+
+	while(1) {
+		readPins();
+
+		if(RIGHT_PRESSED || LEFT_PRESSED || BOTH_PRESSED) {
+			break;
+		}
+
+		HAL_Delay(100);
+	}
+
+	// Clear screen
+	ssd1306_Fill(Black);
+	ssd1306_UpdateScreen();
+}
+
 // Handle boot-time button overrides
 void handle_boot_overrides(void) {
     readPins();
 
-    // If left is pressed at boot, toggle invert from saved state
-    if(LEFT_PRESSED) {
-        toggle_display_invert();
-        force_save();  // Save immediately for boot-time changes
-        // Wait for button release
-        while(LEFT_PRESSED) {
-            HAL_Delay(10);
-            readPins();
-        }
-    }
+    // Show credits
+	if(BOTH_PRESSED){
+		handle_credits();
+	}else{
 
-    // If right is pressed at boot, reset everything
-    if(RIGHT_PRESSED) {
-        reset_all_settings();
-        ssd1306_InvertDisplay(0);  // Apply default display mode
+		// If left is pressed at boot, toggle invert from saved state
+		if(LEFT_PRESSED) {
+			toggle_display_invert();
+			force_save();  // Save immediately for boot-time changes
+			// Wait for button release
+			while(LEFT_PRESSED) {
+				HAL_Delay(10);
+				readPins();
+			}
+		}
 
-        // Show feedback
-        ssd1306_Fill(White);
-        ssd1306_UpdateScreen();
-        HAL_Delay(200);
-        ssd1306_Fill(Black);
-        ssd1306_UpdateScreen();
-        HAL_Delay(200);
+		// If right is pressed at boot, reset everything
+		if(RIGHT_PRESSED) {
+			handle_reset();
+		}
+	}
 
-        // Wait for button release
-        while(RIGHT_PRESSED) {
-            HAL_Delay(10);
-            readPins();
-        }
-    }
 }
 
 // Save all settings to flash
@@ -537,7 +624,6 @@ int main(void)
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
 
-//  display_tap_count_overlay();
 
   load_settings();
 
