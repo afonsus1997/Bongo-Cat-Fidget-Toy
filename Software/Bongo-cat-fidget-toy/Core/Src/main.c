@@ -30,7 +30,23 @@
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
+// State machine states
+typedef enum states {
+    IDLE,
+    SWITCH,
+} state_e;
 
+// Settings structure for flash storage
+typedef struct {
+    uint32_t total_taps;
+    uint32_t left_taps;
+    uint32_t right_taps;
+    uint8_t display_inverted;
+    uint8_t display_mode;
+    uint8_t reserved1;  // Padding
+    uint8_t reserved2;  // Padding
+    uint32_t checksum;  // Simple validation
+} Settings_t;
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -44,9 +60,6 @@
 #define BOTH_PRESSED (sw_state_left == 0 && sw_state_right == 0)
 #define NONE_PRESSED (sw_state_left == 1 && sw_state_right == 1)
 
-// Flash memory addresses for storing tap counts and settings
-#define FLASH_USER_START_ADDR   0x08007800   // Last 2KB of 32KB flash
-#define FLASH_USER_END_ADDR     0x08007FFF
 // Correct addresses for 64KB STM32G030K8
 #define FLASH_SIZE              0x10000      // 64KB
 #define FLASH_PAGE_SIZE         0x800        // 2KB per page
@@ -56,16 +69,15 @@
 #define FLASH_USER_START_ADDR   0x0800F800   // Start of last page (page 31)
 #define FLASH_USER_END_ADDR     0x0800FFFF   // End of flash
 
-
-// Flash data offsets
-#define FLASH_OFFSET_TOTAL_TAPS    0
-#define FLASH_OFFSET_LEFT_TAPS     8
-#define FLASH_OFFSET_RIGHT_TAPS    16
-#define FLASH_OFFSET_DISPLAY_INV   24
-
 // Flash save timing
 #define FLASH_SAVE_INTERVAL 30000  // Save every 30 seconds (30000ms)
 #define SAVED_DISPLAY_TIME 2000     // Show "saved!" for 2 seconds
+
+// Timer for display mode
+#define MODE_SWITCH_TIME 2500  // 2.5 seconds to switch display mode
+
+// Timer for invert toggle
+#define INVERT_HOLD_TIME 2000  // 2 seconds to toggle invert
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -86,22 +98,14 @@ int sw_state_right;
 // Animation counter
 uint8_t idle_cnt;
 
-// Display settings
-uint8_t display_inverted = 0;
-
-// Tap counters
-uint32_t total_taps = 0;
-uint32_t left_taps = 0;
-uint32_t right_taps = 0;
+// Settings structure
+Settings_t settings = {0};
 
 // Timer for display mode
 uint32_t both_pressed_timer = 0;
-uint8_t display_mode = 0;  // 0 = normal animation, 1 = show tap count overlay
-#define MODE_SWITCH_TIME 2500  // 3 seconds to switch display mode
 
 // Timer for invert toggle
 uint32_t invert_timer = 0;
-#define INVERT_HOLD_TIME 2000  // 2 seconds to toggle invert
 
 // Flash save management
 uint32_t last_save_time = 0;
@@ -110,6 +114,9 @@ uint8_t data_changed = 0;  // Flag to track if data needs saving
 // Saved indicator
 uint32_t saved_indicator_timer = 0;
 uint8_t show_saved_indicator = 0;
+
+// Current animation frame storage
+char* current_frame = NULL;
 
 /* USER CODE END PV */
 
@@ -123,11 +130,20 @@ static void MX_NVIC_Init(void);
 
 /* USER CODE BEGIN PFP */
 
-// timer value = desired_sec * 64e6/prescaler
+// Calculate simple checksum
+uint32_t calculate_checksum(Settings_t *s) {
+    uint32_t checksum = 0x12345678;  // Magic number
+    checksum ^= s->total_taps;
+    checksum ^= s->left_taps;
+    checksum ^= s->right_taps;
+    checksum ^= ((uint32_t)s->display_inverted << 8);
+    checksum ^= ((uint32_t)s->display_mode << 16);
+    return checksum;
+}
 
 void toggle_display_invert(void) {
-    display_inverted = !display_inverted;
-    ssd1306_InvertDisplay(display_inverted);
+    settings.display_inverted = !settings.display_inverted;
+    ssd1306_InvertDisplay(settings.display_inverted);
 
     // Mark data as changed
     data_changed = 1;
@@ -146,6 +162,13 @@ void toggle_display_invert(void) {
 void draw_animation(char* frame){
     ssd1306_Fill(Black);
     ssd1306_DrawBitmap(0,0,frame,128,64,White);
+    current_frame = frame;  // Store current frame
+}
+
+void draw_animation_no_clear(char* frame){
+    // Draw without clearing - useful for transitions
+    ssd1306_DrawBitmap(0,0,frame,128,64,White);
+    current_frame = frame;
 }
 
 void draw_animation_erase(char* frame){
@@ -165,7 +188,7 @@ void readPins(){
 void display_tap_count_overlay(void) {
     char buffer[32];
     // Display counts in a single line to save space
-    sprintf(buffer, "%lu", total_taps);
+    sprintf(buffer, "%lu", settings.total_taps);
     ssd1306_SetCursor(2, 1);
     ssd1306_WriteString(buffer, ComicSans_11x12, White);
 }
@@ -173,14 +196,14 @@ void display_tap_count_overlay(void) {
 // Display saved indicator
 void display_saved_indicator(void) {
     // Display "saved!" in bottom right corner
-	ssd1306_SetCursor(80, 52);
-	ssd1306_WriteString("saved!", ComicSans_11x12, White);
+    ssd1306_SetCursor(80, 52);
+    ssd1306_WriteString("saved!", ComicSans_11x12, White);
 }
 
 // Update display with overlays
 void update_display_with_overlays(void) {
     // Draw overlay on top if enabled
-    if (display_mode) {
+    if (settings.display_mode) {
         display_tap_count_overlay();
     }
 
@@ -192,23 +215,138 @@ void update_display_with_overlays(void) {
     ssd1306_UpdateScreen();
 }
 
+// Redraw current frame with overlays
+void redraw_current_frame(void) {
+    if (current_frame != NULL) {
+        draw_animation(current_frame);
+        update_display_with_overlays();
+    }
+}
+
+// Save all settings to flash
+void save_settings(void) {
+    // Update checksum
+    settings.checksum = calculate_checksum(&settings);
+
+    HAL_FLASH_Unlock();
+
+    FLASH_EraseInitTypeDef EraseInitStruct;
+    uint32_t PageError;
+
+    EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
+    EraseInitStruct.Page = 31;  // Last page for 64KB device
+    EraseInitStruct.NbPages = 1;
+
+    HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
+
+    // Write entire structure using doubleword programming
+    uint64_t *data = (uint64_t*)&settings;
+    uint32_t address = FLASH_USER_START_ADDR;
+
+    // Calculate number of doublewords to write
+    int doublewords = (sizeof(Settings_t) + 7) / 8;  // Round up to nearest 8 bytes
+
+    for(int i = 0; i < doublewords; i++) {
+        HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD, address, data[i]);
+        address += 8;
+    }
+
+    HAL_FLASH_Lock();
+
+    // Update last save time
+    last_save_time = HAL_GetTick();
+    data_changed = 0;  // Clear the changed flag
+
+    // Trigger saved indicator
+    show_saved_indicator = 1;
+    saved_indicator_timer = HAL_GetTick();
+}
+
+// Load all settings from flash
+void load_settings(void) {
+    Settings_t loaded_settings;
+
+    // Read entire structure from flash
+    uint64_t *dest = (uint64_t*)&loaded_settings;
+    uint64_t *src = (uint64_t*)FLASH_USER_START_ADDR;
+
+    int doublewords = (sizeof(Settings_t) + 7) / 8;
+
+    for(int i = 0; i < doublewords; i++) {
+        dest[i] = src[i];
+    }
+
+    // Verify checksum
+    if(loaded_settings.checksum == calculate_checksum(&loaded_settings) &&
+       loaded_settings.checksum != 0xFFFFFFFF) {
+        // Valid data, copy to working structure
+        settings = loaded_settings;
+    } else {
+        // Invalid or no data, use defaults
+        settings.total_taps = 0;
+        settings.left_taps = 0;
+        settings.right_taps = 0;
+        settings.display_inverted = 0;
+        settings.display_mode = 0;
+        settings.checksum = 0;
+    }
+}
+
+// Reset all counters and settings
+void reset_all_settings(void) {
+    // Don't do flash operations too early
+    if (HAL_GetTick() < 100) {
+        HAL_Delay(100);  // Ensure system is stable
+    }
+
+    // Set values to defaults
+    settings.total_taps = 0;
+    settings.left_taps = 0;
+    settings.right_taps = 0;
+    settings.display_inverted = 0;
+    settings.display_mode = 0;
+
+    // Save the reset settings
+    save_settings();
+}
+
+// Check if it's time to save to flash
+void check_and_save(void) {
+    if (data_changed && (HAL_GetTick() - last_save_time >= FLASH_SAVE_INTERVAL)) {
+        save_settings();
+    }
+}
+
+// Force save (for important events)
+void force_save(void) {
+    if (data_changed) {
+        save_settings();
+    }
+}
+
+// Update saved indicator visibility
+void update_saved_indicator(void) {
+    if (show_saved_indicator && (HAL_GetTick() - saved_indicator_timer >= SAVED_DISPLAY_TIME)) {
+        show_saved_indicator = 0;
+    }
+}
+
 // Handle display mode switching (both buttons held)
 uint8_t handle_display_mode_switch(void) {
     if (BOTH_PRESSED) {
         if (both_pressed_timer == 0) {
             both_pressed_timer = HAL_GetTick();
         } else if (HAL_GetTick() - both_pressed_timer >= MODE_SWITCH_TIME) {
-            display_mode = !display_mode;
+            settings.display_mode = !settings.display_mode;
             both_pressed_timer = 0;
+            data_changed = 1;  // Mark data as changed
+
+            // Immediately update display to show/hide overlay
+            redraw_current_frame();
 
             // Force save when switching modes
             force_save();
 
-            // Wait for button release
-//            while(BOTH_PRESSED) {
-//                HAL_Delay(10);
-//                readPins();
-//            }
             return 1; // Mode switched
         }
     } else {
@@ -242,11 +380,11 @@ uint8_t handle_invert_toggle(void) {
 // Register a tap and increment counters
 void register_tap(uint8_t is_left) {
     if (is_left) {
-        left_taps++;
+        settings.left_taps++;
     } else {
-        right_taps++;
+        settings.right_taps++;
     }
-    total_taps++;
+    settings.total_taps++;
     data_changed = 1;
 }
 
@@ -343,97 +481,95 @@ uint8_t check_idle_transition(int32_t *idle_cntr, uint8_t *left_state, uint8_t *
 }
 
 void handle_reset(){
-	// Show confirmation prompt
+    // Show confirmation prompt
+    ssd1306_SetCursor(27, 10);  // x = 9
+    ssd1306_WriteString("RESET ALL?", ComicSans_11x12, White);
+    ssd1306_SetCursor(27, 26);  // x = 3
+    ssd1306_WriteString("Press again", ComicSans_11x12, White);
+    ssd1306_SetCursor(27, 42);  // x = 9
+    ssd1306_WriteString("to confirm", ComicSans_11x12, White);
+    ssd1306_UpdateScreen();
+    // Wait for button release
+    while(RIGHT_PRESSED) {
+        HAL_Delay(10);
+        readPins();
+    }
 
-	ssd1306_SetCursor(27, 10);  // x = 9
-	ssd1306_WriteString("RESET ALL?", ComicSans_11x12, White);
-	ssd1306_SetCursor(27, 26);  // x = 3
-	ssd1306_WriteString("Press again", ComicSans_11x12, White);
-	ssd1306_SetCursor(27, 42);  // x = 9
-	ssd1306_WriteString("to confirm", ComicSans_11x12, White);
-	ssd1306_UpdateScreen();
-	// Wait for button release
-	while(RIGHT_PRESSED) {
-		HAL_Delay(10);
-		readPins();
-	}
+    // Wait for confirmation press
+    uint32_t confirm_start = HAL_GetTick();
+    uint8_t confirmed = 0;
 
-	// Wait for confirmation press
-	uint32_t confirm_start = HAL_GetTick();
-	uint8_t confirmed = 0;
+    while(HAL_GetTick() - confirm_start < RESET_CONFIRM_TIMEOUT) {
+        readPins();
 
-	while(HAL_GetTick() - confirm_start < RESET_CONFIRM_TIMEOUT) {
-		readPins();
+        if(RIGHT_PRESSED) {
+            confirmed = 1;
+            break;
+        }
 
-		if(RIGHT_PRESSED) {
-			confirmed = 1;
-			break;
-		}
+        HAL_Delay(100);
+    }
 
-		HAL_Delay(100);
-	}
+    if(confirmed) {
+        // Perform reset
+        reset_all_settings();
+        ssd1306_InvertDisplay(0);  // Apply default display mode
 
-	if(confirmed) {
-		// Perform reset
-		reset_all_settings();
-		ssd1306_InvertDisplay(0);  // Apply default display mode
+        // Show success feedback
+        ssd1306_Fill(Black);
+        ssd1306_SetCursor(35, 20);
+        ssd1306_WriteString("RESET OK!", ComicSans_11x12, White);
+        ssd1306_UpdateScreen();
+        HAL_Delay(1000);
 
-		// Show success feedback
-		ssd1306_Fill(Black);
-		ssd1306_SetCursor(35, 20);
-		ssd1306_WriteString("RESET OK!", ComicSans_11x12, White);
-		ssd1306_UpdateScreen();
-		HAL_Delay(1000);
+        // Wait for button release
+        while(RIGHT_PRESSED) {
+            HAL_Delay(10);
+            readPins();
+        }
+    } else {
+        // Cancelled
+        ssd1306_Fill(Black);
+        ssd1306_SetCursor(40, 25);
+        ssd1306_WriteString("Cancelled", ComicSans_11x12, White);
+        ssd1306_UpdateScreen();
+        HAL_Delay(1000);
+    }
 
-		// Wait for button release
-		while(RIGHT_PRESSED) {
-			HAL_Delay(10);
-			readPins();
-		}
-	} else {
-		// Cancelled
-		ssd1306_Fill(Black);
-		ssd1306_SetCursor(40, 25);
-		ssd1306_WriteString("Cancelled", ComicSans_11x12, White);
-		ssd1306_UpdateScreen();
-		HAL_Delay(1000);
-	}
-
-	// Clear screen
-	ssd1306_Fill(Black);
-	ssd1306_UpdateScreen();
+    // Clear screen
+    ssd1306_Fill(Black);
+    ssd1306_UpdateScreen();
 }
 
 void handle_credits(){
-	// Show confirmation prompt
+    // Show confirmation prompt
+    ssd1306_SetCursor(5, 10);  // x = 9
+    ssd1306_WriteString("Bongo Cat Fidget Toy", ComicSans_11x12, White);
+    ssd1306_SetCursor(13, 21);  // x = 3
+    ssd1306_WriteString("by Afonso Muralha", ComicSans_11x12, White);
+    ssd1306_SetCursor(13, 40);  // x = 9
+    ssd1306_WriteString("afonsomuralha.com", ComicSans_11x12, White);
 
-	ssd1306_SetCursor(5, 10);  // x = 9
-	ssd1306_WriteString("Bongo Cat Fidget Toy", ComicSans_11x12, White);
-	ssd1306_SetCursor(13, 21);  // x = 3
-	ssd1306_WriteString("by Afonso Muralha", ComicSans_11x12, White);
-	ssd1306_SetCursor(13, 40);  // x = 9
-	ssd1306_WriteString("afonsomuralha.com", ComicSans_11x12, White);
+    ssd1306_UpdateScreen();
+    // Wait for button release
+    while(BOTH_PRESSED || LEFT_PRESSED || RIGHT_PRESSED) {
+        HAL_Delay(10);
+        readPins();
+    }
 
-	ssd1306_UpdateScreen();
-	// Wait for button release
-	while(BOTH_PRESSED || LEFT_PRESSED || RIGHT_PRESSED) {
-		HAL_Delay(10);
-		readPins();
-	}
+    while(1) {
+        readPins();
 
-	while(1) {
-		readPins();
+        if(RIGHT_PRESSED || LEFT_PRESSED || BOTH_PRESSED) {
+            break;
+        }
 
-		if(RIGHT_PRESSED || LEFT_PRESSED || BOTH_PRESSED) {
-			break;
-		}
+        HAL_Delay(100);
+    }
 
-		HAL_Delay(100);
-	}
-
-	// Clear screen
-	ssd1306_Fill(Black);
-	ssd1306_UpdateScreen();
+    // Clear screen
+    ssd1306_Fill(Black);
+    ssd1306_UpdateScreen();
 }
 
 // Handle boot-time button overrides
@@ -441,125 +577,24 @@ void handle_boot_overrides(void) {
     readPins();
 
     // Show credits
-	if(BOTH_PRESSED){
-		handle_credits();
-	}else{
+    if(BOTH_PRESSED){
+        handle_credits();
+    }else{
+        // If left is pressed at boot, toggle invert from saved state
+        if(LEFT_PRESSED) {
+            toggle_display_invert();
+            force_save();  // Save immediately for boot-time changes
+            // Wait for button release
+            while(LEFT_PRESSED) {
+                HAL_Delay(10);
+                readPins();
+            }
+        }
 
-		// If left is pressed at boot, toggle invert from saved state
-		if(LEFT_PRESSED) {
-			toggle_display_invert();
-			force_save();  // Save immediately for boot-time changes
-			// Wait for button release
-			while(LEFT_PRESSED) {
-				HAL_Delay(10);
-				readPins();
-			}
-		}
-
-		// If right is pressed at boot, reset everything
-		if(RIGHT_PRESSED) {
-			handle_reset();
-		}
-	}
-
-}
-
-// Save all settings to flash
-void save_settings(void) {
-    HAL_FLASH_Unlock();
-
-    FLASH_EraseInitTypeDef EraseInitStruct;
-    uint32_t PageError;
-
-    EraseInitStruct.TypeErase = FLASH_TYPEERASE_PAGES;
-    EraseInitStruct.Page = 31;  // Last page for 64KB device
-    EraseInitStruct.NbPages = 1;
-
-    HAL_FLASHEx_Erase(&EraseInitStruct, &PageError);
-
-    // Write counters and settings
-    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
-                     FLASH_USER_START_ADDR + FLASH_OFFSET_TOTAL_TAPS,
-                     total_taps);
-    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
-                     FLASH_USER_START_ADDR + FLASH_OFFSET_LEFT_TAPS,
-                     left_taps);
-    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
-                     FLASH_USER_START_ADDR + FLASH_OFFSET_RIGHT_TAPS,
-                     right_taps);
-    HAL_FLASH_Program(FLASH_TYPEPROGRAM_DOUBLEWORD,
-                     FLASH_USER_START_ADDR + FLASH_OFFSET_DISPLAY_INV,
-                     (uint64_t)display_inverted);
-
-    HAL_FLASH_Lock();
-
-    // Update last save time
-    last_save_time = HAL_GetTick();
-    data_changed = 0;  // Clear the changed flag
-
-    // Trigger saved indicator
-    show_saved_indicator = 1;
-    saved_indicator_timer = HAL_GetTick();
-}
-
-// Check if it's time to save to flash
-void check_and_save(void) {
-    if (data_changed && (HAL_GetTick() - last_save_time >= FLASH_SAVE_INTERVAL)) {
-        save_settings();
-    }
-}
-
-// Force save (for important events)
-void force_save(void) {
-    if (data_changed) {
-        save_settings();
-    }
-}
-
-// Load all settings from flash
-void load_settings(void) {
-    // Load tap counters
-    total_taps = *(__IO uint32_t*)(FLASH_USER_START_ADDR + FLASH_OFFSET_TOTAL_TAPS);
-    left_taps = *(__IO uint32_t*)(FLASH_USER_START_ADDR + FLASH_OFFSET_LEFT_TAPS);
-    right_taps = *(__IO uint32_t*)(FLASH_USER_START_ADDR + FLASH_OFFSET_RIGHT_TAPS);
-
-    // Load display invert setting
-    uint32_t invert_setting = *(__IO uint32_t*)(FLASH_USER_START_ADDR + FLASH_OFFSET_DISPLAY_INV);
-
-    // Check for valid data (not 0xFFFFFFFF)
-    if(total_taps == 0xFFFFFFFF) total_taps = 0;
-    if(left_taps == 0xFFFFFFFF) left_taps = 0;
-    if(right_taps == 0xFFFFFFFF) right_taps = 0;
-
-    // For display_inverted, only check the first byte
-    if((invert_setting & 0xFF) != 0xFF) {
-        display_inverted = (uint8_t)(invert_setting & 0x01);
-    } else {
-        display_inverted = 0;  // Default to normal display
-    }
-}
-
-// Reset all counters and settings
-void reset_all_settings(void) {
-    // Don't do flash operations too early
-    if (HAL_GetTick() < 100) {
-        HAL_Delay(100);  // Ensure system is stable
-    }
-
-    // Set values to defaults
-    total_taps = 0;
-    left_taps = 0;
-    right_taps = 0;
-    display_inverted = 0;
-
-    // Add error checking
-    save_settings();
-}
-
-// Update saved indicator visibility
-void update_saved_indicator(void) {
-    if (show_saved_indicator && (HAL_GetTick() - saved_indicator_timer >= SAVED_DISPLAY_TIME)) {
-        show_saved_indicator = 0;
+        // If right is pressed at boot, reset everything
+        if(RIGHT_PRESSED) {
+            handle_reset();
+        }
     }
 }
 
@@ -571,11 +606,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
         readPins();
     }
 }
-
-typedef enum states {
-    IDLE,
-    SWITCH,
-} state_e;
 
 /* USER CODE END PFP */
 
@@ -624,11 +654,10 @@ int main(void)
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
 
-
   load_settings();
 
   // Apply the loaded display invert setting
-  ssd1306_InvertDisplay(display_inverted);
+  ssd1306_InvertDisplay(settings.display_inverted);
 
   // Initialize save time
   last_save_time = HAL_GetTick();
@@ -653,9 +682,7 @@ int main(void)
     switch(state){
     case IDLE:
         if(sw_state_left == 0 || sw_state_right == 0){
-            draw_animation(&img_both_up);
-            ssd1306_UpdateScreen();
-            HAL_Delay(50);
+            // Smooth transition - no clear, just go to SWITCH state
             state = SWITCH;
         } else {
             // Idle animation
