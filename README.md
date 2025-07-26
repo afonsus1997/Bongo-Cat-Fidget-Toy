@@ -28,5 +28,17 @@ https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/assets/16014923/894b13a7-466
 
 ## Additional pictures
 
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_3982.jpg?raw=true)
+
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_3981.jpg?raw=true)
+
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_3995.jpg?raw=true)
+
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_4014.jpg?raw=true)
+
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_4030.jpg?raw=true)
+
+![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/IMG_4032.jpg?raw=true)
+
 #### Credits
 - Using Chocs 3D models from `https://github.com/koktoh/keyswitch_model`
