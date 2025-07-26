@@ -97,7 +97,7 @@ uint32_t right_taps = 0;
 // Timer for display mode
 uint32_t both_pressed_timer = 0;
 uint8_t display_mode = 0;  // 0 = normal animation, 1 = show tap count overlay
-#define MODE_SWITCH_TIME 3000  // 3 seconds to switch display mode
+#define MODE_SWITCH_TIME 2500  // 3 seconds to switch display mode
 
 // Timer for invert toggle
 uint32_t invert_timer = 0;
@@ -173,8 +173,8 @@ void display_tap_count_overlay(void) {
 // Display saved indicator
 void display_saved_indicator(void) {
     // Display "saved!" in bottom right corner
-    ssd1306_SetCursor(85, 54);
-    ssd1306_WriteString("saved!", ComicSans_11x12, White);
+	ssd1306_SetCursor(80, 52);
+	ssd1306_WriteString("saved!", ComicSans_11x12, White);
 }
 
 // Update display with overlays
@@ -205,10 +205,10 @@ uint8_t handle_display_mode_switch(void) {
             force_save();
 
             // Wait for button release
-            while(BOTH_PRESSED) {
-                HAL_Delay(10);
-                readPins();
-            }
+//            while(BOTH_PRESSED) {
+//                HAL_Delay(10);
+//                readPins();
+//            }
             return 1; // Mode switched
         }
     } else {
