@@ -24,6 +24,7 @@
 #include "ssd1306.h"
 #include "ssd1306_fonts.h"
 #include "bitmap_extended.h"
+#include "bitmap_extended_angry.h"
 #include <stdio.h>  // For sprintf
 
 /* USER CODE END Includes */
@@ -78,6 +79,15 @@ typedef struct {
 
 // Timer for invert toggle
 #define INVERT_HOLD_TIME 2000  // 2 seconds to toggle invert
+
+// Tap speed tracking
+#define TAP_HISTORY_SIZE 20    // Number of taps to track for speed calculation
+#define TAP_SPEED_WINDOW 1000  // Time window in ms for speed calculation
+
+// Angry mode settings
+#define ANGRY_MODE_ON_THRESHOLD  90   // Turn on at ≥ 9 taps/sec
+#define ANGRY_MODE_OFF_THRESHOLD 80   // Turn off only below 7 taps/sec
+#define ANGRY_MODE_DECAY_TIME 500  // Stay angry for 1 second after speed drops
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -118,6 +128,14 @@ uint8_t show_saved_indicator = 0;
 // Current animation frame storage
 char* current_frame = NULL;
 
+// Tap speed tracking
+uint32_t tap_timestamps[TAP_HISTORY_SIZE] = {0};
+uint8_t tap_history_index = 0;
+uint16_t current_tap_speed_x10 = 0;  // Speed * 10 to avoid float
+
+// Angry mode decay
+uint32_t angry_mode_timer = 0;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -139,6 +157,62 @@ uint32_t calculate_checksum(Settings_t *s) {
     checksum ^= ((uint32_t)s->display_inverted << 8);
     checksum ^= ((uint32_t)s->display_mode << 16);
     return checksum;
+}
+
+// Helper function to check if we should use angry animations
+uint8_t use_angry_mode(void) {
+    static uint8_t angry_active = 0;
+    uint32_t now = HAL_GetTick();
+
+    if (current_tap_speed_x10 >= ANGRY_MODE_ON_THRESHOLD) {
+        angry_mode_timer = now;
+        angry_active = 1;
+    } else if (angry_active && (current_tap_speed_x10 < ANGRY_MODE_OFF_THRESHOLD)) {
+        if ((now - angry_mode_timer) >= ANGRY_MODE_DECAY_TIME) {
+            angry_active = 0;
+        }
+    }
+
+    return angry_active;
+}
+
+
+
+// Calculate current tap speed (taps per second * 10)
+void calculate_tap_speed(void) {
+    uint32_t current_time = HAL_GetTick();
+    int valid_taps = 0;
+    uint32_t oldest_valid_time = current_time;
+
+    // Count taps within the time window
+    for (int i = 0; i < TAP_HISTORY_SIZE; i++) {
+        if (tap_timestamps[i] != 0 && (current_time - tap_timestamps[i]) <= TAP_SPEED_WINDOW) {
+            valid_taps++;
+            if (tap_timestamps[i] < oldest_valid_time) {
+                oldest_valid_time = tap_timestamps[i];
+            }
+        }
+    }
+
+    // Calculate speed
+    if (valid_taps >= 2 && oldest_valid_time < current_time) {
+        uint32_t time_span = current_time - oldest_valid_time; // in milliseconds
+        if (time_span > 0) {
+            // Calculate taps per second * 10 (to get one decimal place)
+            current_tap_speed_x10 = ((valid_taps - 1) * 10000) / time_span;
+        } else {
+            current_tap_speed_x10 = 0;
+        }
+    } else {
+        current_tap_speed_x10 = 0;
+    }
+}
+
+// Record a new tap for speed tracking
+void record_tap_timestamp(void) {
+    tap_timestamps[tap_history_index] = HAL_GetTick();
+    tap_history_index = (tap_history_index + 1) % TAP_HISTORY_SIZE;
+    calculate_tap_speed();
 }
 
 void toggle_display_invert(void) {
@@ -187,10 +261,27 @@ void readPins(){
 // Display tap count as overlay
 void display_tap_count_overlay(void) {
     char buffer[32];
-    // Display counts in a single line to save space
+
+    // Display total tap count in top left
     sprintf(buffer, "%lu", settings.total_taps);
     ssd1306_SetCursor(2, 1);
     ssd1306_WriteString(buffer, ComicSans_11x12, White);
+
+    // Display tap speed in top right
+    if (current_tap_speed_x10 > 1) {  // Only show if actively tapping
+        // Format speed with one decimal place
+        uint16_t whole = current_tap_speed_x10 / 10;
+        uint16_t decimal = current_tap_speed_x10 % 10;
+
+        if (whole >= 10) {
+            sprintf(buffer, "%u/s", whole);
+        } else {
+            sprintf(buffer, "%u.%u/s", whole, decimal);
+        }
+
+        ssd1306_SetCursor(95, 1);
+        ssd1306_WriteString(buffer, ComicSans_11x12, White);
+    }
 }
 
 // Display saved indicator
@@ -304,7 +395,15 @@ void reset_all_settings(void) {
     settings.left_taps = 0;
     settings.right_taps = 0;
     settings.display_inverted = 0;
-    settings.display_mode = 0;
+    settings.display_mode = 1;
+
+    // Clear tap history
+    for (int i = 0; i < TAP_HISTORY_SIZE; i++) {
+        tap_timestamps[i] = 0;
+    }
+    tap_history_index = 0;
+    current_tap_speed_x10 = 0;
+    angry_mode_timer = 0;  // Clear angry mode timer
 
     // Save the reset settings
     save_settings();
@@ -386,10 +485,14 @@ void register_tap(uint8_t is_left) {
     }
     settings.total_taps++;
     data_changed = 1;
+
+    // Record timestamp for speed calculation
+    record_tap_timestamp();
 }
 
 // Handle tap animations and decay
 void handle_tap_decay(int32_t *tap_left_cntr, int32_t *tap_right_cntr) {
+
     if(*tap_left_cntr > 0){
         if(HAL_GetTick() - *tap_left_cntr > TAP_DECAY_TIME) {
             draw_animation_erase(&img_tap_left);
@@ -416,8 +519,9 @@ void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
                           int32_t *idle_cntr) {
     *idle_cntr = 0;
 
+    uint8_t angry = use_angry_mode();
     if((BOTH_PRESSED) && ((*left_state | *right_state) == 0 || (*left_state ^ *right_state) == 1)){
-        draw_animation(&img_both_down_alt);
+        draw_animation(angry ? &img_both_down_alt_angry : &img_both_down_alt);
         if(!*right_state){
             draw_animation_transparent(&img_tap_right);
             *tap_right_cntr = HAL_GetTick();
@@ -433,7 +537,7 @@ void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
     }
     else if(RIGHT_PRESSED){
         if(*right_state == 0 || *left_state == 1){
-            draw_animation(&img_right_down_alt);
+            draw_animation(angry ? &img_right_down_alt_angry : &img_right_down_alt);
             if(!*right_state){
                 draw_animation_transparent(&img_tap_right);
                 *tap_right_cntr = HAL_GetTick();
@@ -446,7 +550,7 @@ void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
     }
     else if(LEFT_PRESSED){
         if(*left_state == 0 || *right_state == 1){
-            draw_animation(&img_left_down_alt);
+            draw_animation(angry ? &img_left_down_alt_angry : &img_left_down_alt);
             if(!*left_state){
                 draw_animation_transparent(&img_tap_left);
                 *tap_left_cntr = HAL_GetTick();
@@ -462,7 +566,8 @@ void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
 // Check if should return to idle state
 uint8_t check_idle_transition(int32_t *idle_cntr, uint8_t *left_state, uint8_t *right_state) {
     if(NONE_PRESSED){
-        draw_animation(&img_both_up);
+        uint8_t angry = use_angry_mode();
+        draw_animation(angry ? &img_both_up_angry : &img_both_up);
         if(*idle_cntr == 0){
             *idle_cntr = HAL_GetTick();
         }
@@ -598,6 +703,18 @@ void handle_boot_overrides(void) {
     }
 }
 
+// Update tap speed regularly
+void update_tap_speed(void) {
+    static uint32_t last_speed_update = 0;
+    uint32_t current_time = HAL_GetTick();
+
+    // Update speed calculation every 100ms
+    if (current_time - last_speed_update >= 100) {
+        calculate_tap_speed();
+        last_speed_update = current_time;
+    }
+}
+
 // Callback: timer has rolled over
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
@@ -678,6 +795,7 @@ int main(void)
     // Periodic tasks
     check_and_save();
     update_saved_indicator();
+    update_tap_speed();
 
     switch(state){
     case IDLE:
