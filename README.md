@@ -2,9 +2,22 @@
 
 # Bongo Cat Fidget Toy
 
-[![Demo Video](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/assets/16014923/894b13a7-4666-4984-8a9e-be15893b56c9)](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/assets/16014923/894b13a7-4666-4984-8a9e-be15893b56c9)
+### 🐾 Demo Videos
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://i.imgur.com/VvI4dpk.gif" width="300"><br>
+    </td>
+    <td align="center">
+      <img src="https://i.imgur.com/NdPEYkZ.gif" width="300"><br>
+    </td>
+  </tr>
+</table>
+
 
 A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your taps, measure your speed, and toggle display options with intuitive controls.
+
 
 > <a href="https://www.tindie.com/products/afonsus1997/bongo-cat-fidget-toy/"><img src="https://d2ss6ovg47m0r5.cloudfront.net/badges/tindie-larges.png" alt="I sell on Tindie" width="200" height="104"></a>
 
