@@ -2,19 +2,10 @@
 
 # Bongo Cat Fidget Toy
 
-### 🐾 Demo Videos
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="https://i.imgur.com/VvI4dpk.gif" width="300"><br>
-    </td>
-    <td align="center">
-      <img src="https://i.imgur.com/NdPEYkZ.gif" width="300"><br>
-    </td>
-  </tr>
-</table>
-
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/55208c55-2efb-448e-8116-102c88200b13" height="320" alt="Demo 1" />
+  <img src="https://github.com/user-attachments/assets/309b395f-762c-4c47-89ff-dd08e5db9610" height="320" alt="Demo 2" />
+</p>
 
 A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your taps, measure your speed, and toggle display options with intuitive controls.
 
