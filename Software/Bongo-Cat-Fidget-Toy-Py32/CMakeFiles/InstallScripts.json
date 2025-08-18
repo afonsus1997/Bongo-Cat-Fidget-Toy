@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/afonsom/Github/py32-vscode-cmake/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

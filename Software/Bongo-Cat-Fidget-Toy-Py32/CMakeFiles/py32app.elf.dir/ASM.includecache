@@ -1,0 +1,10 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/afonsom/Github/py32-vscode-cmake/Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.s
+

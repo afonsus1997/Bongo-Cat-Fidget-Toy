@@ -1,0 +1,3 @@
+[submodule "Software/Bongo-Cat-Fidget-Toy-Py32/Libs"]
+	path = Software/Bongo-Cat-Fidget-Toy-Py32/Libs
+	url = https://github.com/IOsetting/py32f0-template.git

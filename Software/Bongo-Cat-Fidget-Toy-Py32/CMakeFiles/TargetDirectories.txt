@@ -1,0 +1,4 @@
+/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/py32app.elf.dir
+/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/Flash.dir
+/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/edit_cache.dir
+/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/rebuild_cache.dir

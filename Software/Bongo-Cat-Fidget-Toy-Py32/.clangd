@@ -1,0 +1,2 @@
+CompileFlags:
+  Compiler: /usr/bin/arm-none-eabi-gcc
