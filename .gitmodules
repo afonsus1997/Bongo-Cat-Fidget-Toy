@@ -1,3 +1,6 @@
 [submodule "Software/Bongo-Cat-Fidget-Toy-Py32/Libs"]
 	path = Software/Bongo-Cat-Fidget-Toy-Py32/Libs
 	url = https://github.com/IOsetting/py32f0-template.git
+[submodule "Software/Bongo-Cat-Fidget-Toy-Py32/Drivers"]
+	path = Software/Bongo-Cat-Fidget-Toy-Py32/Drivers
+	url = https://github.com/decaday/PY32F0_Drivers/

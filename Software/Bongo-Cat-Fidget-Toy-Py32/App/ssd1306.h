@@ -10,12 +10,10 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include <_ansi.h>
-
-_BEGIN_STD_C
-
-#include "ssd1306_conf.h"
 #include "main.h"
+#include "ssd1306_conf.h"
+
+
 
 #ifdef SSD1306_X_OFFSET
 #define SSD1306_X_OFFSET_LOWER (SSD1306_X_OFFSET & 0x0F)
@@ -27,34 +25,22 @@ _BEGIN_STD_C
 
 /* vvv I2C config vvv */
 
+#ifndef SSD1306_I2C_PORT
+#define SSD1306_I2C_PORT        hi2c1
+#endif
+
 #ifndef SSD1306_I2C_ADDR
 #define SSD1306_I2C_ADDR        (0x3C << 1)
 #endif
 
 
-#ifndef SSD1306_CS_Port
-#define SSD1306_CS_Port         GPIOB
+#if defined(SSD1306_USE_I2C)
+extern I2C_HandleTypeDef SSD1306_I2C_PORT;
+#elif defined(SSD1306_USE_SPI)
+extern SPI_HandleTypeDef SSD1306_SPI_PORT;
+#else
+#error "You should define SSD1306_USE_SPI or SSD1306_USE_I2C macro!"
 #endif
-#ifndef SSD1306_CS_Pin
-#define SSD1306_CS_Pin          GPIO_PIN_12
-#endif
-
-#ifndef SSD1306_DC_Port
-#define SSD1306_DC_Port         GPIOB
-#endif
-#ifndef SSD1306_DC_Pin
-#define SSD1306_DC_Pin          GPIO_PIN_14
-#endif
-
-#ifndef SSD1306_Reset_Port
-#define SSD1306_Reset_Port      GPIOA
-#endif
-#ifndef SSD1306_Reset_Pin
-#define SSD1306_Reset_Pin       GPIO_PIN_8
-#endif
-
-/* ^^^ SPI config ^^^ */
-
 
 // SSD1306 OLED height in pixels
 #ifndef SSD1306_HEIGHT
@@ -163,6 +149,5 @@ SSD1306_Error_t ssd1306_FillBuffer(uint8_t* buf, uint32_t len);
 void ssd1306_InvertDisplay(uint8_t invert);
 
 
-_END_STD_C
 
 #endif // __SSD1306_H__

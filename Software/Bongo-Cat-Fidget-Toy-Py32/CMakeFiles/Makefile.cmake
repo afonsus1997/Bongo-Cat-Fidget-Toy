@@ -12,6 +12,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/4.0.3-dirty/CMakeCXXCompiler.cmake"
   "CMakeFiles/4.0.3-dirty/CMakeSystem.cmake"
   "CMakeLists.txt"
+  "Drivers/CMakeLists.txt"
+  "Drivers/PY32F0xx_HAL_Driver/CMakeLists.txt"
   "/usr/share/cmake/Modules/CMakeASMInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake/Modules/CMakeCXXInformation.cmake"
@@ -42,10 +44,12 @@ set(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Drivers/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "Drivers/PY32F0xx_HAL_Driver/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/py32app.elf.dir/DependInfo.cmake"
-  "CMakeFiles/Flash.dir/DependInfo.cmake"
+  "CMakeFiles/py32-cmake.elf.dir/DependInfo.cmake"
+  "Drivers/CMakeFiles/drivers.dir/DependInfo.cmake"
   )

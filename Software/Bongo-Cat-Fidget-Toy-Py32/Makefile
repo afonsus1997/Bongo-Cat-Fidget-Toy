@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/afonsom/Github/py32-vscode-cmake
+CMAKE_SOURCE_DIR = /home/afonsom/Github/py32f0_cmake_template
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/afonsom/Github/py32-vscode-cmake
+CMAKE_BINARY_DIR = /home/afonsom/Github/py32f0_cmake_template
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -87,9 +87,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonsom/Github/py32-vscode-cmake/CMakeFiles /home/afonsom/Github/py32-vscode-cmake//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonsom/Github/py32f0_cmake_template/CMakeFiles /home/afonsom/Github/py32f0_cmake_template//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonsom/Github/py32-vscode-cmake/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/afonsom/Github/py32f0_cmake_template/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -117,590 +117,758 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named py32app.elf
+# Target rules for targets named py32-cmake.elf
 
 # Build rule for target.
-py32app.elf: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 py32app.elf
-.PHONY : py32app.elf
+py32-cmake.elf: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 py32-cmake.elf
+.PHONY : py32-cmake.elf
 
 # fast build rule for target.
-py32app.elf/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/build
-.PHONY : py32app.elf/fast
+py32-cmake.elf/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/build
+.PHONY : py32-cmake.elf/fast
 
 #=============================================================================
-# Target rules for targets named Flash
+# Target rules for targets named drivers
 
 # Build rule for target.
-Flash: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 Flash
-.PHONY : Flash
+drivers: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 drivers
+.PHONY : drivers
 
 # fast build rule for target.
-Flash/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Flash.dir/build.make CMakeFiles/Flash.dir/build
-.PHONY : Flash/fast
+drivers/fast:
+	$(MAKE) $(MAKESILENT) -f Drivers/CMakeFiles/drivers.dir/build.make Drivers/CMakeFiles/drivers.dir/build
+.PHONY : drivers/fast
 
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.obj: Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.s.obj
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.obj
-
-# target to build an object file
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.s.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.s.obj
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.s.obj
-
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj: Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj
+App/main.obj: App/main.c.obj
+.PHONY : App/main.obj
 
 # target to build an object file
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
+App/main.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/main.c.obj
+.PHONY : App/main.c.obj
 
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i: Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i
+App/main.i: App/main.c.i
+.PHONY : App/main.i
 
 # target to preprocess a source file
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
+App/main.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/main.c.i
+.PHONY : App/main.c.i
 
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s: Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s
+App/main.s: App/main.c.s
+.PHONY : App/main.s
 
 # target to generate assembly for a file
-Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
-.PHONY : Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
+App/main.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/main.c.s
+.PHONY : App/main.c.s
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.obj: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.obj
+App/py32f0xx_hal_msp.obj: App/py32f0xx_hal_msp.c.obj
+.PHONY : App/py32f0xx_hal_msp.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.obj
+App/py32f0xx_hal_msp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_hal_msp.c.obj
+.PHONY : App/py32f0xx_hal_msp.c.obj
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.i: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.i
+App/py32f0xx_hal_msp.i: App/py32f0xx_hal_msp.c.i
+.PHONY : App/py32f0xx_hal_msp.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.i
+App/py32f0xx_hal_msp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_hal_msp.c.i
+.PHONY : App/py32f0xx_hal_msp.c.i
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.s: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.s
+App/py32f0xx_hal_msp.s: App/py32f0xx_hal_msp.c.s
+.PHONY : App/py32f0xx_hal_msp.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.c.s
+App/py32f0xx_hal_msp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_hal_msp.c.s
+.PHONY : App/py32f0xx_hal_msp.c.s
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.obj: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.obj
+App/py32f0xx_it.obj: App/py32f0xx_it.c.obj
+.PHONY : App/py32f0xx_it.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.obj
+App/py32f0xx_it.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_it.c.obj
+.PHONY : App/py32f0xx_it.c.obj
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.i: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.i
+App/py32f0xx_it.i: App/py32f0xx_it.c.i
+.PHONY : App/py32f0xx_it.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.i
+App/py32f0xx_it.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_it.c.i
+.PHONY : App/py32f0xx_it.c.i
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.s: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.s
+App/py32f0xx_it.s: App/py32f0xx_it.c.s
+.PHONY : App/py32f0xx_it.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.c.s
+App/py32f0xx_it.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/App/py32f0xx_it.c.s
+.PHONY : App/py32f0xx_it.c.s
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.obj: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.obj
+Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.obj: Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.s.obj
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.obj
+Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.s.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.s.obj
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.s.obj
 
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.i: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.i
-
-# target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.i
-
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.s: Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.s
-
-# target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.c.s
-
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.obj
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj: Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.obj
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.i
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i: Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.i
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.s
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s: Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.c.s
+Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
+.PHONY : Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.c.s
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.obj: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.obj
 
 # target to build an object file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.obj
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.obj
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.i: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.i
 
 # target to preprocess a source file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.i
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.i
 
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.s: Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.s
 
 # target to generate assembly for a file
-Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.s
-.PHONY : Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.c.s
 
-Src/main.obj: Src/main.c.obj
-.PHONY : Src/main.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.obj
 
 # target to build an object file
-Src/main.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/main.c.obj
-.PHONY : Src/main.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.obj
 
-Src/main.i: Src/main.c.i
-.PHONY : Src/main.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.i
 
 # target to preprocess a source file
-Src/main.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/main.c.i
-.PHONY : Src/main.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.i
 
-Src/main.s: Src/main.c.s
-.PHONY : Src/main.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.s
 
 # target to generate assembly for a file
-Src/main.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/main.c.s
-.PHONY : Src/main.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.c.s
 
-Src/py32f0xx_it.obj: Src/py32f0xx_it.c.obj
-.PHONY : Src/py32f0xx_it.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.obj
 
 # target to build an object file
-Src/py32f0xx_it.c.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/py32f0xx_it.c.obj
-.PHONY : Src/py32f0xx_it.c.obj
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.obj
 
-Src/py32f0xx_it.i: Src/py32f0xx_it.c.i
-.PHONY : Src/py32f0xx_it.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.i
 
 # target to preprocess a source file
-Src/py32f0xx_it.c.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/py32f0xx_it.c.i
-.PHONY : Src/py32f0xx_it.c.i
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.i
 
-Src/py32f0xx_it.s: Src/py32f0xx_it.c.s
-.PHONY : Src/py32f0xx_it.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.s
 
 # target to generate assembly for a file
-Src/py32f0xx_it.c.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32app.elf.dir/build.make CMakeFiles/py32app.elf.dir/Src/py32f0xx_it.c.s
-.PHONY : Src/py32f0xx_it.c.s
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.c.s
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.obj: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.obj
+
+# target to build an object file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.obj
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.obj
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.i: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.i
+
+# target to preprocess a source file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.i
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.i
+
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.s: Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.s
+
+# target to generate assembly for a file
+Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/py32-cmake.elf.dir/build.make CMakeFiles/py32-cmake.elf.dir/Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.s
+.PHONY : Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.c.s
 
 # Help Target
 help:
@@ -710,78 +878,99 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... Flash"
-	@echo "... py32app.elf"
-	@echo "... Libs/Libraries/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f002a.obj"
-	@echo "... Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj"
-	@echo "... Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i"
-	@echo "... Libs/Libraries/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_clock.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_led.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_BSP/Src/py32f0xx_bsp_printf.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_adc.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_comp.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_crc.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_dma.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_exti.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_flash.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_gpio.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_i2c.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_led.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_lptim.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_pwr.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rcc.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_rtc.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_spi.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_tim.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_usart.s"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.obj"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.i"
-	@echo "... Libs/Libraries/PY32F0xx_LL_Driver/Src/py32f0xx_ll_utils.s"
-	@echo "... Src/main.obj"
-	@echo "... Src/main.i"
-	@echo "... Src/main.s"
-	@echo "... Src/py32f0xx_it.obj"
-	@echo "... Src/py32f0xx_it.i"
-	@echo "... Src/py32f0xx_it.s"
+	@echo "... drivers"
+	@echo "... py32-cmake.elf"
+	@echo "... App/main.obj"
+	@echo "... App/main.i"
+	@echo "... App/main.s"
+	@echo "... App/py32f0xx_hal_msp.obj"
+	@echo "... App/py32f0xx_hal_msp.i"
+	@echo "... App/py32f0xx_hal_msp.s"
+	@echo "... App/py32f0xx_it.obj"
+	@echo "... App/py32f0xx_it.i"
+	@echo "... App/py32f0xx_it.s"
+	@echo "... Drivers/CMSIS/Device/PY32F0xx/Source/gcc/startup_py32f030.obj"
+	@echo "... Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.obj"
+	@echo "... Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.i"
+	@echo "... Drivers/CMSIS/Device/PY32F0xx/Source/system_py32f0xx.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_adc_ex.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_comp.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_cortex.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_crc.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_dma.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_exti.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_flash.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_gpio.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_i2c.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_irda.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_iwdg.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_led.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_lptim.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_pwr.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rcc_ex.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_rtc_ex.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_spi.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_tim_ex.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_uart.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_usart.s"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.obj"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.i"
+	@echo "... Drivers/PY32F0xx_HAL_Driver/Src/py32f0xx_hal_wwdg.s"
 .PHONY : help
 
 

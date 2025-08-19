@@ -1,4 +1,4 @@
-# Install script for directory: /home/afonsom/Github/py32-vscode-cmake
+# Install script for directory: /home/afonsom/Github/py32f0_cmake_template
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -37,10 +37,15 @@ if(NOT DEFINED CMAKE_OBJDUMP)
   set(CMAKE_OBJDUMP "arm-none-eabi-objdump")
 endif()
 
+if(NOT CMAKE_INSTALL_LOCAL_ONLY)
+  # Include the install script for the subdirectory.
+  include("/home/afonsom/Github/py32f0_cmake_template/Drivers/cmake_install.cmake")
+endif()
+
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/afonsom/Github/py32-vscode-cmake/install_local_manifest.txt"
+  file(WRITE "/home/afonsom/Github/py32f0_cmake_template/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -56,6 +61,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/afonsom/Github/py32-vscode-cmake/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/home/afonsom/Github/py32f0_cmake_template/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

@@ -1,4 +1,5 @@
 #include "ssd1306.h"
+#include "py32f0xx_hal.h"
 #include <math.h>
 #include <stdlib.h>
 #include <string.h>  // For memcpy
@@ -39,7 +40,7 @@ void ssd1306_Init(void) {
     ssd1306_Reset();
 
     // Wait for the screen to boot
-    LL_mDelay(100);
+    HAL_Delay(100);
 
     // Init OLED
     ssd1306_SetDisplayOn(0); //display off

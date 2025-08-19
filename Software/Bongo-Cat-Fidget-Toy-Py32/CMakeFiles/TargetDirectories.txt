@@ -1,4 +1,8 @@
-/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/py32app.elf.dir
-/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/Flash.dir
-/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/edit_cache.dir
-/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/rebuild_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/py32-cmake.elf.dir
+/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/edit_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/rebuild_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/Drivers/CMakeFiles/drivers.dir
+/home/afonsom/Github/py32f0_cmake_template/Drivers/CMakeFiles/edit_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/Drivers/CMakeFiles/rebuild_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/Drivers/PY32F0xx_HAL_Driver/CMakeFiles/edit_cache.dir
+/home/afonsom/Github/py32f0_cmake_template/Drivers/PY32F0xx_HAL_Driver/CMakeFiles/rebuild_cache.dir

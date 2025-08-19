@@ -1,6 +1,8 @@
 #ifndef __BONGO__H__
 #define __BONGO__H__
 
+
+
 #include "main.h"
 #include "ssd1306.h" 
 
@@ -14,9 +16,9 @@
 #define NONE_PRESSED (sw_state_left == 1 && sw_state_right == 1)
 
 // Correct addresses for 64KB STM32G030K8
-#define FLASH_SIZE              0x10000      // 64KB
-#define FLASH_PAGE_SIZE         0x800        // 2KB per page
-#define FLASH_PAGE_NB           32           // 64KB / 2KB = 32 pages (0-31)
+// #define FLASH_SIZE              0x10000      // 64KB
+// #define FLASH_PAGE_SIZE         0x800        // 2KB per page
+// #define FLASH_PAGE_NB           32           // 64KB / 2KB = 32 pages (0-31)
 
 // Use the last page (page 31) for storage
 #define FLASH_USER_START_ADDR   0x0800F800   // Start of last page (page 31)
@@ -58,39 +60,6 @@ typedef struct {
     uint32_t checksum;  // Simple validation
 } Settings_t;
 
-int sw_state_left;
-int sw_state_right;
-
-// Animation counter
-uint8_t idle_cnt;
-
-// Settings structure
-Settings_t settings = {0};
-
-// Timer for display mode
-uint32_t both_pressed_timer = 0;
-
-// Timer for invert toggle
-uint32_t invert_timer = 0;
-
-// Flash save management
-uint32_t last_save_time = 0;
-uint8_t data_changed = 0;  // Flag to track if data needs saving
-
-// Saved indicator
-uint32_t saved_indicator_timer = 0;
-uint8_t show_saved_indicator = 0;
-
-// Current animation frame storage
-char* current_frame = NULL;
-
-// Tap speed tracking
-uint32_t tap_timestamps[TAP_HISTORY_SIZE] = {0};
-uint8_t tap_history_index = 0;
-uint16_t current_tap_speed_x10 = 0;  // Speed * 10 to avoid float
-
-// Angry mode decay
-uint32_t angry_mode_timer = 0;
 
 
 uint32_t calculate_checksum(Settings_t *s);

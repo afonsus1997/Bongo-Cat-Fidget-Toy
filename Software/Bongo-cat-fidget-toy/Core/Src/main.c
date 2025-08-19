@@ -102,39 +102,6 @@ TIM_HandleTypeDef htim14;
 
 /* USER CODE BEGIN PV */
 // Switch states
-int sw_state_left;
-int sw_state_right;
-
-// Animation counter
-uint8_t idle_cnt;
-
-// Settings structure
-Settings_t settings = {0};
-
-// Timer for display mode
-uint32_t both_pressed_timer = 0;
-
-// Timer for invert toggle
-uint32_t invert_timer = 0;
-
-// Flash save management
-uint32_t last_save_time = 0;
-uint8_t data_changed = 0;  // Flag to track if data needs saving
-
-// Saved indicator
-uint32_t saved_indicator_timer = 0;
-uint8_t show_saved_indicator = 0;
-
-// Current animation frame storage
-char* current_frame = NULL;
-
-// Tap speed tracking
-uint32_t tap_timestamps[TAP_HISTORY_SIZE] = {0};
-uint8_t tap_history_index = 0;
-uint16_t current_tap_speed_x10 = 0;  // Speed * 10 to avoid float
-
-// Angry mode decay
-uint32_t angry_mode_timer = 0;
 
 /* USER CODE END PV */
 

@@ -5,7 +5,7 @@ events:
     kind: "message-v1"
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineSystem.cmake:200 (message)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       The target system is: Generic - 1 - 
       The host system is: Linux - 6.12.40-2-lts - x86_64
@@ -15,7 +15,7 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
       Compiler: /usr/bin/arm-none-eabi-gcc 
@@ -24,8 +24,18 @@ events:
       
       The output was:
       1
-      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: cannot find crt0.o: No such file or directory
-      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: cannot find -lc: No such file or directory
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-exit.o): in function `exit':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/stdlib/exit.c:65:(.text.exit+0x28): undefined reference to `_exit'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-closer.o): in function `_close_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/closer.c:47:(.text._close_r+0x18): undefined reference to `_close'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/lseekr.c:49:(.text._lseek_r+0x24): undefined reference to `_lseek'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-readr.o): in function `_read_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/readr.c:49:(.text._read_r+0x24): undefined reference to `_read'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-writer.o): in function `_write_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/writer.c:49:(.text._write_r+0x24): undefined reference to `_write'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-sbrkr.o): in function `_sbrk_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/sbrkr.c:51:(.text._sbrk_r+0x18): undefined reference to `_sbrk'
       collect2: error: ld returned 1 exit status
       
       
@@ -35,7 +45,7 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
       Compiler: /usr/bin/arm-none-eabi-gcc 
@@ -49,7 +59,7 @@ events:
       Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.o"
       
       The C compiler identification is GNU, found in:
-        /home/afonsom/Github/py32-vscode-cmake/CMakeFiles/4.0.3-dirty/CompilerIdC/CMakeCCompilerId.o
+        /home/afonsom/Github/py32f0_cmake_template/CMakeFiles/4.0.3-dirty/CompilerIdC/CMakeCCompilerId.o
       
   -
     kind: "message-v1"
@@ -57,7 +67,7 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
       Compiler: /usr/bin/arm-none-eabi-g++ 
@@ -66,9 +76,18 @@ events:
       
       The output was:
       1
-      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: cannot find crt0.o: No such file or directory
-      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: cannot find -lm: No such file or directory
-      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: cannot find -lc: No such file or directory
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-exit.o): in function `exit':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/stdlib/exit.c:65:(.text.exit+0x28): undefined reference to `_exit'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-closer.o): in function `_close_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/closer.c:47:(.text._close_r+0x18): undefined reference to `_close'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-lseekr.o): in function `_lseek_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/lseekr.c:49:(.text._lseek_r+0x24): undefined reference to `_lseek'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-readr.o): in function `_read_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/readr.c:49:(.text._read_r+0x24): undefined reference to `_read'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-writer.o): in function `_write_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/writer.c:49:(.text._write_r+0x24): undefined reference to `_write'
+      /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/ld: /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/libc.a(libc_a-sbrkr.o): in function `_sbrk_r':
+      /build/arm-none-eabi-newlib/src/build-newlib/arm-none-eabi/newlib/../../../newlib-4.5.0.20241231/newlib/libc/reent/sbrkr.c:51:(.text._sbrk_r+0x18): undefined reference to `_sbrk'
       collect2: error: ld returned 1 exit status
       
       
@@ -78,7 +97,7 @@ events:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:17 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:64 (__determine_compiler_id_test)"
       - "/usr/share/cmake/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
       Compiler: /usr/bin/arm-none-eabi-g++ 
@@ -92,14 +111,14 @@ events:
       Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.o"
       
       The CXX compiler identification is GNU, found in:
-        /home/afonsom/Github/py32-vscode-cmake/CMakeFiles/4.0.3-dirty/CompilerIdCXX/CMakeCXXCompilerId.o
+        /home/afonsom/Github/py32f0_cmake_template/CMakeFiles/4.0.3-dirty/CompilerIdCXX/CMakeCXXCompilerId.o
       
   -
     kind: "message-v1"
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerId.cmake:1271 (message)"
       - "/usr/share/cmake/Modules/CMakeDetermineASMCompiler.cmake:139 (CMAKE_DETERMINE_COMPILER_ID_VENDOR)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Checking whether the ASM compiler is GNU using "--version" matched "(GNU assembler)|(GCC)|(Free Software Foundation)":
       arm-none-eabi-gcc (Arch Repository) 14.2.0
@@ -112,12 +131,12 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ"
-      binary: "/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ"
+      source: "/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A"
+      binary: "/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A"
     cmakeVariables:
       CMAKE_C_FLAGS: ""
       CMAKE_C_FLAGS_DEBUG: "-g"
@@ -126,13 +145,13 @@ events:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ'
+        Change Dir: '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c3eae/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_c3eae.dir/build.make CMakeFiles/cmTC_c3eae.dir/build
-        make[1]: Entering directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ'
-        Building C object CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj
-        /usr/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_d6530/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_d6530.dir/build.make CMakeFiles/cmTC_d6530.dir/build
+        make[1]: Entering directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A'
+        Building C object CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj
+        /usr/bin/arm-none-eabi-gcc   -std=gnu11   -v -o CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-gcc
         Target: arm-none-eabi
@@ -140,9 +159,9 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (Arch Repository) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/'
-         /usr/lib/gcc/arm-none-eabi/14.2.0/cc1 -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c3eae.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /tmp/ccLwiOEp.s
-        GNU C17 (Arch Repository) version 14.2.0 (arm-none-eabi)
+        COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/'
+         /usr/lib/gcc/arm-none-eabi/14.2.0/cc1 -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_d6530.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -std=gnu11 -version -o /tmp/cc4oWKcY.s
+        GNU C11 (Arch Repository) version 14.2.0 (arm-none-eabi)
         	compiled by GNU C version 14.2.1 20240910, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.27-GMP
         
         warning: MPFR header version 4.2.1 differs from library version 4.2.2.
@@ -156,18 +175,18 @@ events:
          /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: 27ee4863632474af78fa6d6c36d3934a
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/'
-         /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj /tmp/ccLwiOEp.s
+        COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/'
+         /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj /tmp/cc4oWKcY.s
         GNU assembler version 2.43 (arm-none-eabi) using BFD version (GNU Binutils) 2.43
         COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/:/usr/arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.'
-        Linking C static library libcmTC_c3eae.a
-        /usr/bin/cmake -P CMakeFiles/cmTC_c3eae.dir/cmake_clean_target.cmake
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c3eae.dir/link.txt --verbose=1
-        arm-none-eabi-ar qc libcmTC_c3eae.a CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj
-        /usr/bin/arm-none-eabi-ranlib libcmTC_c3eae.a
-        make[1]: Leaving directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ'
+        COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.'
+        Linking C static library libcmTC_d6530.a
+        /usr/bin/cmake -P CMakeFiles/cmTC_d6530.dir/cmake_clean_target.cmake
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6530.dir/link.txt --verbose=1
+        arm-none-eabi-ar qc libcmTC_d6530.a CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj
+        /usr/bin/arm-none-eabi-ranlib libcmTC_d6530.a
+        make[1]: Leaving directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A'
         
       exitCode: 0
   -
@@ -175,7 +194,7 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:191 (message)"
       - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Parsed C implicit include dir info: rv=done
         found start of include info
@@ -195,18 +214,18 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
       - "/usr/share/cmake/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ']
+        ignore line: [Change Dir: '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_c3eae/fast]
-        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_c3eae.dir/build.make CMakeFiles/cmTC_c3eae.dir/build]
-        ignore line: [make[1]: Entering directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ']
-        ignore line: [Building C object CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [/usr/bin/arm-none-eabi-gcc   -v -o CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_d6530/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_d6530.dir/build.make CMakeFiles/cmTC_d6530.dir/build]
+        ignore line: [make[1]: Entering directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A']
+        ignore line: [Building C object CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/usr/bin/arm-none-eabi-gcc   -std=gnu11   -v -o CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj -c /usr/share/cmake/Modules/CMakeCCompilerABI.c]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-gcc]
         ignore line: [Target: arm-none-eabi]
@@ -214,9 +233,9 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (Arch Repository) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/']
-        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/cc1 -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_c3eae.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /tmp/ccLwiOEp.s]
-        ignore line: [GNU C17 (Arch Repository) version 14.2.0 (arm-none-eabi)]
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/cc1 -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCCompilerABI.c -quiet -dumpdir CMakeFiles/cmTC_d6530.dir/ -dumpbase CMakeCCompilerABI.c.c -dumpbase-ext .c -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -std=gnu11 -version -o /tmp/cc4oWKcY.s]
+        ignore line: [GNU C11 (Arch Repository) version 14.2.0 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 14.2.1 20240910  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
         ignore line: [warning: MPFR header version 4.2.1 differs from library version 4.2.2.]
@@ -230,18 +249,18 @@ events:
         ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: 27ee4863632474af78fa6d6c36d3934a]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/']
-        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj /tmp/ccLwiOEp.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj /tmp/cc4oWKcY.s]
         ignore line: [GNU assembler version 2.43 (arm-none-eabi) using BFD version (GNU Binutils) 2.43]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/:/usr/arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.']
-        ignore line: [Linking C static library libcmTC_c3eae.a]
-        ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_c3eae.dir/cmake_clean_target.cmake]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_c3eae.dir/link.txt --verbose=1]
-        ignore line: [arm-none-eabi-ar qc libcmTC_c3eae.a CMakeFiles/cmTC_c3eae.dir/CMakeCCompilerABI.c.obj]
-        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_c3eae.a]
-        ignore line: [make[1]: Leaving directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-8l2NJQ']
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu11' '-v' '-o' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.']
+        ignore line: [Linking C static library libcmTC_d6530.a]
+        ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_d6530.dir/cmake_clean_target.cmake]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d6530.dir/link.txt --verbose=1]
+        ignore line: [arm-none-eabi-ar qc libcmTC_d6530.a CMakeFiles/cmTC_d6530.dir/CMakeCCompilerABI.c.obj]
+        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_d6530.a]
+        ignore line: [make[1]: Leaving directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-jbjs3A']
         ignore line: []
         ignore line: []
         implicit libs: []
@@ -255,12 +274,12 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:83 (try_compile)"
       - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp"
-      binary: "/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp"
+      source: "/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I"
+      binary: "/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I"
     cmakeVariables:
       CMAKE_CXX_FLAGS: ""
       CMAKE_CXX_FLAGS_DEBUG: "-g"
@@ -270,13 +289,13 @@ events:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp'
+        Change Dir: '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I'
         
-        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_93fc6/fast
-        /usr/bin/make  -f CMakeFiles/cmTC_93fc6.dir/build.make CMakeFiles/cmTC_93fc6.dir/build
-        make[1]: Entering directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp'
-        Building CXX object CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj
-        /usr/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
+        Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_0f9d2/fast
+        /usr/bin/make  -f CMakeFiles/cmTC_0f9d2.dir/build.make CMakeFiles/cmTC_0f9d2.dir/build
+        make[1]: Entering directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I'
+        Building CXX object CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj
+        /usr/bin/arm-none-eabi-g++   -std=gnu++17   -v -o CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp
         Using built-in specs.
         COLLECT_GCC=/usr/bin/arm-none-eabi-g++
         Target: arm-none-eabi
@@ -284,8 +303,8 @@ events:
         Thread model: single
         Supported LTO compression algorithms: zlib zstd
         gcc version 14.2.0 (Arch Repository) 
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/'
-         /usr/lib/gcc/arm-none-eabi/14.2.0/cc1plus -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_93fc6.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /tmp/ccA9QC54.s
+        COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/'
+         /usr/lib/gcc/arm-none-eabi/14.2.0/cc1plus -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_0f9d2.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -std=gnu++17 -version -o /tmp/ccwblKH1.s
         GNU C++17 (Arch Repository) version 14.2.0 (arm-none-eabi)
         	compiled by GNU C version 14.2.1 20240910, GMP version 6.3.0, MPFR version 4.2.1, MPC version 1.3.1, isl version isl-0.27-GMP
         
@@ -303,18 +322,18 @@ events:
          /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/include
         End of search list.
         Compiler executable checksum: de4da0f09cac33582cfad65715a8fb07
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/'
-         /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccA9QC54.s
+        COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/'
+         /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccwblKH1.s
         GNU assembler version 2.43 (arm-none-eabi) using BFD version (GNU Binutils) 2.43
         COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/
         LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/:/usr/arm-none-eabi/lib/
-        COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.'
-        Linking CXX static library libcmTC_93fc6.a
-        /usr/bin/cmake -P CMakeFiles/cmTC_93fc6.dir/cmake_clean_target.cmake
-        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93fc6.dir/link.txt --verbose=1
-        arm-none-eabi-ar qc libcmTC_93fc6.a CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj
-        /usr/bin/arm-none-eabi-ranlib libcmTC_93fc6.a
-        make[1]: Leaving directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp'
+        COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.'
+        Linking CXX static library libcmTC_0f9d2.a
+        /usr/bin/cmake -P CMakeFiles/cmTC_0f9d2.dir/cmake_clean_target.cmake
+        /usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f9d2.dir/link.txt --verbose=1
+        arm-none-eabi-ar qc libcmTC_0f9d2.a CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj
+        /usr/bin/arm-none-eabi-ranlib libcmTC_0f9d2.a
+        make[1]: Leaving directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I'
         
       exitCode: 0
   -
@@ -322,7 +341,7 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:191 (message)"
       - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Parsed CXX implicit include dir info: rv=done
         found start of include info
@@ -348,18 +367,18 @@ events:
     backtrace:
       - "/usr/share/cmake/Modules/CMakeDetermineCompilerABI.cmake:227 (message)"
       - "/usr/share/cmake/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
-      - "CMakeLists.txt:47 (project)"
+      - "CMakeLists.txt:38 (project)"
     message: |
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(|\\.[a-rt-z][a-z]*|\\.s[a-np-z][a-z]*|\\.so[a-z]+)))("|,| |$)]
-        ignore line: [Change Dir: '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp']
+        ignore line: [Change Dir: '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I']
         ignore line: []
-        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_93fc6/fast]
-        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_93fc6.dir/build.make CMakeFiles/cmTC_93fc6.dir/build]
-        ignore line: [make[1]: Entering directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp']
-        ignore line: [Building CXX object CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [/usr/bin/arm-none-eabi-g++   -v -o CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
+        ignore line: [Run Build Command(s): /usr/bin/cmake -E env VERBOSE=1 /usr/bin/make -f Makefile cmTC_0f9d2/fast]
+        ignore line: [/usr/bin/make  -f CMakeFiles/cmTC_0f9d2.dir/build.make CMakeFiles/cmTC_0f9d2.dir/build]
+        ignore line: [make[1]: Entering directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I']
+        ignore line: [Building CXX object CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/usr/bin/arm-none-eabi-g++   -std=gnu++17   -v -o CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj -c /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp]
         ignore line: [Using built-in specs.]
         ignore line: [COLLECT_GCC=/usr/bin/arm-none-eabi-g++]
         ignore line: [Target: arm-none-eabi]
@@ -367,8 +386,8 @@ events:
         ignore line: [Thread model: single]
         ignore line: [Supported LTO compression algorithms: zlib zstd]
         ignore line: [gcc version 14.2.0 (Arch Repository) ]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/']
-        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/cc1plus -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_93fc6.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -version -o /tmp/ccA9QC54.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/cc1plus -quiet -v -D__USES_INITFINI__ /usr/share/cmake/Modules/CMakeCXXCompilerABI.cpp -quiet -dumpdir CMakeFiles/cmTC_0f9d2.dir/ -dumpbase CMakeCXXCompilerABI.cpp.cpp -dumpbase-ext .cpp -mcpu=arm7tdmi -mfloat-abi=soft -marm -mlibarch=armv4t -march=armv4t -std=gnu++17 -version -o /tmp/ccwblKH1.s]
         ignore line: [GNU C++17 (Arch Repository) version 14.2.0 (arm-none-eabi)]
         ignore line: [	compiled by GNU C version 14.2.1 20240910  GMP version 6.3.0  MPFR version 4.2.1  MPC version 1.3.1  isl version isl-0.27-GMP]
         ignore line: []
@@ -386,18 +405,18 @@ events:
         ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/include]
         ignore line: [End of search list.]
         ignore line: [Compiler executable checksum: de4da0f09cac33582cfad65715a8fb07]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/']
-        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccA9QC54.s]
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/']
+        ignore line: [ /usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/as -v -march=armv4t -mfloat-abi=soft -meabi=5 -o CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj /tmp/ccwblKH1.s]
         ignore line: [GNU assembler version 2.43 (arm-none-eabi) using BFD version (GNU Binutils) 2.43]
         ignore line: [COMPILER_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/bin/]
         ignore line: [LIBRARY_PATH=/usr/lib/gcc/arm-none-eabi/14.2.0/:/usr/lib/gcc/arm-none-eabi/14.2.0/../../../../arm-none-eabi/lib/:/usr/arm-none-eabi/lib/]
-        ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.']
-        ignore line: [Linking CXX static library libcmTC_93fc6.a]
-        ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_93fc6.dir/cmake_clean_target.cmake]
-        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_93fc6.dir/link.txt --verbose=1]
-        ignore line: [arm-none-eabi-ar qc libcmTC_93fc6.a CMakeFiles/cmTC_93fc6.dir/CMakeCXXCompilerABI.cpp.obj]
-        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_93fc6.a]
-        ignore line: [make[1]: Leaving directory '/home/afonsom/Github/py32-vscode-cmake/CMakeFiles/CMakeScratch/TryCompile-jSRzDp']
+        ignore line: [COLLECT_GCC_OPTIONS='-std=gnu++17' '-v' '-o' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj' '-c' '-mcpu=arm7tdmi' '-mfloat-abi=soft' '-marm' '-mlibarch=armv4t' '-march=armv4t' '-dumpdir' 'CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.']
+        ignore line: [Linking CXX static library libcmTC_0f9d2.a]
+        ignore line: [/usr/bin/cmake -P CMakeFiles/cmTC_0f9d2.dir/cmake_clean_target.cmake]
+        ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0f9d2.dir/link.txt --verbose=1]
+        ignore line: [arm-none-eabi-ar qc libcmTC_0f9d2.a CMakeFiles/cmTC_0f9d2.dir/CMakeCXXCompilerABI.cpp.obj]
+        ignore line: [/usr/bin/arm-none-eabi-ranlib libcmTC_0f9d2.a]
+        ignore line: [make[1]: Leaving directory '/home/afonsom/Github/py32f0_cmake_template/CMakeFiles/CMakeScratch/TryCompile-t1zi4I']
         ignore line: []
         ignore line: []
         implicit libs: []
