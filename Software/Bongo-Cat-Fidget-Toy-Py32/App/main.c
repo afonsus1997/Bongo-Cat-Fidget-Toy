@@ -43,29 +43,19 @@ static void APP_GpioConfig(void);
   */
 int main(void)
 {
-  /* 初始化所有外设，Flash接口，SysTick */
   HAL_Init();                                  
-  
-  /* 初始化GPIO */
   APP_GpioConfig();
+  APP_I2cConfig();
 
   ssd1306_Init();
 
   while (1)
   {
-    /* 延时250ms */
     HAL_Delay(250);   
-
-    /* LED翻转 */
     HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_0);    
   }
 }
 
-/**
-  * @brief  GPIO配置
-  * @param  无
-  * @retval 无
-  */
 static void APP_GpioConfig(void)
 {
   GPIO_InitTypeDef  GPIO_InitStruct;
@@ -76,7 +66,6 @@ static void APP_GpioConfig(void)
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;            /* 推挽输出 */
   GPIO_InitStruct.Pull = GPIO_PULLUP;                    /* 使能上拉 */
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;          /* GPIO速度 */  
-  /* GPIO初始化 */
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);                
 }
 
@@ -93,11 +82,6 @@ static void APP_I2cConfig(void){
   }
 }
 
-/**
-  * @brief  错误执行函数
-  * @param  无
-  * @retval 无
-  */
 void APP_ErrorHandler(void)
 {
   while (1)
@@ -106,17 +90,8 @@ void APP_ErrorHandler(void)
 }
 
 #ifdef  USE_FULL_ASSERT
-/**
-  * @brief  输出产生断言错误的源文件名及行号
-  * @param  file：源文件名指针
-  * @param  line：发生断言错误的行号
-  * @retval 无
-  */
 void assert_failed(uint8_t *file, uint32_t line)
 {
-  /* 用户可以根据需要添加自己的打印信息,
-     例如: printf("Wrong parameters value: file %s on line %d\r\n", file, line) */
-  /* 无限循环 */
   while (1)
   {
   }

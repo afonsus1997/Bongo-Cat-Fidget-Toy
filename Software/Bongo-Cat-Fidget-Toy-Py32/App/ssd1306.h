@@ -10,8 +10,11 @@
 
 #include <stddef.h>
 #include <stdint.h>
-#include "main.h"
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>  // For memcpy
 #include "ssd1306_conf.h"
+#include "py32f0xx_hal.h"
 
 
 
