@@ -1,4 +1,5 @@
 #include "ssd1306.h"
+#include "ssd1306_conf.h"
 
 extern  I2C_HandleTypeDef I2cHandle;
 

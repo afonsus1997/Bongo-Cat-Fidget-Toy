@@ -48,6 +48,7 @@ int main(void)
   APP_I2cConfig();
 
   ssd1306_Init();
+  ssd1306_Line(0,0,128,32,0x01);
 
   while (1)
   {

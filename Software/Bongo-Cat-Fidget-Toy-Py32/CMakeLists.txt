@@ -119,3 +119,5 @@ if(AUTO_GENERATE_PYOCD_YAML)
     set(PYOCD_CONENT "target_override: ${MCU_MODEL}\npack: Misc/Puya.PY32F0xx_DFP.1.1.9.pack\nfrequency: 1000000")
     file(WRITE Misc/pyocd.yaml ${PYOCD_CONENT})
 endif()
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

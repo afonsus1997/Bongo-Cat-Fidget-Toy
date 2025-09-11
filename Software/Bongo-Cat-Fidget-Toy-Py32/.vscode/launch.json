@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Attach to pyOCD GDB Server",
+            "name": "Debug with pyOCD",
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "pyocd",

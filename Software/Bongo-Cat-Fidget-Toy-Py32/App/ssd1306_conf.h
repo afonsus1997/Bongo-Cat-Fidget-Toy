@@ -12,7 +12,7 @@
 // I2C Configuration
 #define SSD1306_I2C_PORT        hi2c1
 //#define SSD1306_I2C_ADDR        (0x3C << 1)
-//#define SSD1306_I2C_ADDR        (0x7A) //DC HIGH
+// #define SSD1306_I2C_ADDR        (0x7A) //DC HIGH
 #define SSD1306_I2C_ADDR        (0x78) //DC LOW
 
 // Mirror the screen if needed

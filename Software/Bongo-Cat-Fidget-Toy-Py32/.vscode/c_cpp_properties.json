@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "CMake",
+      "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+      "intelliSenseMode": "gcc-x64",        // or clang-x64 / msvc-x64
+      "compilerPath": "/usr/bin/g++"        // adjust to your toolchain
+    }
+  ],
+  "version": 4
+}
