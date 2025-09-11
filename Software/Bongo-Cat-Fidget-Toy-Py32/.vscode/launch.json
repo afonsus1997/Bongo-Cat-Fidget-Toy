@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Attach to pyOCD GDB Server",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "pyocd",
+            "cwd": "${workspaceFolder}",
+            "executable": "${workspaceFolder}/build/py32-cmake.elf",
+            "device": "py32f003x6",
+            "serverArgs": ["--target", "py32f003x6"],
+            "svdFile": "${workspaceFolder}/Misc/SVD/py32f003xx.svd",
+            "showDevDebugOutput": "parsed"
+        }
+    ]
+}

@@ -32,7 +32,6 @@ Makefile
 *.log
 
 # VSCode / CLion / Eclipse project settings
-.vscode/
 .idea/
 .settings/
 .cproject
