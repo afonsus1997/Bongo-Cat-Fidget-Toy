@@ -44,7 +44,42 @@ static void APP_GpioConfig(void);
 
 int I2C_ScanBus(void);
 
+void run_bongo_loop(void)
+{
+    uint8_t left_state = 0;
+    uint8_t right_state = 0;
 
+    int32_t tap_left_cntr  = 0;
+    int32_t tap_right_cntr = 0;
+    int32_t idle_cntr      = 0;
+
+    while (1)
+    {
+        readPins();
+
+        update_tap_speed();
+        update_saved_indicator();
+        handle_display_mode_switch();
+        handle_invert_toggle();
+
+        if (!check_idle_transition(&idle_cntr, &left_state, &right_state)) {
+            handle_paw_animations(
+                &left_state,
+                &right_state,
+                &tap_left_cntr,
+                &tap_right_cntr,
+                &idle_cntr
+            );
+        }
+
+        handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
+
+        update_display_with_overlays();
+        check_and_save();
+
+        HAL_Delay(10);
+    }
+}
   
 int main(void)
 {
@@ -70,8 +105,8 @@ int main(void)
 
   while (1)
   {
-    HAL_Delay(250);   
-    HAL_GPIO_TogglePin(GPIOB, GPIO_PIN_5);    
+    run_bongo_loop(); 
+    
   }
 }
 

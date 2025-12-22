@@ -3,6 +3,44 @@
 /* ===== Internals ===== */
 const uint8_t *current_frame = NULL;
 
+/* ==== Globals provided in other modules ==== */
+volatile int sw_state_left;
+volatile int sw_state_right;
+
+uint8_t     idle_cnt;
+Settings_t  settings;
+
+uint32_t    both_pressed_timer;
+uint32_t    invert_timer;
+
+uint32_t    last_save_time;
+volatile uint8_t data_changed;
+
+uint32_t    saved_indicator_timer;
+uint8_t     show_saved_indicator;
+
+/* current frame pointer for redraws */
+const uint8_t *current_frame;
+
+/* tap-speed state */
+uint32_t    tap_timestamps[TAP_HISTORY_SIZE];
+uint8_t     tap_history_index;
+uint16_t    current_tap_speed_x10;
+
+uint32_t    angry_mode_timer;
+
+/* Image assets (bitmaps) provided elsewhere */
+const uint8_t img_tap_left[];
+const uint8_t img_tap_right[];
+const uint8_t img_both_down_alt[];
+const uint8_t img_both_down_alt_angry[];
+const uint8_t img_right_down_alt[];
+const uint8_t img_right_down_alt_angry[];
+const uint8_t img_left_down_alt[];
+const uint8_t img_left_down_alt_angry[];
+const uint8_t img_both_up[];
+const uint8_t img_both_up_angry[];
+
 /* ==== Checksum ==== */
 uint32_t calculate_checksum(Settings_t *s) {
     uint32_t checksum = 0x12345678u;

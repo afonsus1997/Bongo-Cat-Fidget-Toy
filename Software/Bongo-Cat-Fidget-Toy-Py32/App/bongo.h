@@ -4,7 +4,7 @@
 /* C std */
 #include <stdint.h>
 #include <stddef.h>
-#include <stdio.h>
+// #include <stdio.h>
 #include <string.h>
 
 /* HAL / device */
@@ -15,6 +15,9 @@
 /* Display */
 #include "ssd1306.h"
 #include "ssd1306_fonts.h"
+
+#include "bitmaps.h"
+#include "bitmaps_angry.h"
 
 /* ==== Tunables ==== */
 #define IDLE_TIME               2000
