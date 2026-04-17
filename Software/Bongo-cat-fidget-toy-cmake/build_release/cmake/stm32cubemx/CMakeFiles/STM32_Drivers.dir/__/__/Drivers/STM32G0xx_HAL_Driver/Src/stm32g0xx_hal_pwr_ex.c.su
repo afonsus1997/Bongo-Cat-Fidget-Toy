@@ -1,0 +1,16 @@
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:136:6:HAL_PWREx_EnableBatteryCharging	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:151:6:HAL_PWREx_DisableBatteryCharging	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:425:6:HAL_PWREx_EnableInternalWakeUpLine	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:434:6:HAL_PWREx_DisableInternalWakeUpLine	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:458:19:HAL_PWREx_EnableGPIOPullUp	4	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:520:19:HAL_PWREx_DisableGPIOPullUp	4	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:582:19:HAL_PWREx_EnableGPIOPullDown	4	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:644:19:HAL_PWREx_DisableGPIOPullDown	4	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:697:6:HAL_PWREx_EnablePullUpPullDownConfig	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:708:6:HAL_PWREx_DisablePullUpPullDownConfig	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:748:6:HAL_PWREx_EnableFlashPowerDown	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:766:6:HAL_PWREx_DisableFlashPowerDown	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:780:10:HAL_PWREx_GetVoltageRange	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:806:19:HAL_PWREx_ControlVoltageScaling	8	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:847:6:HAL_PWREx_EnableLowPowerRunMode	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Drivers/STM32G0xx_HAL_Driver/Src/stm32g0xx_hal_pwr_ex.c:862:19:HAL_PWREx_DisableLowPowerRunMode	8	static

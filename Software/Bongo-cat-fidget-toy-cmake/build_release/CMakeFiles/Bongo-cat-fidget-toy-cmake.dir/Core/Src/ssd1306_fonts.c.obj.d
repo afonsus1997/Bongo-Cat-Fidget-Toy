@@ -1,0 +1,41 @@
+CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj: \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/ssd1306_fonts.c \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Inc/ssd1306_fonts.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Inc/ssd1306.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/13.2.1/include/stdint.h \
+ /usr/include/newlib/_ansi.h /usr/include/newlib/newlib.h \
+ /usr/include/newlib/_newlib_version.h /usr/include/newlib/sys/config.h \
+ /usr/include/newlib/machine/ieeefp.h /usr/include/newlib/sys/features.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Inc/ssd1306_conf.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Inc/stm32g0xx_hal_conf.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_rcc.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_def.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G0xx/Include/stm32g0xx.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G0xx/Include/stm32g030xx.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Include/core_cm0plus.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_version.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_compiler.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Include/cmsis_gcc.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Include/mpu_armv7.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/CMSIS/Device/ST/STM32G0xx/Include/system_stm32g0xx.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_ll_rcc.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_rcc_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_gpio.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_gpio_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_dma.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_ll_dma.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_ll_dmamux.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_dma_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_cortex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_exti.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_flash_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_i2c.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_i2c_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_pwr_ex.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_tim.h \
+ /home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/cmake/stm32cubemx/../../Drivers/STM32G0xx_HAL_Driver/Inc/stm32g0xx_hal_tim_ex.h
