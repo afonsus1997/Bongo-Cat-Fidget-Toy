@@ -52,6 +52,12 @@ default.size.stdout \
 OBJDUMP_LIST += \
 Bongo-cat-fidget-toy.list \
 
+OBJCOPY_HEX += \
+Bongo-cat-fidget-toy.hex \
+
+OBJCOPY_BIN += \
+Bongo-cat-fidget-toy.bin \
+
 
 # All Target
 all: main-build
@@ -75,12 +81,22 @@ Bongo-cat-fidget-toy.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_
 	@echo 'Finished building: $@'
 	@echo ' '
 
+Bongo-cat-fidget-toy.hex: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O ihex $(EXECUTABLES) "Bongo-cat-fidget-toy.hex"
+	@echo 'Finished building: $@'
+	@echo ' '
+
+Bongo-cat-fidget-toy.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Bongo-cat-fidget-toy.bin"
+	@echo 'Finished building: $@'
+	@echo ' '
+
 # Other Targets
 clean:
-	-$(RM) Bongo-cat-fidget-toy.elf Bongo-cat-fidget-toy.list Bongo-cat-fidget-toy.map default.size.stdout
+	-$(RM) Bongo-cat-fidget-toy.bin Bongo-cat-fidget-toy.elf Bongo-cat-fidget-toy.hex Bongo-cat-fidget-toy.list Bongo-cat-fidget-toy.map default.size.stdout
 	-@echo ' '
 
-secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
+secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_HEX) $(OBJCOPY_BIN)
 
 fail-specified-linker-script-missing:
 	@echo 'Error: Cannot find the specified linker script. Check the linker settings in the build configuration.'

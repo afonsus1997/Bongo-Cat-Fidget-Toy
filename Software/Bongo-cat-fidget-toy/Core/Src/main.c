@@ -254,8 +254,8 @@ void draw_animation_transparent(char* frame){
 }
 
 void readPins(){
-    sw_state_left = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
-    sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
+    sw_state_left = !HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
+    sw_state_right = !HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
 }
 
 // Display tap count as overlay
@@ -814,7 +814,6 @@ int main(void)
     case SWITCH:
         // Handle special button combos
         handle_display_mode_switch();
-        handle_invert_toggle();
 
         // Check for idle transition
         if(check_idle_transition(&idle_cntr, &left_state, &right_state)) {

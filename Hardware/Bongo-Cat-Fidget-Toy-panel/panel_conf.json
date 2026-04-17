@@ -2,7 +2,7 @@
     "layout": {
         "hspace": "2mm",
         "vspace": "2mm",
-        "rows": "2",
+        "rows": "3",
         "cols": "4"
     },
     "tabs": {
@@ -10,11 +10,21 @@
     },
     "cuts": {
         "type": "vcuts",
-        "endprolongation": "10mm"
+        "endprolongation": "10mm",
+        "layer": "User.3"
     },
     "framing": {
         "type": "railstb",
-        "vspace": "3mm"
+        "vspace": "3mm",
+        "maxtotalheight": "500mm"
+    },
+    "tooling": {
+        "type": "3hole"
+    },
+    "fiducials": {
+        "type": "4fid",
+        "hoffset": "2.5mm",
+        "voffset": "2.5mm"
     },
     "text": {
         "type": "simple",

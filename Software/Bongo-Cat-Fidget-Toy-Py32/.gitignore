@@ -1,0 +1,42 @@
+# ---- CMake build outputs ----
+build/
+buildtest/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Ninja/other build dirs
+*.ninja
+.ninja_deps
+.ninja_log
+
+# ---- Compiled binaries ----
+*.elf
+*.bin
+*.hex
+*.map
+
+# ---- Object / dependency files ----
+*.o
+*.obj
+*.a
+*.lib
+*.out
+*.d
+
+# ---- Tool / IDE caches ----
+.cache/
+*.swp
+*.swo
+*.log
+
+# VSCode / CLion / Eclipse project settings
+.idea/
+.settings/
+.cproject
+.project
+
+# ---- Misc ----
+# Ignore pyocd.yaml if it’s auto-generated
+Misc/pyocd.yaml
