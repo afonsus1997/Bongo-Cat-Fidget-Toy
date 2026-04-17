@@ -1,0 +1,9 @@
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:11:6:draw_animation	16	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:17:6:draw_animation_no_clear	16	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:22:6:draw_animation_erase	16	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:26:6:draw_animation_transparent	16	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:30:6:handle_tap_decay	16	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:49:6:handle_paw_animations	32	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:97:6:draw_idle_frame	8	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:101:9:idle_frame_count	0	static
+/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/animation.c:105:9:check_idle_transition	16	static
