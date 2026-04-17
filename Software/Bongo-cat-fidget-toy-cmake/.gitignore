@@ -1,0 +1,18 @@
+build
+mx.scratch
+!.settings
+
+.settings/
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+ 
+# Clangd
+.cache/
+compile_commands.json
+ 
+# OS
+.DS_Store
+Thumbs.db
