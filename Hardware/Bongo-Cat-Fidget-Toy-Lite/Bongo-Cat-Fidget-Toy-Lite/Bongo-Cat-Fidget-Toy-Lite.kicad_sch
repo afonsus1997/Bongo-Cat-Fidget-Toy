@@ -3497,9 +3497,9 @@
 		)
 		(uuid "4c8c8a8b-c8d1-4c7c-9f60-a6d599c67a95")
 	)
-	(text "- Has internal pullup"
+	(text "maybe change to PY32F030F28P6TU"
 		(exclude_from_sim no)
-		(at 60.452 178.308 0)
+		(at 66.548 177.8 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -5357,6 +5357,17 @@
 			)
 		)
 		(property "Description" "Puya PY32 F003 ARM Cortex-M0+ MCU 32MHZ 8K+64K 1.7V-5.5V QFN20"
+			(at 78.74 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "LCSC" "C3018714"
 			(at 78.74 140.97 0)
 			(hide yes)
 			(show_name no)
