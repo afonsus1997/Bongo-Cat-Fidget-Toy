@@ -4,7 +4,7 @@
 /* C std */
 #include <stdint.h>
 #include <stddef.h>
-// #include <stdio.h>
+#include <stdio.h>
 #include <string.h>
 
 /* HAL / device */
@@ -18,6 +18,12 @@
 
 #include "bitmaps.h"
 #include "bitmaps_angry.h"
+
+/* ==== Button GPIO pins ==== */
+#define SW_LEFT_GPIO_Port   GPIOA
+#define SW_LEFT_Pin         GPIO_PIN_6
+#define SW_RIGHT_GPIO_Port  GPIOB
+#define SW_RIGHT_Pin        GPIO_PIN_0
 
 /* ==== Tunables ==== */
 #define IDLE_TIME               2000
@@ -117,6 +123,8 @@ void draw_animation(const uint8_t *frame);
 void draw_animation_no_clear(const uint8_t *frame);
 void draw_animation_erase(const uint8_t *frame);
 void draw_animation_transparent(const uint8_t *frame);
+void draw_idle_frame(uint8_t idx);
+uint8_t idle_frame_count(void);
 
 void readPins(void);
 

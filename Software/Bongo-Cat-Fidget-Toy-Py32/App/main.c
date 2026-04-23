@@ -30,25 +30,22 @@
 
 I2C_HandleTypeDef I2cHandle;
 
-#define DARA_LENGTH      15                 
-#define I2C_ADDRESS      0xA0               
-#define I2C_SPEEDCLOCK   100000             
-#define I2C_DUTYCYCLE    I2C_DUTYCYCLE_16_9 
+#define I2C_ADDRESS      0xA0
+#define I2C_SPEEDCLOCK   100000
+#define I2C_DUTYCYCLE    I2C_DUTYCYCLE_16_9
 
 #define OLED_RST_GPIO_Port GPIOA
 #define OLED_RST_Pin GPIO_PIN_12
 
 static void APP_I2cConfig(void);
-
 static void APP_GpioConfig(void);
-
-int I2C_ScanBus(void);
 
 void run_bongo_loop(void)
 {
-    uint8_t left_state = 0;
+    state_e state = IDLE;
+    uint8_t idle_cnt = 0;
+    uint8_t left_state  = 0;
     uint8_t right_state = 0;
-
     int32_t tap_left_cntr  = 0;
     int32_t tap_right_cntr = 0;
     int32_t idle_cntr      = 0;
@@ -56,73 +53,90 @@ void run_bongo_loop(void)
     while (1)
     {
         readPins();
-
-        update_tap_speed();
-        update_saved_indicator();
-        handle_display_mode_switch();
-        handle_invert_toggle();
-
-        if (!check_idle_transition(&idle_cntr, &left_state, &right_state)) {
-            handle_paw_animations(
-                &left_state,
-                &right_state,
-                &tap_left_cntr,
-                &tap_right_cntr,
-                &idle_cntr
-            );
-        }
-
-        handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
-
-        update_display_with_overlays();
         check_and_save();
+        update_saved_indicator();
+        update_tap_speed();
 
-        HAL_Delay(10);
+        switch (state) {
+        case IDLE:
+            if (!NONE_PRESSED) {
+                state = SWITCH;
+            } else {
+                draw_idle_frame(idle_cnt);
+                update_display_with_overlays();
+                idle_cnt = (idle_cnt + 1) % idle_frame_count();
+                HAL_Delay(100);
+            }
+            break;
+
+        case SWITCH:
+            handle_display_mode_switch();
+            handle_invert_toggle();
+
+            if (check_idle_transition(&idle_cntr, &left_state, &right_state)) {
+                state = IDLE;
+                idle_cnt = 0;
+            } else if (!NONE_PRESSED) {
+                handle_paw_animations(
+                    &left_state, &right_state,
+                    &tap_left_cntr, &tap_right_cntr,
+                    &idle_cntr
+                );
+            }
+
+            handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
+            update_display_with_overlays();
+            break;
+        }
     }
 }
   
 int main(void)
 {
-  HAL_Init();                                  
+  HAL_Init();
   APP_GpioConfig();
   APP_I2cConfig();
 
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_RESET);
-  HAL_Delay(100);
+  HAL_Delay(10);
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
-  HAL_Delay(100);
+  HAL_Delay(10);
   ssd1306_Init();
-  
-  
 
-  while (HAL_I2C_GetState(&I2cHandle) != HAL_I2C_STATE_READY);
-  volatile int status = 0;
-  status = I2C_ScanBus();
+  load_settings();
+  ssd1306_InvertDisplay(settings.display_inverted);
+  last_save_time = HAL_GetTick();
 
-  ssd1306_Init();
-  ssd1306_Line(0,0,128,32,0x01);
-  ssd1306_UpdateScreen();
+  handle_boot_overrides();
 
-  while (1)
-  {
-    run_bongo_loop(); 
-    
-  }
+  run_bongo_loop();
 }
 
 static void APP_GpioConfig(void)
 {
   GPIO_InitTypeDef  GPIO_InitStruct;
 
-  __HAL_RCC_GPIOB_CLK_ENABLE();                          
-  __HAL_RCC_GPIOA_CLK_ENABLE();                          
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
 
-  GPIO_InitStruct.Pin = GPIO_PIN_12;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  /* OLED reset */
+  GPIO_InitStruct.Pin   = OLED_RST_Pin;
+  GPIO_InitStruct.Mode  = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull  = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(OLED_RST_GPIO_Port, &GPIO_InitStruct);
 
+  /* SW_LEFT: PA6, active-low with internal pull-up */
+  GPIO_InitStruct.Pin   = SW_LEFT_Pin;
+  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull  = GPIO_PULLUP;
+  HAL_GPIO_Init(SW_LEFT_GPIO_Port, &GPIO_InitStruct);
+
+  /* SW_RIGHT: PB0, active-low with internal pull-up */
+  GPIO_InitStruct.Pin   = SW_RIGHT_Pin;
+  GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull  = GPIO_PULLUP;
+  HAL_GPIO_Init(SW_RIGHT_GPIO_Port, &GPIO_InitStruct);
 }
 
 static void APP_I2cConfig(void){
@@ -153,30 +167,5 @@ void assert_failed(uint8_t *file, uint32_t line)
   }
 }
 #endif /* USE_FULL_ASSERT */
-
-int I2C_ScanBus(void)
-{
-  HAL_StatusTypeDef result;
-  uint8_t i;
-  char msg[32];
-
-  for (i = 1; i < 128; i++)
-  {
-    uint8_t address = i << 1; // 7-bit address shifted left (HAL expects 8-bit)
-    result = HAL_I2C_IsDeviceReady(&I2cHandle, address, 2, 10);
-
-    if (result == HAL_OK)
-    {
-      // Device found
-      return 1;
-    }
-    else
-    {
-      // No ACK received
-      HAL_Delay(2);
-    }
-  }
-  return 0;
-}
 
 /************************ (C) COPYRIGHT Puya *****END OF FILE******************/

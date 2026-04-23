@@ -1,9 +1,8 @@
 #include "bongo.h"
 
-/* ===== Internals ===== */
+/* ===== Globals ===== */
 const uint8_t *current_frame = NULL;
 
-/* ==== Globals provided in other modules ==== */
 volatile int sw_state_left;
 volatile int sw_state_right;
 
@@ -19,27 +18,11 @@ volatile uint8_t data_changed;
 uint32_t    saved_indicator_timer;
 uint8_t     show_saved_indicator;
 
-/* current frame pointer for redraws */
-const uint8_t *current_frame;
-
-/* tap-speed state */
 uint32_t    tap_timestamps[TAP_HISTORY_SIZE];
 uint8_t     tap_history_index;
 uint16_t    current_tap_speed_x10;
 
 uint32_t    angry_mode_timer;
-
-/* Image assets (bitmaps) provided elsewhere */
-const uint8_t img_tap_left[];
-const uint8_t img_tap_right[];
-const uint8_t img_both_down_alt[];
-const uint8_t img_both_down_alt_angry[];
-const uint8_t img_right_down_alt[];
-const uint8_t img_right_down_alt_angry[];
-const uint8_t img_left_down_alt[];
-const uint8_t img_left_down_alt_angry[];
-const uint8_t img_both_up[];
-const uint8_t img_both_up_angry[];
 
 /* ==== Checksum ==== */
 uint32_t calculate_checksum(Settings_t *s) {
@@ -139,11 +122,17 @@ void draw_animation_transparent(const uint8_t *frame) {
     ssd1306_DrawBitmap(0, 0, frame, 128, 64, White);
 }
 
+void draw_idle_frame(uint8_t idx) {
+    draw_animation(ani_idle[idx % (uint8_t)ani_idle_LEN]);
+}
+
+uint8_t idle_frame_count(void) {
+    return (uint8_t)ani_idle_LEN;
+}
+
 void readPins(void) {
-    /* Example if you wire them:
-       sw_state_left  = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port, SW_LEFT_Pin);
-       sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
-    */
+    sw_state_left  = HAL_GPIO_ReadPin(SW_LEFT_GPIO_Port,  SW_LEFT_Pin);
+    sw_state_right = HAL_GPIO_ReadPin(SW_RIGHT_GPIO_Port, SW_RIGHT_Pin);
 }
 
 /* ===== Overlays ===== */
