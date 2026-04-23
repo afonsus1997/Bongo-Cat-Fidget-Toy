@@ -117,7 +117,6 @@ static void APP_GpioConfig(void)
   GPIO_InitTypeDef  GPIO_InitStruct;
 
   __HAL_RCC_GPIOA_CLK_ENABLE();
-  __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /* OLED reset */
   GPIO_InitStruct.Pin   = OLED_RST_Pin;
@@ -126,16 +125,16 @@ static void APP_GpioConfig(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(OLED_RST_GPIO_Port, &GPIO_InitStruct);
 
-  /* SW_LEFT: PA6, active-low with internal pull-up */
+  /* SW_LEFT: PA0, active-high with internal pull-down */
   GPIO_InitStruct.Pin   = SW_LEFT_Pin;
   GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull  = GPIO_PULLUP;
+  GPIO_InitStruct.Pull  = GPIO_PULLDOWN;
   HAL_GPIO_Init(SW_LEFT_GPIO_Port, &GPIO_InitStruct);
 
-  /* SW_RIGHT: PB0, active-low with internal pull-up */
+  /* SW_RIGHT: PA1, active-high with internal pull-down */
   GPIO_InitStruct.Pin   = SW_RIGHT_Pin;
   GPIO_InitStruct.Mode  = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull  = GPIO_PULLUP;
+  GPIO_InitStruct.Pull  = GPIO_PULLDOWN;
   HAL_GPIO_Init(SW_RIGHT_GPIO_Port, &GPIO_InitStruct);
 }
 

@@ -21,19 +21,19 @@
 
 /* ==== Button GPIO pins ==== */
 #define SW_LEFT_GPIO_Port   GPIOA
-#define SW_LEFT_Pin         GPIO_PIN_6
-#define SW_RIGHT_GPIO_Port  GPIOB
-#define SW_RIGHT_Pin        GPIO_PIN_0
+#define SW_LEFT_Pin         GPIO_PIN_0
+#define SW_RIGHT_GPIO_Port  GPIOA
+#define SW_RIGHT_Pin        GPIO_PIN_1
 
 /* ==== Tunables ==== */
 #define IDLE_TIME               2000
 #define TAP_DECAY_TIME          200
 #define RESET_CONFIRM_TIMEOUT   10000
 
-#define LEFT_PRESSED  (sw_state_left == 0 && sw_state_right == 1)
-#define RIGHT_PRESSED (sw_state_left == 1 && sw_state_right == 0)
-#define BOTH_PRESSED  (sw_state_left == 0 && sw_state_right == 0)
-#define NONE_PRESSED  (sw_state_left == 1 && sw_state_right == 1)
+#define LEFT_PRESSED  (sw_state_left == 1 && sw_state_right == 0)
+#define RIGHT_PRESSED (sw_state_left == 0 && sw_state_right == 1)
+#define BOTH_PRESSED  (sw_state_left == 1 && sw_state_right == 1)
+#define NONE_PRESSED  (sw_state_left == 0 && sw_state_right == 0)
 
 /* Flash placement (last 128-byte page of 32KB PY32F030x6) */
 #define FLASH_USER_START_ADDR   0x08007F80
