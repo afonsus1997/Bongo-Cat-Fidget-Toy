@@ -21,7 +21,7 @@
   */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "py32f030x6.h"
+#include "py32f003x6.h"
 #include "py32f0xx_hal_gpio.h"
 #include "ssd1306.h"
 #include "ssd1306_conf.h"
@@ -31,7 +31,7 @@
 I2C_HandleTypeDef I2cHandle;
 
 #define I2C_ADDRESS      0xA0
-#define I2C_SPEEDCLOCK   100000
+#define I2C_SPEEDCLOCK   400000          /* 400kHz fast mode to match STM32 */
 #define I2C_DUTYCYCLE    I2C_DUTYCYCLE_16_9
 
 #define OLED_RST_GPIO_Port GPIOA

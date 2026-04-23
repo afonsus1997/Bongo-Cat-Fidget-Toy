@@ -44,7 +44,7 @@ set(ENABLE_SYSTEM_XXX_C ON CACHE BOOL "Enable system_XXX.c")
 set(ENABLE_STARTUP_FILE ON CACHE BOOL "Enable startup file")
 set(ENABLE_LD_SCRIPT ON CACHE BOOL "Enable linker script")
 set(ENABLE_DEBUG_DEFINE ON CACHE BOOL "Enable debug define")
-set(MCU_MODEL "PY32F030x6" CACHE STRING "MCU model, like PY32F030x6")
+set(MCU_MODEL "PY32F003x6" CACHE STRING "MCU model, like PY32F030x6")
 add_subdirectory(Drivers)
 
 set(AUTO_GENERATE_PYOCD_YAML ON)

@@ -35,9 +35,9 @@
 #define BOTH_PRESSED  (sw_state_left == 0 && sw_state_right == 0)
 #define NONE_PRESSED  (sw_state_left == 1 && sw_state_right == 1)
 
-/* Flash placement (last 2KB page of 64KB device) */
-#define FLASH_USER_START_ADDR   0x0800F800
-#define FLASH_USER_END_ADDR     0x0800FFFF
+/* Flash placement (last 128-byte page of 32KB PY32F030x6) */
+#define FLASH_USER_START_ADDR   0x08007F80
+#define FLASH_USER_END_ADDR     0x08007FFF
 
 #ifndef FLASH_PAGE_SIZE
 /* PY32F030x8 uses 2KB pages */
