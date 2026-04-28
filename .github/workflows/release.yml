@@ -1,0 +1,31 @@
+name: Release Firmware
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install toolchain
+        run: sudo apt-get install -y gcc-arm-none-eabi ninja-build
+
+      - name: Build
+        working-directory: Software/Bongo-cat-fidget-toy-cmake
+        run: |
+          cmake --preset Release
+          cmake --build --preset Release
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          draft: true
+          files: |
+            Software/Bongo-cat-fidget-toy-cmake/build_release/*.hex
+            Software/Bongo-cat-fidget-toy-cmake/build_release/*.bin
