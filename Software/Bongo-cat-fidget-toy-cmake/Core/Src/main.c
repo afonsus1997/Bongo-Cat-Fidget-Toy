@@ -101,6 +101,7 @@ int main(void)
   HAL_Delay(10);
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
+  ssd1306_SetContrast(DISPLAY_CONTRAST);
 
   tap_tracker_reset();
   last_save_time = HAL_GetTick();
@@ -130,6 +131,7 @@ int main(void)
     switch (state) {
     case IDLE:
         if (sw_state_left == 0 || sw_state_right == 0) {
+            if (!ssd1306_GetDisplayOn()) ssd1306_SetDisplayOn(1);
             state        = SWITCH;
             idle_since   = 0;
         } else {
@@ -139,7 +141,11 @@ int main(void)
                 sleep_zzz_frame = 0;
             }
 
-            if (HAL_GetTick() - idle_since >= SLEEP_DELAY) {
+            uint32_t elapsed = HAL_GetTick() - idle_since;
+
+            if (elapsed >= SLEEP_DELAY + DISPLAY_OFF_DELAY) {
+                if (ssd1306_GetDisplayOn()) ssd1306_SetDisplayOn(0);
+            } else if (elapsed >= SLEEP_DELAY) {
                 draw_sleep_frame();
                 draw_zzz_overlay(sleep_zzz_frame);
                 update_display_with_overlays();
@@ -152,7 +158,9 @@ int main(void)
                 update_display_with_overlays();
                 idle_cnt = (idle_cnt + 1) % idle_frame_count();
             }
-            HAL_Delay(100);
+
+            uint32_t t = HAL_GetTick();
+            while (HAL_GetTick() - t < 100) __WFI();
         }
         break;
 
@@ -210,18 +218,14 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE1);
+  // SCALE2 supports up to 16MHz — no PLL needed, saves ~2mA vs SCALE1+PLL
+  HAL_PWREx_ControlVoltageScaling(PWR_REGULATOR_VOLTAGE_SCALE2);
 
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI;
   RCC_OscInitStruct.HSIState = RCC_HSI_ON;
   RCC_OscInitStruct.HSIDiv = RCC_HSI_DIV1;
   RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSI;
-  RCC_OscInitStruct.PLL.PLLM = RCC_PLLM_DIV1;
-  RCC_OscInitStruct.PLL.PLLN = 8;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLR = RCC_PLLR_DIV2;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
   if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
   {
     Error_Handler();
@@ -229,9 +233,9 @@ void SystemClock_Config(void)
 
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV2;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;  // 16MHz, no PLL
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;      // HCLK = 16MHz
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;       // PCLK1 = 16MHz
 
   if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_1) != HAL_OK)
   {
@@ -301,7 +305,7 @@ static void MX_TIM14_Init(void)
   htim14.Instance = TIM14;
   htim14.Init.Prescaler = 32-1;
   htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim14.Init.Period = 10000-1;
+  htim14.Init.Period = 5000-1;  // 16MHz / 32 / 5000 = 100Hz (10ms)
   htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim14) != HAL_OK)

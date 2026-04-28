@@ -3,10 +3,12 @@
 
 #include "main.h"
 
-#define IDLE_TIME        2000
-#define TAP_DECAY_TIME   200
-#define SLEEP_DELAY      15000
-#define SLEEP_ZZZ_PERIOD 500
+#define IDLE_TIME            2000
+#define TAP_DECAY_TIME       200
+#define SLEEP_DELAY          15000
+#define SLEEP_ZZZ_PERIOD     500
+#define DISPLAY_OFF_DELAY    45000
+#define DISPLAY_CONTRAST     0x7F
 
 extern const unsigned char *current_frame;
 

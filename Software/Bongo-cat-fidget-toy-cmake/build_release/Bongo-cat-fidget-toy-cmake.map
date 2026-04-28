@@ -981,8 +981,6 @@ Discarded input sections
                 0x00000000       0x84 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
  .text.ssd1306_DrawRectangle
                 0x00000000       0x46 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
- .text.ssd1306_GetDisplayOn
-                0x00000000        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
  .text          0x00000000        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
  .data          0x00000000        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
  .bss           0x00000000        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
@@ -1534,7 +1532,7 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
                 0x08000000                g_pfnVectors
                 0x080000b8                        . = ALIGN (0x4)
 
-.text           0x080000b8     0x3720
+.text           0x080000b8     0x3758
                 0x080000b8                        . = ALIGN (0x4)
  *(.text)
  .text          0x080000b8       0x48 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
@@ -1693,449 +1691,453 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
                 0x080018d0       0x14 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
                 0x080018d0                HAL_TIM_PeriodElapsedCallback
  .text.SystemClock_Config
-                0x080018e4       0x78 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
+                0x080018e4       0x5e CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
                 0x080018e4                SystemClock_Config
+ *fill*         0x08001942        0x2 
  .text.startup.main
-                0x0800195c      0x33c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
-                0x0800195c                main
+                0x08001944      0x380 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
+                0x08001944                main
  .text.Error_Handler
-                0x08001c98        0x4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
-                0x08001c98                Error_Handler
+                0x08001cc4        0x4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/main.c.obj
+                0x08001cc4                Error_Handler
  .text.NMI_Handler
-                0x08001c9c        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001c9c                NMI_Handler
+                0x08001cc8        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cc8                NMI_Handler
  .text.HardFault_Handler
-                0x08001c9e        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001c9e                HardFault_Handler
+                0x08001cca        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cca                HardFault_Handler
  .text.SVC_Handler
-                0x08001ca0        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001ca0                SVC_Handler
+                0x08001ccc        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001ccc                SVC_Handler
  .text.PendSV_Handler
-                0x08001ca2        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001ca2                PendSV_Handler
+                0x08001cce        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cce                PendSV_Handler
  .text.SysTick_Handler
-                0x08001ca4        0x8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001ca4                SysTick_Handler
+                0x08001cd0        0x8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cd0                SysTick_Handler
  .text.RCC_IRQHandler
-                0x08001cac        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001cac                RCC_IRQHandler
- *fill*         0x08001cae        0x2 
+                0x08001cd8        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cd8                RCC_IRQHandler
+ *fill*         0x08001cda        0x2 
  .text.TIM14_IRQHandler
-                0x08001cb0       0x10 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
-                0x08001cb0                TIM14_IRQHandler
+                0x08001cdc       0x10 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_it.c.obj
+                0x08001cdc                TIM14_IRQHandler
  .text.HAL_MspInit
-                0x08001cc0       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
-                0x08001cc0                HAL_MspInit
+                0x08001cec       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
+                0x08001cec                HAL_MspInit
  .text.HAL_I2C_MspInit
-                0x08001cf0       0xac CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
-                0x08001cf0                HAL_I2C_MspInit
+                0x08001d1c       0xac CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
+                0x08001d1c                HAL_I2C_MspInit
  .text.HAL_TIM_Base_MspInit
-                0x08001d9c       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
-                0x08001d9c                HAL_TIM_Base_MspInit
- .text._sbrk    0x08001dc8       0x40 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/sysmem.c.obj
-                0x08001dc8                _sbrk
+                0x08001dc8       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/stm32g0xx_hal_msp.c.obj
+                0x08001dc8                HAL_TIM_Base_MspInit
+ .text._sbrk    0x08001df4       0x40 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/sysmem.c.obj
+                0x08001df4                _sbrk
  .text.Reset_Handler
-                0x08001e08       0x50 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/startup_stm32g030xx.s.obj
-                0x08001e08                Reset_Handler
+                0x08001e34       0x50 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/startup_stm32g030xx.s.obj
+                0x08001e34                Reset_Handler
  .text.Default_Handler
-                0x08001e58        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/startup_stm32g030xx.s.obj
-                0x08001e58                TIM1_CC_IRQHandler
-                0x08001e58                I2C1_IRQHandler
-                0x08001e58                RTC_TAMP_IRQHandler
-                0x08001e58                SPI1_IRQHandler
-                0x08001e58                DMA1_Ch4_5_DMAMUX1_OVR_IRQHandler
-                0x08001e58                EXTI2_3_IRQHandler
-                0x08001e58                ADC1_IRQHandler
-                0x08001e58                I2C2_IRQHandler
-                0x08001e58                TIM17_IRQHandler
-                0x08001e58                TIM16_IRQHandler
-                0x08001e58                TIM3_IRQHandler
-                0x08001e58                EXTI4_15_IRQHandler
-                0x08001e58                DMA1_Channel1_IRQHandler
-                0x08001e58                Default_Handler
-                0x08001e58                EXTI0_1_IRQHandler
-                0x08001e58                SPI2_IRQHandler
-                0x08001e58                WWDG_IRQHandler
-                0x08001e58                DMA1_Channel2_3_IRQHandler
-                0x08001e58                USART2_IRQHandler
-                0x08001e58                FLASH_IRQHandler
-                0x08001e58                USART1_IRQHandler
-                0x08001e58                TIM1_BRK_UP_TRG_COM_IRQHandler
- *fill*         0x08001e5a        0x2 
+                0x08001e84        0x2 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/startup_stm32g030xx.s.obj
+                0x08001e84                TIM1_CC_IRQHandler
+                0x08001e84                I2C1_IRQHandler
+                0x08001e84                RTC_TAMP_IRQHandler
+                0x08001e84                SPI1_IRQHandler
+                0x08001e84                DMA1_Ch4_5_DMAMUX1_OVR_IRQHandler
+                0x08001e84                EXTI2_3_IRQHandler
+                0x08001e84                ADC1_IRQHandler
+                0x08001e84                I2C2_IRQHandler
+                0x08001e84                TIM17_IRQHandler
+                0x08001e84                TIM16_IRQHandler
+                0x08001e84                TIM3_IRQHandler
+                0x08001e84                EXTI4_15_IRQHandler
+                0x08001e84                DMA1_Channel1_IRQHandler
+                0x08001e84                Default_Handler
+                0x08001e84                EXTI0_1_IRQHandler
+                0x08001e84                SPI2_IRQHandler
+                0x08001e84                WWDG_IRQHandler
+                0x08001e84                DMA1_Channel2_3_IRQHandler
+                0x08001e84                USART2_IRQHandler
+                0x08001e84                FLASH_IRQHandler
+                0x08001e84                USART1_IRQHandler
+                0x08001e84                TIM1_BRK_UP_TRG_COM_IRQHandler
+ *fill*         0x08001e86        0x2 
  .text.ssd1306_WriteCommand
-                0x08001e5c       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001e5c                ssd1306_WriteCommand
+                0x08001e88       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001e88                ssd1306_WriteCommand
  .text.ssd1306_WriteData
-                0x08001e84       0x24 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001e84                ssd1306_WriteData
+                0x08001eb0       0x24 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001eb0                ssd1306_WriteData
  .text.ssd1306_Fill
-                0x08001ea8       0x1c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001ea8                ssd1306_Fill
+                0x08001ed4       0x1c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001ed4                ssd1306_Fill
  .text.ssd1306_UpdateScreen
-                0x08001ec4       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001ec4                ssd1306_UpdateScreen
+                0x08001ef0       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001ef0                ssd1306_UpdateScreen
  .text.ssd1306_DrawPixel
-                0x08001ef4       0x34 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001ef4                ssd1306_DrawPixel
+                0x08001f20       0x34 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001f20                ssd1306_DrawPixel
  .text.ssd1306_WriteChar
-                0x08001f28       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001f28                ssd1306_WriteChar
+                0x08001f54       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08001f54                ssd1306_WriteChar
  .text.ssd1306_WriteString
-                0x08001fe4       0x32 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08001fe4                ssd1306_WriteString
- *fill*         0x08002016        0x2 
+                0x08002010       0x32 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08002010                ssd1306_WriteString
+ *fill*         0x08002042        0x2 
  .text.ssd1306_SetCursor
-                0x08002018        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08002018                ssd1306_SetCursor
+                0x08002044        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08002044                ssd1306_SetCursor
  .text.ssd1306_FillRectangle
-                0x08002024       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08002024                ssd1306_FillRectangle
+                0x08002050       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08002050                ssd1306_FillRectangle
  .text.ssd1306_InvertRectangle
-                0x08002080       0xb4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08002080                ssd1306_InvertRectangle
+                0x080020ac       0xb4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x080020ac                ssd1306_InvertRectangle
  .text.ssd1306_DrawBitmap
-                0x08002134       0x78 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x08002134                ssd1306_DrawBitmap
+                0x08002160       0x78 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08002160                ssd1306_DrawBitmap
  .text.ssd1306_SetContrast
-                0x080021ac       0x12 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x080021ac                ssd1306_SetContrast
- *fill*         0x080021be        0x2 
+                0x080021d8       0x12 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x080021d8                ssd1306_SetContrast
+ *fill*         0x080021ea        0x2 
  .text.ssd1306_SetDisplayOn
-                0x080021c0       0x1c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x080021c0                ssd1306_SetDisplayOn
+                0x080021ec       0x1c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x080021ec                ssd1306_SetDisplayOn
  .text.ssd1306_Init
-                0x080021dc       0xc8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x080021dc                ssd1306_Init
+                0x08002208       0xc8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x08002208                ssd1306_Init
+ .text.ssd1306_GetDisplayOn
+                0x080022d0        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x080022d0                ssd1306_GetDisplayOn
  .text.ssd1306_InvertDisplay
-                0x080022a4       0x12 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
-                0x080022a4                ssd1306_InvertDisplay
- *fill*         0x080022b6        0x2 
+                0x080022dc       0x12 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306.c.obj
+                0x080022dc                ssd1306_InvertDisplay
+ *fill*         0x080022ee        0x2 
  .text.readPins
-                0x080022b8       0x34 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/buttons.c.obj
-                0x080022b8                readPins
+                0x080022f0       0x34 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/buttons.c.obj
+                0x080022f0                readPins
  .text.calculate_checksum
-                0x080022ec       0x20 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x080022ec                calculate_checksum
+                0x08002324       0x20 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x08002324                calculate_checksum
  .text.save_settings
-                0x0800230c       0x7c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x0800230c                save_settings
+                0x08002344       0x7c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x08002344                save_settings
  .text.load_settings
-                0x08002388       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x08002388                load_settings
+                0x080023c0       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x080023c0                load_settings
  .text.reset_all_settings
-                0x080023e4       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x080023e4                reset_all_settings
+                0x0800241c       0x30 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x0800241c                reset_all_settings
  .text.check_and_save
-                0x08002414       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x08002414                check_and_save
+                0x0800244c       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x0800244c                check_and_save
  .text.force_save
-                0x08002440       0x14 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x08002440                force_save
+                0x08002478       0x14 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x08002478                force_save
  .text.update_saved_indicator
-                0x08002454       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
-                0x08002454                update_saved_indicator
+                0x0800248c       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/settings.c.obj
+                0x0800248c                update_saved_indicator
  .text.tap_tracker_reset
-                0x08002480       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x08002480                tap_tracker_reset
+                0x080024b8       0x2c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x080024b8                tap_tracker_reset
  .text.use_angry_mode
-                0x080024ac       0x44 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x080024ac                use_angry_mode
+                0x080024e4       0x44 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x080024e4                use_angry_mode
  .text.calculate_tap_speed
-                0x080024f0       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x080024f0                calculate_tap_speed
+                0x08002528       0x5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x08002528                calculate_tap_speed
  .text.record_tap_timestamp
-                0x0800254c       0x44 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x0800254c                record_tap_timestamp
+                0x08002584       0x44 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x08002584                record_tap_timestamp
  .text.update_tap_speed
-                0x08002590       0x20 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x08002590                update_tap_speed
+                0x080025c8       0x20 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x080025c8                update_tap_speed
  .text.register_tap
-                0x080025b0       0xc8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
-                0x080025b0                register_tap
+                0x080025e8       0xc8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/tap_tracker.c.obj
+                0x080025e8                register_tap
  .text.draw_animation
-                0x08002678       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002678                draw_animation
+                0x080026b0       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080026b0                draw_animation
  .text.draw_animation_transparent
-                0x080026a0       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x080026a0                draw_animation_transparent
+                0x080026d8       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080026d8                draw_animation_transparent
  .text.handle_tap_decay
-                0x080026b8       0x6c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x080026b8                handle_tap_decay
+                0x080026f0       0x6c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080026f0                handle_tap_decay
  .text.handle_paw_animations
-                0x08002724      0x134 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002724                handle_paw_animations
+                0x0800275c      0x134 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x0800275c                handle_paw_animations
  .text.draw_idle_frame
-                0x08002858       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002858                draw_idle_frame
+                0x08002890       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08002890                draw_idle_frame
  .text.idle_frame_count
-                0x08002870        0x4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002870                idle_frame_count
+                0x080028a8        0x4 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080028a8                idle_frame_count
  .text.draw_sleep_frame
-                0x08002874       0x10 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002874                draw_sleep_frame
+                0x080028ac       0x10 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080028ac                draw_sleep_frame
  .text.draw_zzz_overlay
-                0x08002884       0xa8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08002884                draw_zzz_overlay
+                0x080028bc       0xa8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080028bc                draw_zzz_overlay
  .text.play_milestone_celebration
-                0x0800292c       0xb0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800292c                play_milestone_celebration
+                0x08002964       0xb0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08002964                play_milestone_celebration
  .text.check_idle_transition
-                0x080029dc       0x7c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x080029dc                check_idle_transition
+                0x08002a14       0x7c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08002a14                check_idle_transition
  .text.display_tap_count_overlay
-                0x08002a58       0x90 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002a58                display_tap_count_overlay
+                0x08002a90       0x90 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002a90                display_tap_count_overlay
  .text.display_saved_indicator
-                0x08002ae8       0x24 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002ae8                display_saved_indicator
+                0x08002b20       0x24 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002b20                display_saved_indicator
  .text.update_display_with_overlays
-                0x08002b0c       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002b0c                update_display_with_overlays
+                0x08002b44       0x28 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002b44                update_display_with_overlays
  .text.redraw_current_frame
-                0x08002b34       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002b34                redraw_current_frame
+                0x08002b6c       0x18 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002b6c                redraw_current_frame
  .text.toggle_display_invert
-                0x08002b4c       0x64 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002b4c                toggle_display_invert
+                0x08002b84       0x64 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002b84                toggle_display_invert
  .text.handle_display_mode_switch
-                0x08002bb0       0x6c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002bb0                handle_display_mode_switch
+                0x08002be8       0x6c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002be8                handle_display_mode_switch
  .text.handle_reset
-                0x08002c1c      0x13c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002c1c                handle_reset
+                0x08002c54      0x13c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002c54                handle_reset
  .text.handle_credits
-                0x08002d58       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002d58                handle_credits
+                0x08002d90       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002d90                handle_credits
  .text.handle_boot_overrides
-                0x08002e14       0x60 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
-                0x08002e14                handle_boot_overrides
- .text.sprintf  0x08002e74       0x44 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-sprintf.o)
-                0x08002e74                sprintf
-                0x08002e74                siprintf
- .text.memset   0x08002eb8       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memset.o)
-                0x08002eb8                memset
- .text.__errno  0x08002ec8        0xc /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-errno.o)
-                0x08002ec8                __errno
+                0x08002e4c       0x60 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x08002e4c                handle_boot_overrides
+ .text.sprintf  0x08002eac       0x44 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-sprintf.o)
+                0x08002eac                sprintf
+                0x08002eac                siprintf
+ .text.memset   0x08002ef0       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memset.o)
+                0x08002ef0                memset
+ .text.__errno  0x08002f00        0xc /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-errno.o)
+                0x08002f00                __errno
  .text.__libc_init_array
-                0x08002ed4       0x48 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-init.o)
-                0x08002ed4                __libc_init_array
+                0x08002f0c       0x48 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-init.o)
+                0x08002f0c                __libc_init_array
  .text.__retarget_lock_acquire_recursive
-                0x08002f1c        0x2 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-lock.o)
-                0x08002f1c                __retarget_lock_acquire_recursive
+                0x08002f54        0x2 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-lock.o)
+                0x08002f54                __retarget_lock_acquire_recursive
  .text.__retarget_lock_release_recursive
-                0x08002f1e        0x2 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-lock.o)
-                0x08002f1e                __retarget_lock_release_recursive
- .text.memcpy   0x08002f20       0x12 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memcpy-stub.o)
-                0x08002f20                memcpy
- *fill*         0x08002f32        0x2 
- .text._free_r  0x08002f34       0x94 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-freer.o)
-                0x08002f34                _free_r
+                0x08002f56        0x2 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-lock.o)
+                0x08002f56                __retarget_lock_release_recursive
+ .text.memcpy   0x08002f58       0x12 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memcpy-stub.o)
+                0x08002f58                memcpy
+ *fill*         0x08002f6a        0x2 
+ .text._free_r  0x08002f6c       0x94 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-freer.o)
+                0x08002f6c                _free_r
  .text.sbrk_aligned
-                0x08002fc8       0x44 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mallocr.o)
+                0x08003000       0x44 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mallocr.o)
  .text._malloc_r
-                0x0800300c      0x100 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mallocr.o)
-                0x0800300c                _malloc_r
+                0x08003044      0x100 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mallocr.o)
+                0x08003044                _malloc_r
  .text.__malloc_lock
-                0x0800310c       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mlock.o)
-                0x0800310c                __malloc_lock
+                0x08003144       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mlock.o)
+                0x08003144                __malloc_lock
  .text.__malloc_unlock
-                0x0800311c       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mlock.o)
-                0x0800311c                __malloc_unlock
+                0x08003154       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-mlock.o)
+                0x08003154                __malloc_unlock
  .text.__ssputs_r
-                0x0800312c       0xc0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
-                0x0800312c                __ssputs_r
+                0x08003164       0xc0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
+                0x08003164                __ssputs_r
  .text._svfprintf_r
-                0x080031ec      0x1fc /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
-                0x080031ec                _svfprintf_r
-                0x080031ec                _svfiprintf_r
+                0x08003224      0x1fc /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
+                0x08003224                _svfprintf_r
+                0x08003224                _svfiprintf_r
  .text._printf_common
-                0x080033e8       0xde /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x080033e8                _printf_common
- *fill*         0x080034c6        0x2 
+                0x08003420       0xde /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08003420                _printf_common
+ *fill*         0x080034fe        0x2 
  .text._printf_i
-                0x080034c8      0x218 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
-                0x080034c8                _printf_i
- .text.memmove  0x080036e0       0x24 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memmove.o)
-                0x080036e0                memmove
- .text._sbrk_r  0x08003704       0x24 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-sbrkr.o)
-                0x08003704                _sbrk_r
- .text.memchr   0x08003728       0x16 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memchr-stub.o)
-                0x08003728                memchr
+                0x08003500      0x218 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x08003500                _printf_i
+ .text.memmove  0x08003718       0x24 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memmove.o)
+                0x08003718                memmove
+ .text._sbrk_r  0x0800373c       0x24 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-sbrkr.o)
+                0x0800373c                _sbrk_r
+ .text.memchr   0x08003760       0x16 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-memchr-stub.o)
+                0x08003760                memchr
  .text._realloc_r
-                0x0800373e       0x60 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-reallocr.o)
-                0x0800373e                _realloc_r
+                0x08003776       0x60 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-reallocr.o)
+                0x08003776                _realloc_r
  .text._malloc_usable_size_r
-                0x0800379e       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-msizer.o)
-                0x0800379e                _malloc_usable_size_r
+                0x080037d6       0x10 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-msizer.o)
+                0x080037d6                _malloc_usable_size_r
  *(.glue_7)
- .glue_7        0x080037ae        0x0 linker stubs
+ .glue_7        0x080037e6        0x0 linker stubs
  *(.glue_7t)
- .glue_7t       0x080037ae        0x0 linker stubs
+ .glue_7t       0x080037e6        0x0 linker stubs
  *(.eh_frame)
- *fill*         0x080037ae        0x2 
- .eh_frame      0x080037b0        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
+ *fill*         0x080037e6        0x2 
+ .eh_frame      0x080037e8        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.init)
- .init          0x080037b0        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crti.o
-                0x080037b0                _init
- .init          0x080037b4        0x8 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtn.o
+ .init          0x080037e8        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crti.o
+                0x080037e8                _init
+ .init          0x080037ec        0x8 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtn.o
  *(.fini)
- .fini          0x080037bc        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crti.o
-                0x080037bc                _fini
- .fini          0x080037c0        0x8 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtn.o
- .fini.__stub   0x080037c8       0x10 linker stubs
-                0x080037d8                        . = ALIGN (0x4)
-                0x080037d8                        _etext = .
+ .fini          0x080037f4        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crti.o
+                0x080037f4                _fini
+ .fini          0x080037f8        0x8 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtn.o
+ .fini.__stub   0x08003800       0x10 linker stubs
+                0x08003810                        . = ALIGN (0x4)
+                0x08003810                        _etext = .
 
-.vfp11_veneer   0x080037d8        0x0
- .vfp11_veneer  0x080037d8        0x0 linker stubs
+.vfp11_veneer   0x08003810        0x0
+ .vfp11_veneer  0x08003810        0x0 linker stubs
 
-.v4_bx          0x080037d8        0x0
- .v4_bx         0x080037d8        0x0 linker stubs
+.v4_bx          0x08003810        0x0
+ .v4_bx         0x08003810        0x0 linker stubs
 
-.iplt           0x080037d8        0x0
- .iplt          0x080037d8        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
+.iplt           0x08003810        0x0
+ .iplt          0x08003810        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.rodata         0x080037d8     0x5db4
-                0x080037d8                        . = ALIGN (0x4)
+.rodata         0x08003810     0x5db4
+                0x08003810                        . = ALIGN (0x4)
  *(.rodata)
  *(.rodata*)
  .rodata.AHBPrescTable
-                0x080037d8       0x40 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g0xx.c.obj
-                0x080037d8                AHBPrescTable
+                0x08003810       0x40 cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir/__/__/Core/Src/system_stm32g0xx.c.obj
+                0x08003810                AHBPrescTable
  .rodata.Font_11x18
-                0x08003818        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
-                0x08003818                Font_11x18
+                0x08003850        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x08003850                Font_11x18
  .rodata.Font_6x8
-                0x08003824        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
-                0x08003824                Font_6x8
+                0x0800385c        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x0800385c                Font_6x8
  .rodata.ComicSans_11x12
-                0x08003830        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
-                0x08003830                ComicSans_11x12
+                0x08003868        0xc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x08003868                ComicSans_11x12
  .rodata.char_width_comic_sans_11x12
-                0x0800383c       0x5f CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
- *fill*         0x0800389b        0x1 
+                0x08003874       0x5f CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+ *fill*         0x080038d3        0x1 
  .rodata.ComicSans11x12
-                0x0800389c      0x8e8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x080038d4      0x8e8 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
  .rodata.Font6x8
-                0x08004184      0x5f0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x080041bc      0x5f0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
  .rodata.Font11x18
-                0x08004774      0xd5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
+                0x080047ac      0xd5c CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ssd1306_fonts.c.obj
  .rodata.draw_zzz_overlay.str1.1
-                0x080054d0       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08005508       0xbc CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
                                   0x2 (size before relaxing)
  .rodata.play_milestone_celebration.str1.1
-                0x0800558c        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080055c4        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
                                   0x5 (size before relaxing)
  .rodata.img_right_down_alt_angry
-                0x0800558c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800558c                img_right_down_alt_angry
+                0x080055c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080055c4                img_right_down_alt_angry
  .rodata.img_left_down_alt_angry
-                0x0800598c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800598c                img_left_down_alt_angry
+                0x080059c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080059c4                img_left_down_alt_angry
  .rodata.img_both_up_angry
-                0x08005d8c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08005d8c                img_both_up_angry
+                0x08005dc4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08005dc4                img_both_up_angry
  .rodata.img_both_down_alt_angry
-                0x0800618c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800618c                img_both_down_alt_angry
+                0x080061c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080061c4                img_both_down_alt_angry
  .rodata.img_tap_right
-                0x0800658c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800658c                img_tap_right
+                0x080065c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080065c4                img_tap_right
  .rodata.img_tap_left
-                0x0800698c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800698c                img_tap_left
+                0x080069c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080069c4                img_tap_left
  .rodata.img_right_down_alt
-                0x08006d8c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08006d8c                img_right_down_alt
+                0x08006dc4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08006dc4                img_right_down_alt
  .rodata.img_left_down_alt
-                0x0800718c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800718c                img_left_down_alt
+                0x080071c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080071c4                img_left_down_alt
  .rodata.img_both_down_alt
-                0x0800758c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800758c                img_both_down_alt
+                0x080075c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080075c4                img_both_down_alt
  .rodata.img_idle_sleep
-                0x0800798c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800798c                img_idle_sleep
+                0x080079c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080079c4                img_idle_sleep
  .rodata.img_idle5
-                0x08007d8c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08007d8c                img_idle5
+                0x08007dc4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08007dc4                img_idle5
  .rodata.img_idle4
-                0x0800818c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800818c                img_idle4
+                0x080081c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080081c4                img_idle4
  .rodata.img_idle3
-                0x0800858c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800858c                img_idle3
+                0x080085c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080085c4                img_idle3
  .rodata.img_idle2
-                0x0800898c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800898c                img_idle2
+                0x080089c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080089c4                img_idle2
  .rodata.img_idle1
-                0x08008d8c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x08008d8c                img_idle1
+                0x08008dc4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x08008dc4                img_idle1
  .rodata.img_both_up
-                0x0800918c      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
-                0x0800918c                img_both_up
+                0x080091c4      0x400 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/animation.c.obj
+                0x080091c4                img_both_up
  .rodata.display_tap_count_overlay.str1.1
-                0x0800958c        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x080095c4        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
                                  0x11 (size before relaxing)
  .rodata.display_saved_indicator.str1.1
-                0x0800958c        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x080095c4        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
                                   0x7 (size before relaxing)
  .rodata.handle_reset.str1.1
-                0x0800958c        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x080095c4        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
                                  0x36 (size before relaxing)
  .rodata.handle_credits.str1.1
-                0x0800958c        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
+                0x080095c4        0x0 CMakeFiles/Bongo-cat-fidget-toy-cmake.dir/Core/Src/ui.c.obj
                                  0x39 (size before relaxing)
  .rodata._svfprintf_r.str1.1
-                0x0800958c        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
+                0x080095c4        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-svfprintf.o)
                                  0x11 (size before relaxing)
  .rodata._printf_i.str1.1
-                0x0800958c        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
+                0x080095c4        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/lib/thumb/v6-m/nofp/libg_nano.a(libc_a-nano-vfprintf_i.o)
                                  0x22 (size before relaxing)
-                0x0800958c                        . = ALIGN (0x4)
+                0x080095c4                        . = ALIGN (0x4)
 
-.ARM.extab      0x0800958c        0x0
-                0x0800958c                        . = ALIGN (0x4)
+.ARM.extab      0x080095c4        0x0
+                0x080095c4                        . = ALIGN (0x4)
  *(.ARM.extab* .gnu.linkonce.armextab.*)
-                0x0800958c                        . = ALIGN (0x4)
+                0x080095c4                        . = ALIGN (0x4)
 
-.ARM            0x0800958c        0x0
-                0x0800958c                        . = ALIGN (0x4)
-                0x0800958c                        __exidx_start = .
+.ARM            0x080095c4        0x0
+                0x080095c4                        . = ALIGN (0x4)
+                0x080095c4                        __exidx_start = .
  *(.ARM.exidx*)
-                0x0800958c                        __exidx_end = .
-                0x0800958c                        . = ALIGN (0x4)
+                0x080095c4                        __exidx_end = .
+                0x080095c4                        . = ALIGN (0x4)
 
-.preinit_array  0x0800958c        0x0
-                0x0800958c                        . = ALIGN (0x4)
-                0x0800958c                        PROVIDE (__preinit_array_start = .)
+.preinit_array  0x080095c4        0x0
+                0x080095c4                        . = ALIGN (0x4)
+                0x080095c4                        PROVIDE (__preinit_array_start = .)
  *(.preinit_array*)
-                0x0800958c                        PROVIDE (__preinit_array_end = .)
-                0x0800958c                        . = ALIGN (0x4)
+                0x080095c4                        PROVIDE (__preinit_array_end = .)
+                0x080095c4                        . = ALIGN (0x4)
 
-.init_array     0x0800958c        0x4
-                0x0800958c                        . = ALIGN (0x4)
-                0x0800958c                        PROVIDE (__init_array_start = .)
+.init_array     0x080095c4        0x4
+                0x080095c4                        . = ALIGN (0x4)
+                0x080095c4                        PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array*)
- .init_array    0x0800958c        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
-                0x08009590                        PROVIDE (__init_array_end = .)
-                0x08009590                        . = ALIGN (0x4)
+ .init_array    0x080095c4        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
+                0x080095c8                        PROVIDE (__init_array_end = .)
+                0x080095c8                        . = ALIGN (0x4)
 
-.fini_array     0x08009590        0x4
-                0x08009590                        . = ALIGN (0x4)
+.fini_array     0x080095c8        0x4
+                0x080095c8                        . = ALIGN (0x4)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(SORT_BY_NAME(.fini_array.*))
  *(.fini_array*)
- .fini_array    0x08009590        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
+ .fini_array    0x080095c8        0x4 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x08009594                        . = ALIGN (0x4)
-                0x08009594                        _sidata = LOADADDR (.data)
+                0x080095cc                        . = ALIGN (0x4)
+                0x080095cc                        _sidata = LOADADDR (.data)
 
-.rel.dyn        0x08009594        0x0
- .rel.iplt      0x08009594        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
+.rel.dyn        0x080095cc        0x0
+ .rel.iplt      0x080095cc        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.data           0x20000000       0xa8 load address 0x08009594
+.data           0x20000000       0xa8 load address 0x080095cc
                 0x20000000                        . = ALIGN (0x4)
                 0x20000000                        _sdata = .
  *(.data)
@@ -2164,10 +2166,10 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
  *(.RamFunc*)
                 0x200000a8                        . = ALIGN (0x4)
 
-.igot.plt       0x200000a8        0x0 load address 0x0800963c
+.igot.plt       0x200000a8        0x0 load address 0x08009674
  .igot.plt      0x200000a8        0x0 /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
 
-.tdata          0x200000a8        0x0 load address 0x0800963c
+.tdata          0x200000a8        0x0 load address 0x08009674
  *(.tdata .tdata.* .gnu.linkonce.td.*)
                 0x200000a8                        . = ALIGN (0x4)
                 0x200000a8                        _edata = .
@@ -2184,7 +2186,7 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
                 [!provide]                        PROVIDE (__data_source_end = __tdata_source_end)
                 [!provide]                        PROVIDE (__data_source_size = (__data_source_end - __data_source))
 
-.tbss           0x200000a8        0x0 load address 0x0800963c
+.tbss           0x200000a8        0x0 load address 0x08009674
                 0x200000a8                        _sbss = .
                 0x200000a8                        __bss_start__ = _sbss
  *(.tbss .tbss.*)
@@ -2201,7 +2203,7 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
                 [!provide]                        PROVIDE (__arm32_tls_tcb_offset = MAX (0x8, __tls_align))
                 [!provide]                        PROVIDE (__arm64_tls_tcb_offset = MAX (0x10, __tls_align))
 
-.bss            0x200000a8      0x6d8 load address 0x0800963c
+.bss            0x200000a8      0x6d8 load address 0x08009674
  *(.bss)
  .bss           0x200000a8       0x1c /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/bin/../lib/gcc/arm-none-eabi/13.3.1/thumb/v6-m/nofp/crtbegin.o
  *(.bss*)
@@ -2288,7 +2290,7 @@ LOAD /home/amrm/.local/share/stm32cube/bundles/gnu-tools-for-stm32/13.3.1+st.9/b
                 [!provide]                        PROVIDE (__bss_size = (__bss_end - __bss_start))
 
 ._user_heap_stack
-                0x20000780      0x600 load address 0x0800963c
+                0x20000780      0x600 load address 0x08009674
                 0x20000780                        . = ALIGN (0x8)
                 [!provide]                        PROVIDE (end = .)
                 0x20000780                        PROVIDE (_end = .)
