@@ -1,4 +1,11 @@
 build
+
+# Release build — keep only firmware output files
+build_release/*
+!build_release/*.elf
+!build_release/*.bin
+!build_release/*.hex
+!build_release/*.map
 mx.scratch
 !.settings
 

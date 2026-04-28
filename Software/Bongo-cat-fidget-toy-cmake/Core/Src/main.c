@@ -102,11 +102,12 @@ int main(void)
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
 
-  load_settings();
-  ssd1306_InvertDisplay(settings.display_inverted);
   last_save_time = HAL_GetTick();
 
   handle_boot_overrides();
+  load_settings();
+
+
 
   state_e state       = IDLE;
   uint8_t idle_cnt    = 0;

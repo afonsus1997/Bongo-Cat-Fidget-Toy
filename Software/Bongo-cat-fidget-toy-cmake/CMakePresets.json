@@ -20,6 +20,7 @@
         {
             "name": "Release",
             "inherits": "default",
+            "binaryDir": "${sourceDir}/build_release",
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "Release"
             }
