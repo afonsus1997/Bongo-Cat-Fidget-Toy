@@ -9,7 +9,7 @@ uint32_t pending_milestone        = 0;
 
 static uint8_t is_milestone(uint32_t n) {
     if (n == 0)        return 0;
-    if (n < 1000)      return (n % 100    == 0);  /* 100, 200, ..., 900   */
+    if (n < 1000)      return (n % 250    == 0);  /* 100, 200, ..., 900   */
     if (n < 10000)     return (n % 1000   == 0);  /* 1k, 2k, ..., 9k      */
     if (n < 100000)    return (n % 10000  == 0);  /* 10k, 20k, ..., 90k   */
     if (n < 1000000)   return (n % 100000 == 0);  /* 100k, 200k, ..., 900k*/
@@ -68,8 +68,13 @@ void calculate_tap_speed(void) {
 }
 
 void record_tap_timestamp(void) {
-    tap_timestamps[tap_history_index] = HAL_GetTick();
-    tap_history_index = (tap_history_index + 1) % TAP_HISTORY_SIZE;
+    uint32_t now  = HAL_GetTick();
+    uint8_t  prev = (tap_history_index + TAP_HISTORY_SIZE - 1) % TAP_HISTORY_SIZE;
+
+    if (tap_timestamps[prev] == 0 || (now - tap_timestamps[prev]) >= TAP_SPEED_MIN_INTERVAL) {
+        tap_timestamps[tap_history_index] = now;
+        tap_history_index = (tap_history_index + 1) % TAP_HISTORY_SIZE;
+    }
     calculate_tap_speed();
 }
 

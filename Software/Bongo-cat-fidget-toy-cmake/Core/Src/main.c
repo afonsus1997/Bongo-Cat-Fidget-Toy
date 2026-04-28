@@ -102,6 +102,7 @@ int main(void)
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   ssd1306_Init();
 
+  tap_tracker_reset();
   last_save_time = HAL_GetTick();
 
   handle_boot_overrides();
