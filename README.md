@@ -7,6 +7,11 @@
   <img src="https://github.com/user-attachments/assets/309b395f-762c-4c47-89ff-dd08e5db9610" height="320" alt="Demo 2" />
 </p>
 
+[![Hardware License: CC BY-NC-SA 4.0](https://img.shields.io/badge/Hardware%20License-CC%20BY--NC--SA%204.0-lightgrey)](LICENSE)
+[![Firmware License: GPL v3](https://img.shields.io/badge/Firmware%20License-GPL%20v3-blue)](Software/LICENSE)
+[![Latest Release](https://img.shields.io/github/v/release/afonsus1997/Bongo-Cat-Fidget-Toy)](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/releases)
+[![Last Commit](https://img.shields.io/github/last-commit/afonsus1997/Bongo-Cat-Fidget-Toy)](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/commits/main)
+
 A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your taps, measure your speed, and toggle display options with intuitive controls.
 
 
@@ -20,7 +25,8 @@ A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your ta
 
 * Tap counter with automatic saving to persistent memory  
 * Tap speed measurement  
-* Two display color modes (normal and inverted)  
+* Milestones
+* Sleep animation
 * Optional overlay display  
 
 ---
@@ -32,10 +38,6 @@ A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your ta
 - Requires a single CR2032 battery (positive side up)
 
 ### In-Use Controls
-
-* **Hold the left button** to invert the display color
-  
-  ![](https://github.com/afonsus1997/Bongo-Cat-Fidget-Toy/blob/main/Media/Photos/PXL_20250726_182516591.MACRO_FOCUS.MP~2.jpg)
 
 * **Hold both buttons** to enable or disable the overlay
   
