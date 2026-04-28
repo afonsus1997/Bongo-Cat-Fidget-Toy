@@ -108,8 +108,6 @@ int main(void)
   handle_boot_overrides();
   load_settings();
 
-
-
   state_e state       = IDLE;
   uint8_t idle_cnt    = 0;
   int32_t idle_cntr   = 0;
@@ -170,8 +168,19 @@ int main(void)
         }
 
         if (pending_milestone) {
+            HAL_TIM_Base_Stop_IT(&htim14);
             play_milestone_celebration(pending_milestone);
             pending_milestone = 0;
+            HAL_TIM_Base_Start_IT(&htim14);
+            readPins();
+            while (!NONE_PRESSED) { readPins(); HAL_Delay(10); }
+            left_state     = 0;
+            right_state    = 0;
+            tap_left_cntr  = 0;
+            tap_right_cntr = 0;
+            idle_cntr      = 0;
+            tap_tracker_reset();
+            save_settings();
         }
 
         handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
