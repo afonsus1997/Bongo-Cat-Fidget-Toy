@@ -2,7 +2,7 @@ name: Release Firmware
 
 on:
   push:
-    tags: ["v*"]
+    tags: ["v*", "V*"]
 
 jobs:
   release:
