@@ -1,7 +1,0 @@
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:10:10:calculate_checksum	0	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:20:6:save_settings	40	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:49:6:load_settings	40	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:73:6:reset_all_settings	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:88:6:check_and_save	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:94:6:force_save	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/settings.c:100:6:update_saved_indicator	8	static

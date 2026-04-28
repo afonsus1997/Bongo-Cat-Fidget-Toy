@@ -1,5 +1,0 @@
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/stm32g0xx_hal_msp.c:62:6:HAL_MspInit	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/stm32g0xx_hal_msp.c:87:6:HAL_I2C_MspInit	80	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/stm32g0xx_hal_msp.c:142:6:HAL_I2C_MspDeInit	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/stm32g0xx_hal_msp.c:173:6:HAL_TIM_Base_MspInit	8	static
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/Core/Src/stm32g0xx_hal_msp.c:196:6:HAL_TIM_Base_MspDeInit	8	static

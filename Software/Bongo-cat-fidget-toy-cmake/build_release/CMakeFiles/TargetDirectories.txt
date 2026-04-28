@@ -1,6 +1,0 @@
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/CMakeFiles/Bongo-cat-fidget-toy-cmake.dir
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/CMakeFiles/edit_cache.dir
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/CMakeFiles/rebuild_cache.dir
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/cmake/stm32cubemx/CMakeFiles/STM32_Drivers.dir
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/cmake/stm32cubemx/CMakeFiles/edit_cache.dir
-/home/amrm/Documents/AM/Bongo-Cat-Fidget-Toy/Software/Bongo-cat-fidget-toy-cmake/build_release/cmake/stm32cubemx/CMakeFiles/rebuild_cache.dir
