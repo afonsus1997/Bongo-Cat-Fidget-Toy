@@ -10,6 +10,7 @@
 #define ANGRY_MODE_DECAY_TIME    500
 
 extern uint16_t current_tap_speed_x10;
+extern uint32_t pending_milestone;
 
 void    tap_tracker_reset(void);
 void    record_tap_timestamp(void);

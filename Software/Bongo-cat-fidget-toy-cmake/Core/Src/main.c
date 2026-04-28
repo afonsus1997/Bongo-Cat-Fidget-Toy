@@ -116,6 +116,10 @@ int main(void)
   uint8_t left_state  = 0;
   uint8_t right_state = 0;
 
+  uint32_t idle_since      = 0;
+  uint32_t sleep_zzz_timer = 0;
+  uint8_t  sleep_zzz_frame = 0;
+
   HAL_TIM_Base_Start_IT(&htim14);
 
   while (1) {
@@ -126,11 +130,28 @@ int main(void)
     switch (state) {
     case IDLE:
         if (sw_state_left == 0 || sw_state_right == 0) {
-            state = SWITCH;
+            state        = SWITCH;
+            idle_since   = 0;
         } else {
-            draw_idle_frame(idle_cnt);
-            update_display_with_overlays();
-            idle_cnt = (idle_cnt + 1) % idle_frame_count();
+            if (idle_since == 0) {
+                idle_since      = HAL_GetTick();
+                sleep_zzz_timer = idle_since;
+                sleep_zzz_frame = 0;
+            }
+
+            if (HAL_GetTick() - idle_since >= SLEEP_DELAY) {
+                draw_sleep_frame();
+                draw_zzz_overlay(sleep_zzz_frame);
+                update_display_with_overlays();
+                if (HAL_GetTick() - sleep_zzz_timer >= SLEEP_ZZZ_PERIOD) {
+                    sleep_zzz_frame = (sleep_zzz_frame + 1) % 4;
+                    sleep_zzz_timer = HAL_GetTick();
+                }
+            } else {
+                draw_idle_frame(idle_cnt);
+                update_display_with_overlays();
+                idle_cnt = (idle_cnt + 1) % idle_frame_count();
+            }
             HAL_Delay(100);
         }
         break;
@@ -139,10 +160,16 @@ int main(void)
         handle_display_mode_switch();
 
         if (check_idle_transition(&idle_cntr, &left_state, &right_state)) {
-            state = IDLE;
+            state      = IDLE;
+            idle_since = 0;
         } else if (!NONE_PRESSED) {
             handle_paw_animations(&left_state, &right_state,
                                   &tap_left_cntr, &tap_right_cntr, &idle_cntr);
+        }
+
+        if (pending_milestone) {
+            play_milestone_celebration(pending_milestone);
+            pending_milestone = 0;
         }
 
         handle_tap_decay(&tap_left_cntr, &tap_right_cntr);

@@ -5,6 +5,10 @@ static uint32_t tap_timestamps[TAP_HISTORY_SIZE] = {0};
 static uint8_t  tap_history_index = 0;
 static uint32_t angry_mode_timer  = 0;
 uint16_t current_tap_speed_x10    = 0;
+uint32_t pending_milestone        = 0;
+
+static const uint32_t milestones[] = {100, 500, 1000, 10000};
+#define MILESTONE_COUNT (sizeof(milestones) / sizeof(milestones[0]))
 
 void tap_tracker_reset(void) {
     for (int i = 0; i < TAP_HISTORY_SIZE; i++) {
@@ -74,12 +78,21 @@ void update_tap_speed(void) {
 }
 
 void register_tap(uint8_t is_left) {
-    if (is_left) {
-        settings.left_taps++;
-    } else {
-        settings.right_taps++;
-    }
-    settings.total_taps++;
+    uint32_t prev = settings.total_taps;
+
+    if (settings.total_taps < UINT32_MAX) settings.total_taps++;
+    if (is_left) { if (settings.left_taps  < UINT32_MAX) settings.left_taps++;  }
+    else         { if (settings.right_taps < UINT32_MAX) settings.right_taps++; }
+
     data_changed = 1;
     record_tap_timestamp();
+
+    if (!pending_milestone) {
+        for (uint8_t i = 0; i < MILESTONE_COUNT; i++) {
+            if (prev < milestones[i] && settings.total_taps >= milestones[i]) {
+                pending_milestone = milestones[i];
+                break;
+            }
+        }
+    }
 }
