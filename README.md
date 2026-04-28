@@ -70,3 +70,9 @@ A simple and satisfying electronic fidget toy featuring Bongo Cat. Track your ta
 ## Credits
 
 * Switch models by [koktoh](https://github.com/koktoh/keyswitch_model)
+
+---
+
+## AI Disclaimer
+
+All hardware design, firmware, and software in this project were developed by hand. No AI tools were used for circuit design, PCB layout, firmware architecture, code logic, or image/asset generation. AI assistance was limited to aiding software development debugging and porting efforts.
