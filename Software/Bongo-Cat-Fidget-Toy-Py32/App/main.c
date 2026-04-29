@@ -98,7 +98,7 @@ void run_bongo_loop(void)
             break;
 
         case SWITCH:
-            handle_display_mode_switch();
+            // handle_display_mode_switch();
 
             if (check_idle_transition(&idle_cntr, &left_state, &right_state)) {
                 state      = IDLE;
@@ -146,7 +146,7 @@ int main(void)
   ssd1306_SetContrast(DISPLAY_CONTRAST);
 
   load_settings();
-  ssd1306_InvertDisplay(settings.display_inverted);
+//   ssd1306_InvertDisplay(settings.display_inverted);
   last_save_time = HAL_GetTick();
   tap_tracker_reset();
 

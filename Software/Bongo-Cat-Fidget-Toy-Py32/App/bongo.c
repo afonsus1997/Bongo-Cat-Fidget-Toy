@@ -1,5 +1,15 @@
 #include "bongo.h"
 
+/* Writes decimal representation of v into p, returns pointer past last digit. */
+static char *utoa32(char *p, uint32_t v) {
+    char tmp[10];
+    uint8_t i = 0;
+    if (v == 0) { *p++ = '0'; return p; }
+    while (v) { tmp[i++] = '0' + (uint8_t)(v % 10); v /= 10; }
+    while (i) *p++ = tmp[--i];
+    return p;
+}
+
 /* ===== Globals ===== */
 const uint8_t *current_frame = NULL;
 
@@ -134,41 +144,42 @@ void draw_sleep_frame(void) {
 void draw_zzz_overlay(uint8_t frame) {
     switch (frame & 3) {
         case 0:
-            ssd1306_SetCursor(108, 30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(108, 30); ssd1306_WriteString("z", Font_6x8, White);
             break;
         case 1:
-            ssd1306_SetCursor(108, 20); ssd1306_WriteString("z", ComicSans_11x12, White);
-            ssd1306_SetCursor(97,  30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(108, 22); ssd1306_WriteString("z", Font_6x8, White);
+            ssd1306_SetCursor(100, 30); ssd1306_WriteString("z", Font_6x8, White);
             break;
         case 2:
-            ssd1306_SetCursor(108, 10); ssd1306_WriteString("z", ComicSans_11x12, White);
-            ssd1306_SetCursor(97,  20); ssd1306_WriteString("z", ComicSans_11x12, White);
-            ssd1306_SetCursor(86,  30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(108, 14); ssd1306_WriteString("z", Font_6x8, White);
+            ssd1306_SetCursor(100, 22); ssd1306_WriteString("z", Font_6x8, White);
+            ssd1306_SetCursor(92,  30); ssd1306_WriteString("z", Font_6x8, White);
             break;
         case 3:
-            ssd1306_SetCursor(97,  10); ssd1306_WriteString("z", ComicSans_11x12, White);
-            ssd1306_SetCursor(86,  20); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(100, 14); ssd1306_WriteString("z", Font_6x8, White);
+            ssd1306_SetCursor(92,  22); ssd1306_WriteString("z", Font_6x8, White);
             break;
     }
 }
 
 void play_milestone_celebration(uint32_t milestone) {
     char buf[12];
-    sprintf(buf, "%lu!", (unsigned long)milestone);
+    char *end = utoa32(buf, milestone);
+    *end++ = '!'; *end = '\0';
 
-    uint8_t len   = (uint8_t)strlen(buf);
+    uint8_t len   = (uint8_t)(end - buf);
     uint8_t x_pos = (128 - len * 11) / 2;
-    uint8_t y_pos = 26;
+    uint8_t y_pos = 22;
 
     for (int i = 0; i < 3; i++) {
         draw_animation(img_both_up);
-        ssd1306_FillRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 14, Black);
+        ssd1306_FillRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 20, Black);
         ssd1306_SetCursor(x_pos, y_pos);
-        ssd1306_WriteString(buf, ComicSans_11x12, White);
+        ssd1306_WriteString(buf, Font_11x18, White);
         ssd1306_UpdateScreen();
         HAL_Delay(250);
 
-        ssd1306_InvertRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 14);
+        ssd1306_InvertRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 20);
         ssd1306_UpdateScreen();
         HAL_Delay(100);
     }
@@ -205,7 +216,7 @@ void display_tap_count_overlay(void) {
     char buffer[32];
 
     /* total taps top-left */
-    sprintf(buffer, "%lu", (unsigned long)settings.total_taps);
+    char *p = utoa32(buffer, settings.total_taps); *p = '\0';
     ssd1306_SetCursor(2, 1);
     ssd1306_WriteString(buffer, ComicSans_11x12, White);
 
@@ -215,9 +226,13 @@ void display_tap_count_overlay(void) {
         uint16_t decimal = (uint16_t)(current_tap_speed_x10 % 10u);
 
         if (whole >= 10) {
-            sprintf(buffer, "%u/s", whole);
+            char *p = utoa32(buffer, whole);
+            *p++ = '/'; *p++ = 's'; *p = '\0';
         } else {
-            sprintf(buffer, "%u.%u/s", whole, decimal);
+            char *p = utoa32(buffer, whole);
+            *p++ = '.';
+            p = utoa32(p, decimal);
+            *p++ = '/'; *p++ = 's'; *p = '\0';
         }
 
         ssd1306_SetCursor(95, 1);
@@ -293,12 +308,13 @@ void load_settings(void) {
     if (loaded_settings.checksum == calculate_checksum(&loaded_settings) &&
         loaded_settings.checksum != 0xFFFFFFFFu) {
         settings = loaded_settings;
+        settings.display_mode     = 1;
     } else {
         settings.total_taps       = 0;
         settings.left_taps        = 0;
         settings.right_taps       = 0;
         settings.display_inverted = 0;
-        settings.display_mode     = 0;
+        settings.display_mode     = 1;
         settings.reserved1        = 0;
         settings.reserved2        = 0;
         settings.checksum         = 0;
