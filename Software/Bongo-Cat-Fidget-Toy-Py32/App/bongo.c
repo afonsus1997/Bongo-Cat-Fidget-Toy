@@ -23,6 +23,7 @@ uint8_t     tap_history_index;
 uint16_t    current_tap_speed_x10;
 
 uint32_t    angry_mode_timer;
+uint32_t    pending_milestone = 0;
 
 /* ==== Checksum ==== */
 uint32_t calculate_checksum(Settings_t *s) {
@@ -80,8 +81,12 @@ void calculate_tap_speed(void) {
 
 /* Record a new tap for speed tracking */
 void record_tap_timestamp(void) {
-    tap_timestamps[tap_history_index] = HAL_GetTick();
-    tap_history_index = (uint8_t)((tap_history_index + 1) % TAP_HISTORY_SIZE);
+    uint32_t now  = HAL_GetTick();
+    uint8_t  prev = (uint8_t)((tap_history_index + TAP_HISTORY_SIZE - 1) % TAP_HISTORY_SIZE);
+    if (tap_timestamps[prev] == 0 || (now - tap_timestamps[prev]) >= TAP_SPEED_MIN_INTERVAL) {
+        tap_timestamps[tap_history_index] = now;
+        tap_history_index = (uint8_t)((tap_history_index + 1) % TAP_HISTORY_SIZE);
+    }
     calculate_tap_speed();
 }
 
@@ -120,6 +125,66 @@ void draw_animation_erase(const uint8_t *frame) {
 
 void draw_animation_transparent(const uint8_t *frame) {
     ssd1306_DrawBitmap(0, 0, frame, 128, 64, White);
+}
+
+void draw_sleep_frame(void) {
+    draw_animation(img_idle_sleep);
+}
+
+void draw_zzz_overlay(uint8_t frame) {
+    switch (frame & 3) {
+        case 0:
+            ssd1306_SetCursor(108, 30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            break;
+        case 1:
+            ssd1306_SetCursor(108, 20); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(97,  30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            break;
+        case 2:
+            ssd1306_SetCursor(108, 10); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(97,  20); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(86,  30); ssd1306_WriteString("z", ComicSans_11x12, White);
+            break;
+        case 3:
+            ssd1306_SetCursor(97,  10); ssd1306_WriteString("z", ComicSans_11x12, White);
+            ssd1306_SetCursor(86,  20); ssd1306_WriteString("z", ComicSans_11x12, White);
+            break;
+    }
+}
+
+void play_milestone_celebration(uint32_t milestone) {
+    char buf[12];
+    sprintf(buf, "%lu!", (unsigned long)milestone);
+
+    uint8_t len   = (uint8_t)strlen(buf);
+    uint8_t x_pos = (128 - len * 11) / 2;
+    uint8_t y_pos = 26;
+
+    for (int i = 0; i < 3; i++) {
+        draw_animation(img_both_up);
+        ssd1306_FillRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 14, Black);
+        ssd1306_SetCursor(x_pos, y_pos);
+        ssd1306_WriteString(buf, ComicSans_11x12, White);
+        ssd1306_UpdateScreen();
+        HAL_Delay(250);
+
+        ssd1306_InvertRectangle(x_pos - 2, y_pos - 2, x_pos + len * 11 + 2, y_pos + 14);
+        ssd1306_UpdateScreen();
+        HAL_Delay(100);
+    }
+
+    draw_animation(img_both_up);
+    ssd1306_UpdateScreen();
+    HAL_Delay(300);
+}
+
+void tap_tracker_reset(void) {
+    for (int i = 0; i < TAP_HISTORY_SIZE; i++) {
+        tap_timestamps[i] = 0;
+    }
+    tap_history_index     = 0;
+    current_tap_speed_x10 = 0;
+    angry_mode_timer      = 0;
 }
 
 void draw_idle_frame(uint8_t idx) {
@@ -317,34 +382,47 @@ uint8_t handle_invert_toggle(void) {
     return 0;
 }
 
+static uint8_t is_milestone(uint32_t n) {
+    if (n == 0)        return 0;
+    if (n < 1000)      return (n % 250    == 0);
+    if (n < 10000)     return (n % 1000   == 0);
+    if (n < 100000)    return (n % 10000  == 0);
+    if (n < 1000000)   return (n % 100000 == 0);
+    return                    (n % 1000000 == 0);
+}
+
 /* ===== Tap handling & animations ===== */
 void register_tap(uint8_t is_left) {
-    if (is_left) settings.left_taps++;
-    else         settings.right_taps++;
+    if (settings.total_taps < UINT32_MAX) settings.total_taps++;
+    if (is_left) { if (settings.left_taps  < UINT32_MAX) settings.left_taps++;  }
+    else         { if (settings.right_taps < UINT32_MAX) settings.right_taps++; }
 
-    settings.total_taps++;
     data_changed = 1;
-
     record_tap_timestamp();
+
+    if (!pending_milestone && is_milestone(settings.total_taps)) {
+        pending_milestone = settings.total_taps;
+    }
 }
 
 void handle_tap_decay(int32_t *tap_left_cntr, int32_t *tap_right_cntr) {
-    if (*tap_left_cntr > 0) {
-        if (HAL_GetTick() - (uint32_t)(*tap_left_cntr) > TAP_DECAY_TIME) {
-            draw_animation_erase(img_tap_left);
-            *tap_left_cntr = 0;
-        } else {
-            draw_animation_transparent(img_tap_left);
-        }
+    uint8_t redraw = 0;
+
+    if (*tap_left_cntr > 0 && HAL_GetTick() - (uint32_t)(*tap_left_cntr) > TAP_DECAY_TIME) {
+        *tap_left_cntr = 0;
+        redraw = 1;
     }
-    if (*tap_right_cntr > 0) {
-        if (HAL_GetTick() - (uint32_t)(*tap_right_cntr) > TAP_DECAY_TIME) {
-            draw_animation_erase(img_tap_right);
-            *tap_right_cntr = 0;
-        } else {
-            draw_animation_transparent(img_tap_right);
-        }
+    if (*tap_right_cntr > 0 && HAL_GetTick() - (uint32_t)(*tap_right_cntr) > TAP_DECAY_TIME) {
+        *tap_right_cntr = 0;
+        redraw = 1;
     }
+
+    if (redraw) {
+        draw_animation(current_frame);
+    }
+
+    if (*tap_left_cntr > 0)  draw_animation_transparent(img_tap_left);
+    if (*tap_right_cntr > 0) draw_animation_transparent(img_tap_right);
 }
 
 void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,

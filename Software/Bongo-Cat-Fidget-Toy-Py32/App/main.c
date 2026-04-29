@@ -43,12 +43,16 @@ static void APP_GpioConfig(void);
 void run_bongo_loop(void)
 {
     state_e state = IDLE;
-    uint8_t idle_cnt = 0;
-    uint8_t left_state  = 0;
-    uint8_t right_state = 0;
+    uint8_t idle_cnt       = 0;
+    uint8_t left_state     = 0;
+    uint8_t right_state    = 0;
     int32_t tap_left_cntr  = 0;
     int32_t tap_right_cntr = 0;
     int32_t idle_cntr      = 0;
+
+    uint32_t idle_since      = 0;
+    uint32_t sleep_zzz_timer = 0;
+    uint8_t  sleep_zzz_frame = 0;
 
     while (1)
     {
@@ -60,28 +64,65 @@ void run_bongo_loop(void)
         switch (state) {
         case IDLE:
             if (!NONE_PRESSED) {
-                state = SWITCH;
+                if (!ssd1306_GetDisplayOn()) ssd1306_SetDisplayOn(1);
+                state      = SWITCH;
+                idle_since = 0;
             } else {
-                draw_idle_frame(idle_cnt);
-                update_display_with_overlays();
-                idle_cnt = (idle_cnt + 1) % idle_frame_count();
-                HAL_Delay(100);
+                if (idle_since == 0) {
+                    idle_since      = HAL_GetTick();
+                    sleep_zzz_timer = idle_since;
+                    sleep_zzz_frame = 0;
+                }
+
+                uint32_t elapsed = HAL_GetTick() - idle_since;
+
+                if (elapsed >= SLEEP_DELAY + DISPLAY_OFF_DELAY) {
+                    if (ssd1306_GetDisplayOn()) ssd1306_SetDisplayOn(0);
+                } else if (elapsed >= SLEEP_DELAY) {
+                    draw_sleep_frame();
+                    draw_zzz_overlay(sleep_zzz_frame);
+                    update_display_with_overlays();
+                    if (HAL_GetTick() - sleep_zzz_timer >= SLEEP_ZZZ_PERIOD) {
+                        sleep_zzz_frame = (sleep_zzz_frame + 1) % 4;
+                        sleep_zzz_timer = HAL_GetTick();
+                    }
+                } else {
+                    draw_idle_frame(idle_cnt);
+                    update_display_with_overlays();
+                    idle_cnt = (idle_cnt + 1) % idle_frame_count();
+                }
+
+                uint32_t t = HAL_GetTick();
+                while (HAL_GetTick() - t < 100) __WFI();
             }
             break;
 
         case SWITCH:
             handle_display_mode_switch();
-            handle_invert_toggle();
 
             if (check_idle_transition(&idle_cntr, &left_state, &right_state)) {
-                state = IDLE;
-                idle_cnt = 0;
+                state      = IDLE;
+                idle_since = 0;
             } else if (!NONE_PRESSED) {
                 handle_paw_animations(
                     &left_state, &right_state,
                     &tap_left_cntr, &tap_right_cntr,
                     &idle_cntr
                 );
+            }
+
+            if (pending_milestone) {
+                play_milestone_celebration(pending_milestone);
+                pending_milestone = 0;
+                readPins();
+                while (!NONE_PRESSED) { readPins(); HAL_Delay(10); }
+                left_state     = 0;
+                right_state    = 0;
+                tap_left_cntr  = 0;
+                tap_right_cntr = 0;
+                idle_cntr      = 0;
+                tap_tracker_reset();
+                save_settings();
             }
 
             handle_tap_decay(&tap_left_cntr, &tap_right_cntr);
@@ -102,10 +143,12 @@ int main(void)
   HAL_GPIO_WritePin(OLED_RST_GPIO_Port, OLED_RST_Pin, GPIO_PIN_SET);
   HAL_Delay(10);
   ssd1306_Init();
+  ssd1306_SetContrast(DISPLAY_CONTRAST);
 
   load_settings();
   ssd1306_InvertDisplay(settings.display_inverted);
   last_save_time = HAL_GetTick();
+  tap_tracker_reset();
 
   handle_boot_overrides();
 

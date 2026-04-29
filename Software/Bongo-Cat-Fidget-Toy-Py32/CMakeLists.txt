@@ -78,18 +78,19 @@ target_compile_options(${PROJECT_NAME}.elf
     $<$<COMPILE_LANGUAGE:ASM>:-xassembler-with-cpp>
 )
 
-target_compile_options(${PROJECT_NAME}.elf PRIVATE 
-    $<$<CONFIG:Release>:-Ofast>
-    $<$<CONFIG:RelWithDebInfo>:-Ofast -g>
-    $<$<CONFIG:MinSizeRel>:-Os>
+target_compile_options(${PROJECT_NAME}.elf PRIVATE
+    $<$<CONFIG:Release>:-Ofast -flto>
+    $<$<CONFIG:RelWithDebInfo>:-Ofast -g -flto>
+    $<$<CONFIG:MinSizeRel>:-Os -flto>
     $<$<CONFIG:Debug>:-Og -g>
 )
 
 target_link_options(${PROJECT_NAME}.elf
     PRIVATE
-    -mcpu=cortex-m0plus 
-    -mthumb 
+    -mcpu=cortex-m0plus
+    -mthumb
     -mthumb-interwork
+    $<$<OR:$<CONFIG:Release>,$<CONFIG:RelWithDebInfo>,$<CONFIG:MinSizeRel>>:-flto>
     -Wl,-gc-sections
     -Wl,--print-memory-usage
     -Wl,-Map=${PROJECT_BINARY_DIR}/${PROJECT_NAME}.map

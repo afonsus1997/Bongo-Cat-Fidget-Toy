@@ -28,7 +28,12 @@
 /* ==== Tunables ==== */
 #define IDLE_TIME               2000
 #define TAP_DECAY_TIME          200
+#define SLEEP_DELAY             15000
+#define SLEEP_ZZZ_PERIOD        500
+#define DISPLAY_OFF_DELAY       45000
+#define DISPLAY_CONTRAST        0x7F
 #define RESET_CONFIRM_TIMEOUT   10000
+#define TAP_SPEED_MIN_INTERVAL  20
 
 #define LEFT_PRESSED  (sw_state_left == 1 && sw_state_right == 0)
 #define RIGHT_PRESSED (sw_state_left == 0 && sw_state_right == 1)
@@ -98,6 +103,7 @@ extern uint8_t     tap_history_index;
 extern uint16_t    current_tap_speed_x10;
 
 extern uint32_t    angry_mode_timer;
+extern uint32_t    pending_milestone;
 
 /* Image assets (bitmaps) provided elsewhere */
 extern const uint8_t img_tap_left[];
@@ -125,6 +131,10 @@ void draw_animation_erase(const uint8_t *frame);
 void draw_animation_transparent(const uint8_t *frame);
 void draw_idle_frame(uint8_t idx);
 uint8_t idle_frame_count(void);
+void draw_sleep_frame(void);
+void draw_zzz_overlay(uint8_t frame);
+void play_milestone_celebration(uint32_t milestone);
+void tap_tracker_reset(void);
 
 void readPins(void);
 

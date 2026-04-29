@@ -37,5 +37,7 @@ extern const unsigned char img_right_down_alt [];
 extern const unsigned char img_tap_left [];
 // 'tap_right', 128x64px
 extern const unsigned char img_tap_right[];
+// 'idle_sleep', 128x64px
+extern const unsigned char img_idle_sleep [];
 
 #endif  //!__BITMAPS__H__
