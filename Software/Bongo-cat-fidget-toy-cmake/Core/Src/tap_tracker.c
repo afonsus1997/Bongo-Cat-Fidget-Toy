@@ -42,26 +42,26 @@ uint8_t use_angry_mode(void) {
 }
 
 void calculate_tap_speed(void) {
-    uint32_t current_time     = HAL_GetTick();
-    int      valid_taps       = 0;
-    uint32_t oldest_valid_time = current_time;
+    uint32_t current_time      = HAL_GetTick();
+    int      valid_taps        = 0;
+    uint32_t oldest_valid_time = 0;
+    uint32_t newest_valid_time = 0;
 
     for (int i = 0; i < TAP_HISTORY_SIZE; i++) {
         if (tap_timestamps[i] != 0 && (current_time - tap_timestamps[i]) <= TAP_SPEED_WINDOW) {
             valid_taps++;
-            if (tap_timestamps[i] < oldest_valid_time) {
+            if (oldest_valid_time == 0 || tap_timestamps[i] < oldest_valid_time) {
                 oldest_valid_time = tap_timestamps[i];
+            }
+            if (tap_timestamps[i] > newest_valid_time) {
+                newest_valid_time = tap_timestamps[i];
             }
         }
     }
 
-    if (valid_taps >= 2 && oldest_valid_time < current_time) {
-        uint32_t time_span = current_time - oldest_valid_time;
-        if (time_span > 0) {
-            current_tap_speed_x10 = ((valid_taps - 1) * 10000) / time_span;
-        } else {
-            current_tap_speed_x10 = 0;
-        }
+    if (valid_taps >= 3 && newest_valid_time > oldest_valid_time) {
+        uint32_t time_span = newest_valid_time - oldest_valid_time;
+        current_tap_speed_x10 = ((valid_taps - 1) * 10000) / time_span;
     } else {
         current_tap_speed_x10 = 0;
     }
