@@ -59,7 +59,8 @@ void calculate_tap_speed(void) {
         }
     }
 
-    if (valid_taps >= 3 && newest_valid_time > oldest_valid_time) {
+    if (valid_taps >= 3 && newest_valid_time > oldest_valid_time
+            && (current_time - newest_valid_time) < TAP_IDLE_THRESHOLD) {
         uint32_t time_span = newest_valid_time - oldest_valid_time;
         current_tap_speed_x10 = ((valid_taps - 1) * 10000) / time_span;
     } else {

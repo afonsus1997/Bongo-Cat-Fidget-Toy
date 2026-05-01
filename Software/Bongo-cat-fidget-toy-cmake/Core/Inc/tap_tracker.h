@@ -9,6 +9,7 @@
 #define ANGRY_MODE_ON_THRESHOLD  100
 #define ANGRY_MODE_OFF_THRESHOLD 80
 #define ANGRY_MODE_DECAY_TIME    500
+#define TAP_IDLE_THRESHOLD       300
 
 extern uint16_t current_tap_speed_x10;
 extern uint32_t pending_milestone;
