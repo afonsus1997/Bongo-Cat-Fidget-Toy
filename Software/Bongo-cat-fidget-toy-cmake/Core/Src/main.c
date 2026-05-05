@@ -267,7 +267,7 @@ static void MX_I2C1_Init(void)
   /* USER CODE BEGIN I2C1_Init 1 */
   /* USER CODE END I2C1_Init 1 */
   hi2c1.Instance = I2C1;
-  hi2c1.Init.Timing = 0x00601133;
+  hi2c1.Init.Timing = 0x00300619;  // 16MHz / FM 400kHz
   hi2c1.Init.OwnAddress1 = 0;
   hi2c1.Init.AddressingMode = I2C_ADDRESSINGMODE_7BIT;
   hi2c1.Init.DualAddressMode = I2C_DUALADDRESS_DISABLE;
@@ -303,9 +303,9 @@ static void MX_TIM14_Init(void)
   /* USER CODE BEGIN TIM14_Init 1 */
   /* USER CODE END TIM14_Init 1 */
   htim14.Instance = TIM14;
-  htim14.Init.Prescaler = 32-1;
+  htim14.Init.Prescaler = 16-1;
   htim14.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim14.Init.Period = 5000-1;  // 16MHz / 32 / 5000 = 100Hz (10ms)
+  htim14.Init.Period = 1000-1;  // 16MHz / 16 / 1000 = 1kHz (1ms)
   htim14.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim14.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim14) != HAL_OK)

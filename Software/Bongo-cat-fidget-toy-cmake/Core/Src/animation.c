@@ -57,6 +57,13 @@ void handle_paw_animations(uint8_t *left_state, uint8_t *right_state,
                             int32_t *idle_cntr) {
     *idle_cntr = 0;
 
+    // Consume release flags: if a button was released during the last display
+    // update (I2C is slow), reset its state so a re-press is treated as new.
+    uint8_t rl = sw_released_left;  sw_released_left  = 0;
+    uint8_t rr = sw_released_right; sw_released_right = 0;
+    if (rl) *left_state  = 0;
+    if (rr) *right_state = 0;
+
     uint8_t angry = use_angry_mode();
 
     if (BOTH_PRESSED && ((*left_state | *right_state) == 0 || (*left_state ^ *right_state) == 1)) {
